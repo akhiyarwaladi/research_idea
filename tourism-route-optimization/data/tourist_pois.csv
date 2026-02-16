@@ -1,0 +1,26 @@
+id,name,latitude,longitude,category
+1,Kraton Yogyakarta,-7.8053,110.3642,Cultural Heritage
+2,Taman Sari Water Castle,-7.8100,110.3592,Historical
+3,Benteng Vredeburg Museum,-7.8003,110.3660,Museum
+4,Tugu Yogyakarta,-7.7830,110.3670,Monument
+5,Malioboro Street,-7.7925,110.3660,Shopping/Cultural
+6,Pasar Beringharjo,-7.7983,110.3660,Traditional Market
+7,Museum Sonobudoyo,-7.8018,110.3638,Museum
+8,Alun-Alun Kidul,-7.8120,110.3635,Public Square
+9,Alun-Alun Utara,-7.8030,110.3638,Public Square
+10,Taman Pintar Science Park,-7.8005,110.3670,Educational
+11,Kebun Binatang Gembira Loka,-7.8056,110.3953,Zoo
+12,Museum Affandi,-7.7825,110.3973,Art Museum
+13,Kotagede Heritage Area,-7.8273,110.3983,Heritage District
+14,Monumen Jogja Kembali,-7.7500,110.3767,Monument/Museum
+15,Purawisata,-7.8010,110.3735,Cultural Performance
+16,Candi Prambanan,-7.7520,110.4914,Temple
+17,Candi Ratu Boko,-7.7704,110.4892,Archaeological Site
+18,Tebing Breksi,-7.7620,110.5043,Nature/Cliff
+19,Museum Ullen Sentalu,-7.6041,110.4264,Museum
+20,Candi Borobudur,-7.6078,110.2038,Temple
+21,Pantai Parangtritis,-8.0254,110.3264,Beach
+22,Hutan Pinus Mangunan,-7.9310,110.4310,Nature
+23,Goa Pindul,-7.9530,110.6500,Cave/Adventure
+24,Pantai Indrayanti,-8.1500,110.6133,Beach
+25,HeHa Sky View,-7.8550,110.4540,Viewpoint

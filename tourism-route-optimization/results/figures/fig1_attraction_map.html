@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3f27af093abc5a403b2b9afa77bf774d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position:fixed;top:10px;left:50%;transform:translateX(-50%);
+    z-index:1000;background:white;padding:10px;border-radius:5px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:16px;font-weight:bold;">
+    Tourist Attractions in DIY Yogyakarta (25 Locations)
+    </div>
+    
+    
+            <div class="folium-map" id="map_3f27af093abc5a403b2b9afa77bf774d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3f27af093abc5a403b2b9afa77bf774d = L.map(
+                "map_3f27af093abc5a403b2b9afa77bf774d",
+                {
+                    center: [-7.815352000000001, 110.407096],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7e6d2459c09ab7fb05ce58d4f3493ffd = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7e6d2459c09ab7fb05ce58d4f3493ffd.addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var tile_layer_eb93523cfe4f22f926a7b03be527911e = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri World Imagery",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_eb93523cfe4f22f926a7b03be527911e.addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var layer_control_808fd7f76b09a5ede56e24432e1024cf_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_7e6d2459c09ab7fb05ce58d4f3493ffd,
+                    "Satellite" : tile_layer_eb93523cfe4f22f926a7b03be527911e,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_808fd7f76b09a5ede56e24432e1024cf = L.control.layers(
+                layer_control_808fd7f76b09a5ede56e24432e1024cf_layers.base_layers,
+                layer_control_808fd7f76b09a5ede56e24432e1024cf_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+
+        
+    
+            var marker_629740bf3e99c89ebea6cecd11b4da4a = L.marker(
+                [-7.8053, 110.3642],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_90f768aa14821c012689c6d097698f8e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_803e2f50ba434e08cf13262d282f3fc3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f2d02100c4bbd1070296a0061b8ce18c = $(`<div id="html_f2d02100c4bbd1070296a0061b8ce18c" style="width: 100.0%; height: 100.0%;">         <b>1. Kraton Yogyakarta</b><br>         Category: Cultural Heritage<br>         Lat: -7.8053, Lon: 110.3642         </div>`)[0];
+                popup_803e2f50ba434e08cf13262d282f3fc3.setContent(html_f2d02100c4bbd1070296a0061b8ce18c);
+            
+        
+
+        marker_629740bf3e99c89ebea6cecd11b4da4a.bindPopup(popup_803e2f50ba434e08cf13262d282f3fc3)
+        ;
+
+        
+    
+    
+            marker_629740bf3e99c89ebea6cecd11b4da4a.bindTooltip(
+                `<div>
+                     1. Kraton Yogyakarta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_629740bf3e99c89ebea6cecd11b4da4a.setIcon(icon_90f768aa14821c012689c6d097698f8e);
+            
+    
+            var marker_909a6723e488810250d53e8ebb908bda = L.marker(
+                [-7.81, 110.3592],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_8e58f5e7e0ddeac67cf99f4450da7c9c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b70c3ae4708e269e50e362b2bed84e88 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0d76f8e86d25a2d7507ea7f1aabed901 = $(`<div id="html_0d76f8e86d25a2d7507ea7f1aabed901" style="width: 100.0%; height: 100.0%;">         <b>2. Taman Sari Water Castle</b><br>         Category: Historical<br>         Lat: -7.8100, Lon: 110.3592         </div>`)[0];
+                popup_b70c3ae4708e269e50e362b2bed84e88.setContent(html_0d76f8e86d25a2d7507ea7f1aabed901);
+            
+        
+
+        marker_909a6723e488810250d53e8ebb908bda.bindPopup(popup_b70c3ae4708e269e50e362b2bed84e88)
+        ;
+
+        
+    
+    
+            marker_909a6723e488810250d53e8ebb908bda.bindTooltip(
+                `<div>
+                     2. Taman Sari Water Castle
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_909a6723e488810250d53e8ebb908bda.setIcon(icon_8e58f5e7e0ddeac67cf99f4450da7c9c);
+            
+    
+            var marker_0f5bb316ed053e57f9e9d03a0787aa14 = L.marker(
+                [-7.8003, 110.366],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_4de6aa71c9bbef5f4a125f47bd05b9db = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eb07736215331e6a0e78480f99bc4e4f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a0c3d8e23143fb9a54e04f72e8fba411 = $(`<div id="html_a0c3d8e23143fb9a54e04f72e8fba411" style="width: 100.0%; height: 100.0%;">         <b>3. Benteng Vredeburg Museum</b><br>         Category: Museum<br>         Lat: -7.8003, Lon: 110.3660         </div>`)[0];
+                popup_eb07736215331e6a0e78480f99bc4e4f.setContent(html_a0c3d8e23143fb9a54e04f72e8fba411);
+            
+        
+
+        marker_0f5bb316ed053e57f9e9d03a0787aa14.bindPopup(popup_eb07736215331e6a0e78480f99bc4e4f)
+        ;
+
+        
+    
+    
+            marker_0f5bb316ed053e57f9e9d03a0787aa14.bindTooltip(
+                `<div>
+                     3. Benteng Vredeburg Museum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f5bb316ed053e57f9e9d03a0787aa14.setIcon(icon_4de6aa71c9bbef5f4a125f47bd05b9db);
+            
+    
+            var marker_e3a9602aa157f18be2c327516872baa7 = L.marker(
+                [-7.783, 110.367],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_2e9b39dc8ff502cccb69e401e544e472 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f65731d601e0a1a65a4de93655530c01 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6c5bf4df400cffceeb925f7b44b0ab29 = $(`<div id="html_6c5bf4df400cffceeb925f7b44b0ab29" style="width: 100.0%; height: 100.0%;">         <b>4. Tugu Yogyakarta</b><br>         Category: Monument<br>         Lat: -7.7830, Lon: 110.3670         </div>`)[0];
+                popup_f65731d601e0a1a65a4de93655530c01.setContent(html_6c5bf4df400cffceeb925f7b44b0ab29);
+            
+        
+
+        marker_e3a9602aa157f18be2c327516872baa7.bindPopup(popup_f65731d601e0a1a65a4de93655530c01)
+        ;
+
+        
+    
+    
+            marker_e3a9602aa157f18be2c327516872baa7.bindTooltip(
+                `<div>
+                     4. Tugu Yogyakarta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e3a9602aa157f18be2c327516872baa7.setIcon(icon_2e9b39dc8ff502cccb69e401e544e472);
+            
+    
+            var marker_5606893c78b620045baa1c71308722cf = L.marker(
+                [-7.7925, 110.366],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_349ce32a1d977b94bf0742b01d5c9736 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6f2ccb60a3e86f6dfd9d178e6172f17b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4121284e35cb66180b7431ec9b5f8d8e = $(`<div id="html_4121284e35cb66180b7431ec9b5f8d8e" style="width: 100.0%; height: 100.0%;">         <b>5. Malioboro Street</b><br>         Category: Shopping/Cultural<br>         Lat: -7.7925, Lon: 110.3660         </div>`)[0];
+                popup_6f2ccb60a3e86f6dfd9d178e6172f17b.setContent(html_4121284e35cb66180b7431ec9b5f8d8e);
+            
+        
+
+        marker_5606893c78b620045baa1c71308722cf.bindPopup(popup_6f2ccb60a3e86f6dfd9d178e6172f17b)
+        ;
+
+        
+    
+    
+            marker_5606893c78b620045baa1c71308722cf.bindTooltip(
+                `<div>
+                     5. Malioboro Street
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5606893c78b620045baa1c71308722cf.setIcon(icon_349ce32a1d977b94bf0742b01d5c9736);
+            
+    
+            var marker_8fb1927a98e4e3119f859300aad05043 = L.marker(
+                [-7.7983, 110.366],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_62e9d1d6ee2c1ad2cd3d2291df23100a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2fc1b08fc3cc0bff9042c7578e7464f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c0e42dd174fbe8034a76f8db0db1978a = $(`<div id="html_c0e42dd174fbe8034a76f8db0db1978a" style="width: 100.0%; height: 100.0%;">         <b>6. Pasar Beringharjo</b><br>         Category: Traditional Market<br>         Lat: -7.7983, Lon: 110.3660         </div>`)[0];
+                popup_2fc1b08fc3cc0bff9042c7578e7464f1.setContent(html_c0e42dd174fbe8034a76f8db0db1978a);
+            
+        
+
+        marker_8fb1927a98e4e3119f859300aad05043.bindPopup(popup_2fc1b08fc3cc0bff9042c7578e7464f1)
+        ;
+
+        
+    
+    
+            marker_8fb1927a98e4e3119f859300aad05043.bindTooltip(
+                `<div>
+                     6. Pasar Beringharjo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8fb1927a98e4e3119f859300aad05043.setIcon(icon_62e9d1d6ee2c1ad2cd3d2291df23100a);
+            
+    
+            var marker_485504faa7664f76391876ef204be452 = L.marker(
+                [-7.8018, 110.3638],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_1f9e62e9328b47e8c5507e4cdfb62b97 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_480e808853c5cadfed45056d50e7da42 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b256bcfe1be5b3aac79b68bab66e24c5 = $(`<div id="html_b256bcfe1be5b3aac79b68bab66e24c5" style="width: 100.0%; height: 100.0%;">         <b>7. Museum Sonobudoyo</b><br>         Category: Museum<br>         Lat: -7.8018, Lon: 110.3638         </div>`)[0];
+                popup_480e808853c5cadfed45056d50e7da42.setContent(html_b256bcfe1be5b3aac79b68bab66e24c5);
+            
+        
+
+        marker_485504faa7664f76391876ef204be452.bindPopup(popup_480e808853c5cadfed45056d50e7da42)
+        ;
+
+        
+    
+    
+            marker_485504faa7664f76391876ef204be452.bindTooltip(
+                `<div>
+                     7. Museum Sonobudoyo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_485504faa7664f76391876ef204be452.setIcon(icon_1f9e62e9328b47e8c5507e4cdfb62b97);
+            
+    
+            var marker_d99a777652a7a46d98cadc95b4276189 = L.marker(
+                [-7.812, 110.3635],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_6f57ed36ee68b85cdf9161a6732b0402 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c2543c879f10af0ae1213f699f4b5ab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_eecf30b707d25985dcfa3f2338449226 = $(`<div id="html_eecf30b707d25985dcfa3f2338449226" style="width: 100.0%; height: 100.0%;">         <b>8. Alun-Alun Kidul</b><br>         Category: Public Square<br>         Lat: -7.8120, Lon: 110.3635         </div>`)[0];
+                popup_6c2543c879f10af0ae1213f699f4b5ab.setContent(html_eecf30b707d25985dcfa3f2338449226);
+            
+        
+
+        marker_d99a777652a7a46d98cadc95b4276189.bindPopup(popup_6c2543c879f10af0ae1213f699f4b5ab)
+        ;
+
+        
+    
+    
+            marker_d99a777652a7a46d98cadc95b4276189.bindTooltip(
+                `<div>
+                     8. Alun-Alun Kidul
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d99a777652a7a46d98cadc95b4276189.setIcon(icon_6f57ed36ee68b85cdf9161a6732b0402);
+            
+    
+            var marker_d7a4fc48b7bc419cf2cdad53876ffd8c = L.marker(
+                [-7.803, 110.3638],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_a10a3be6fc47652f6edb4e1242d78450 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_013777986d2f62b23ca85907a3f713d7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f01b972111d8eaf4734ffa334057155e = $(`<div id="html_f01b972111d8eaf4734ffa334057155e" style="width: 100.0%; height: 100.0%;">         <b>9. Alun-Alun Utara</b><br>         Category: Public Square<br>         Lat: -7.8030, Lon: 110.3638         </div>`)[0];
+                popup_013777986d2f62b23ca85907a3f713d7.setContent(html_f01b972111d8eaf4734ffa334057155e);
+            
+        
+
+        marker_d7a4fc48b7bc419cf2cdad53876ffd8c.bindPopup(popup_013777986d2f62b23ca85907a3f713d7)
+        ;
+
+        
+    
+    
+            marker_d7a4fc48b7bc419cf2cdad53876ffd8c.bindTooltip(
+                `<div>
+                     9. Alun-Alun Utara
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d7a4fc48b7bc419cf2cdad53876ffd8c.setIcon(icon_a10a3be6fc47652f6edb4e1242d78450);
+            
+    
+            var marker_15f62e4600e929d5c23f709e3987a207 = L.marker(
+                [-7.8005, 110.367],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_84b61c7347ccb09ece0c5a2c364cef2e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2713271691804c47e6c1cd5f8e3f8e0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_40ede53b4b10223a8c97c4d4956a3f9f = $(`<div id="html_40ede53b4b10223a8c97c4d4956a3f9f" style="width: 100.0%; height: 100.0%;">         <b>10. Taman Pintar Science Park</b><br>         Category: Educational<br>         Lat: -7.8005, Lon: 110.3670         </div>`)[0];
+                popup_a2713271691804c47e6c1cd5f8e3f8e0.setContent(html_40ede53b4b10223a8c97c4d4956a3f9f);
+            
+        
+
+        marker_15f62e4600e929d5c23f709e3987a207.bindPopup(popup_a2713271691804c47e6c1cd5f8e3f8e0)
+        ;
+
+        
+    
+    
+            marker_15f62e4600e929d5c23f709e3987a207.bindTooltip(
+                `<div>
+                     10. Taman Pintar Science Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_15f62e4600e929d5c23f709e3987a207.setIcon(icon_84b61c7347ccb09ece0c5a2c364cef2e);
+            
+    
+            var marker_28335c4150f9f57646547552e06e3195 = L.marker(
+                [-7.8056, 110.3953],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_166c013071e5d3cc744587fde991eea8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_37e766797a14c617bdcaf9cfcbe6d2cd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_694a434b664a577bca3a268b87212dd0 = $(`<div id="html_694a434b664a577bca3a268b87212dd0" style="width: 100.0%; height: 100.0%;">         <b>11. Kebun Binatang Gembira Loka</b><br>         Category: Zoo<br>         Lat: -7.8056, Lon: 110.3953         </div>`)[0];
+                popup_37e766797a14c617bdcaf9cfcbe6d2cd.setContent(html_694a434b664a577bca3a268b87212dd0);
+            
+        
+
+        marker_28335c4150f9f57646547552e06e3195.bindPopup(popup_37e766797a14c617bdcaf9cfcbe6d2cd)
+        ;
+
+        
+    
+    
+            marker_28335c4150f9f57646547552e06e3195.bindTooltip(
+                `<div>
+                     11. Kebun Binatang Gembira Loka
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_28335c4150f9f57646547552e06e3195.setIcon(icon_166c013071e5d3cc744587fde991eea8);
+            
+    
+            var marker_33cc8bf11747fd0b3651abd01da7b4fb = L.marker(
+                [-7.7825, 110.3973],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_c6cfd50fe30c2fa1d95827a6853ea2e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e0bac7d8c83be5f139d01fefbeffd20e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bb17a7bb8ede0c996323a728ab4c2637 = $(`<div id="html_bb17a7bb8ede0c996323a728ab4c2637" style="width: 100.0%; height: 100.0%;">         <b>12. Museum Affandi</b><br>         Category: Art Museum<br>         Lat: -7.7825, Lon: 110.3973         </div>`)[0];
+                popup_e0bac7d8c83be5f139d01fefbeffd20e.setContent(html_bb17a7bb8ede0c996323a728ab4c2637);
+            
+        
+
+        marker_33cc8bf11747fd0b3651abd01da7b4fb.bindPopup(popup_e0bac7d8c83be5f139d01fefbeffd20e)
+        ;
+
+        
+    
+    
+            marker_33cc8bf11747fd0b3651abd01da7b4fb.bindTooltip(
+                `<div>
+                     12. Museum Affandi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33cc8bf11747fd0b3651abd01da7b4fb.setIcon(icon_c6cfd50fe30c2fa1d95827a6853ea2e5);
+            
+    
+            var marker_8baa3693cb2bf403102c3c82ad30c81b = L.marker(
+                [-7.8273, 110.3983],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_774265a45a3a123402267ffd8452b9c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dfd20daf107775bca5e66dd12590fcab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8c4e8687c4aade14859f7dc1b4913e47 = $(`<div id="html_8c4e8687c4aade14859f7dc1b4913e47" style="width: 100.0%; height: 100.0%;">         <b>13. Kotagede Heritage Area</b><br>         Category: Heritage District<br>         Lat: -7.8273, Lon: 110.3983         </div>`)[0];
+                popup_dfd20daf107775bca5e66dd12590fcab.setContent(html_8c4e8687c4aade14859f7dc1b4913e47);
+            
+        
+
+        marker_8baa3693cb2bf403102c3c82ad30c81b.bindPopup(popup_dfd20daf107775bca5e66dd12590fcab)
+        ;
+
+        
+    
+    
+            marker_8baa3693cb2bf403102c3c82ad30c81b.bindTooltip(
+                `<div>
+                     13. Kotagede Heritage Area
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8baa3693cb2bf403102c3c82ad30c81b.setIcon(icon_774265a45a3a123402267ffd8452b9c4);
+            
+    
+            var marker_efc32746b9d60698c161c74d04627596 = L.marker(
+                [-7.75, 110.3767],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_3e3738d72cd741e710364f26336e7f0f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_456bc6b4e64a8d5b080dfc7303a9a0d6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_16ea8719777cd10cb3785b3631008908 = $(`<div id="html_16ea8719777cd10cb3785b3631008908" style="width: 100.0%; height: 100.0%;">         <b>14. Monumen Jogja Kembali</b><br>         Category: Monument/Museum<br>         Lat: -7.7500, Lon: 110.3767         </div>`)[0];
+                popup_456bc6b4e64a8d5b080dfc7303a9a0d6.setContent(html_16ea8719777cd10cb3785b3631008908);
+            
+        
+
+        marker_efc32746b9d60698c161c74d04627596.bindPopup(popup_456bc6b4e64a8d5b080dfc7303a9a0d6)
+        ;
+
+        
+    
+    
+            marker_efc32746b9d60698c161c74d04627596.bindTooltip(
+                `<div>
+                     14. Monumen Jogja Kembali
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_efc32746b9d60698c161c74d04627596.setIcon(icon_3e3738d72cd741e710364f26336e7f0f);
+            
+    
+            var marker_d81ceb108c38238863d1a266651eb01b = L.marker(
+                [-7.801, 110.3735],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_7874b52068d865429c1bb754bbfd6571 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "pink",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2f2d40fbd0563507543ef14046e660de = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f181cc2b905241618cead5537adf111c = $(`<div id="html_f181cc2b905241618cead5537adf111c" style="width: 100.0%; height: 100.0%;">         <b>15. Purawisata</b><br>         Category: Cultural Performance<br>         Lat: -7.8010, Lon: 110.3735         </div>`)[0];
+                popup_2f2d40fbd0563507543ef14046e660de.setContent(html_f181cc2b905241618cead5537adf111c);
+            
+        
+
+        marker_d81ceb108c38238863d1a266651eb01b.bindPopup(popup_2f2d40fbd0563507543ef14046e660de)
+        ;
+
+        
+    
+    
+            marker_d81ceb108c38238863d1a266651eb01b.bindTooltip(
+                `<div>
+                     15. Purawisata
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d81ceb108c38238863d1a266651eb01b.setIcon(icon_7874b52068d865429c1bb754bbfd6571);
+            
+    
+            var marker_93cb82a61a8c2bdd0bad6213e9ca7782 = L.marker(
+                [-7.752, 110.4914],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_780432f52ed29dd3430d2a32226d9746 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_50302e8543b0e8a2bee1887e54f00447 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e723ada6ef8fb84682a59664992f7d67 = $(`<div id="html_e723ada6ef8fb84682a59664992f7d67" style="width: 100.0%; height: 100.0%;">         <b>16. Candi Prambanan</b><br>         Category: Temple<br>         Lat: -7.7520, Lon: 110.4914         </div>`)[0];
+                popup_50302e8543b0e8a2bee1887e54f00447.setContent(html_e723ada6ef8fb84682a59664992f7d67);
+            
+        
+
+        marker_93cb82a61a8c2bdd0bad6213e9ca7782.bindPopup(popup_50302e8543b0e8a2bee1887e54f00447)
+        ;
+
+        
+    
+    
+            marker_93cb82a61a8c2bdd0bad6213e9ca7782.bindTooltip(
+                `<div>
+                     16. Candi Prambanan
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_93cb82a61a8c2bdd0bad6213e9ca7782.setIcon(icon_780432f52ed29dd3430d2a32226d9746);
+            
+    
+            var marker_bd56c6489941b7dcaec23b93c858afbe = L.marker(
+                [-7.7704, 110.4892],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_9fa72760b3eff7462080a950a0fe916f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9788088d3d7330d3f5389e137489ec61 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_759c56bcc73c03fa44812bae7a56ff51 = $(`<div id="html_759c56bcc73c03fa44812bae7a56ff51" style="width: 100.0%; height: 100.0%;">         <b>17. Candi Ratu Boko</b><br>         Category: Archaeological Site<br>         Lat: -7.7704, Lon: 110.4892         </div>`)[0];
+                popup_9788088d3d7330d3f5389e137489ec61.setContent(html_759c56bcc73c03fa44812bae7a56ff51);
+            
+        
+
+        marker_bd56c6489941b7dcaec23b93c858afbe.bindPopup(popup_9788088d3d7330d3f5389e137489ec61)
+        ;
+
+        
+    
+    
+            marker_bd56c6489941b7dcaec23b93c858afbe.bindTooltip(
+                `<div>
+                     17. Candi Ratu Boko
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bd56c6489941b7dcaec23b93c858afbe.setIcon(icon_9fa72760b3eff7462080a950a0fe916f);
+            
+    
+            var marker_0590a5013b57504bd72e29e5d5e66486 = L.marker(
+                [-7.762, 110.5043],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_c77da8055712728e79d88bc06c34d745 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_00eeefde9ff1df0e606e3c842d33a01e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5c644cabc12797ccc973162e4f56de4a = $(`<div id="html_5c644cabc12797ccc973162e4f56de4a" style="width: 100.0%; height: 100.0%;">         <b>18. Tebing Breksi</b><br>         Category: Nature/Cliff<br>         Lat: -7.7620, Lon: 110.5043         </div>`)[0];
+                popup_00eeefde9ff1df0e606e3c842d33a01e.setContent(html_5c644cabc12797ccc973162e4f56de4a);
+            
+        
+
+        marker_0590a5013b57504bd72e29e5d5e66486.bindPopup(popup_00eeefde9ff1df0e606e3c842d33a01e)
+        ;
+
+        
+    
+    
+            marker_0590a5013b57504bd72e29e5d5e66486.bindTooltip(
+                `<div>
+                     18. Tebing Breksi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0590a5013b57504bd72e29e5d5e66486.setIcon(icon_c77da8055712728e79d88bc06c34d745);
+            
+    
+            var marker_b0a2830475244f30fa89ffac45ba4943 = L.marker(
+                [-7.6041, 110.4264],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_f8fc8b4b553cc7128de1bc4a2daca681 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b0f8ae2456b084456f105f22a7ed30d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4bdd6445ca5347edc1b24be621b7e9d4 = $(`<div id="html_4bdd6445ca5347edc1b24be621b7e9d4" style="width: 100.0%; height: 100.0%;">         <b>19. Museum Ullen Sentalu</b><br>         Category: Museum<br>         Lat: -7.6041, Lon: 110.4264         </div>`)[0];
+                popup_6b0f8ae2456b084456f105f22a7ed30d.setContent(html_4bdd6445ca5347edc1b24be621b7e9d4);
+            
+        
+
+        marker_b0a2830475244f30fa89ffac45ba4943.bindPopup(popup_6b0f8ae2456b084456f105f22a7ed30d)
+        ;
+
+        
+    
+    
+            marker_b0a2830475244f30fa89ffac45ba4943.bindTooltip(
+                `<div>
+                     19. Museum Ullen Sentalu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b0a2830475244f30fa89ffac45ba4943.setIcon(icon_f8fc8b4b553cc7128de1bc4a2daca681);
+            
+    
+            var marker_c0e019d9264d42bf63a18d2fda7ef2d9 = L.marker(
+                [-7.6078, 110.2038],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_a497f6fce477e65a1d1c15e6f8d8fa4a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fe85aa07ce63f13f227d3de5b580d726 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e5acdd3ba72c36544761c00b668ef14 = $(`<div id="html_7e5acdd3ba72c36544761c00b668ef14" style="width: 100.0%; height: 100.0%;">         <b>20. Candi Borobudur</b><br>         Category: Temple<br>         Lat: -7.6078, Lon: 110.2038         </div>`)[0];
+                popup_fe85aa07ce63f13f227d3de5b580d726.setContent(html_7e5acdd3ba72c36544761c00b668ef14);
+            
+        
+
+        marker_c0e019d9264d42bf63a18d2fda7ef2d9.bindPopup(popup_fe85aa07ce63f13f227d3de5b580d726)
+        ;
+
+        
+    
+    
+            marker_c0e019d9264d42bf63a18d2fda7ef2d9.bindTooltip(
+                `<div>
+                     20. Candi Borobudur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c0e019d9264d42bf63a18d2fda7ef2d9.setIcon(icon_a497f6fce477e65a1d1c15e6f8d8fa4a);
+            
+    
+            var marker_d0debad2fd6e83f885cfd8c6fdae03d2 = L.marker(
+                [-8.0254, 110.3264],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_ca58abcba75179ed19a1b03b24c4791f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_927e9b51586bf2a9d56bffc0fa33d57d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_75e7e54d0e1d5ed8781bb84a62c0a2eb = $(`<div id="html_75e7e54d0e1d5ed8781bb84a62c0a2eb" style="width: 100.0%; height: 100.0%;">         <b>21. Pantai Parangtritis</b><br>         Category: Beach<br>         Lat: -8.0254, Lon: 110.3264         </div>`)[0];
+                popup_927e9b51586bf2a9d56bffc0fa33d57d.setContent(html_75e7e54d0e1d5ed8781bb84a62c0a2eb);
+            
+        
+
+        marker_d0debad2fd6e83f885cfd8c6fdae03d2.bindPopup(popup_927e9b51586bf2a9d56bffc0fa33d57d)
+        ;
+
+        
+    
+    
+            marker_d0debad2fd6e83f885cfd8c6fdae03d2.bindTooltip(
+                `<div>
+                     21. Pantai Parangtritis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0debad2fd6e83f885cfd8c6fdae03d2.setIcon(icon_ca58abcba75179ed19a1b03b24c4791f);
+            
+    
+            var marker_8616d545752ecb64867eb26342eb9cef = L.marker(
+                [-7.931, 110.431],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_67fc95e6edae199e285acf61d6b75c29 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fdc3ffdd380074d5046492572c19306a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1e335fb80733257137e6a8e3b5673a2b = $(`<div id="html_1e335fb80733257137e6a8e3b5673a2b" style="width: 100.0%; height: 100.0%;">         <b>22. Hutan Pinus Mangunan</b><br>         Category: Nature<br>         Lat: -7.9310, Lon: 110.4310         </div>`)[0];
+                popup_fdc3ffdd380074d5046492572c19306a.setContent(html_1e335fb80733257137e6a8e3b5673a2b);
+            
+        
+
+        marker_8616d545752ecb64867eb26342eb9cef.bindPopup(popup_fdc3ffdd380074d5046492572c19306a)
+        ;
+
+        
+    
+    
+            marker_8616d545752ecb64867eb26342eb9cef.bindTooltip(
+                `<div>
+                     22. Hutan Pinus Mangunan
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8616d545752ecb64867eb26342eb9cef.setIcon(icon_67fc95e6edae199e285acf61d6b75c29);
+            
+    
+            var marker_db34b34625d9007d6d9237259d51eaf6 = L.marker(
+                [-7.953, 110.65],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_022db13e4999fdbcc52febdbe9f354cc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0056bddd992090df24b4ea087b1aab06 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_78c2079bb3d98693e60c9d3d6b9fd426 = $(`<div id="html_78c2079bb3d98693e60c9d3d6b9fd426" style="width: 100.0%; height: 100.0%;">         <b>23. Goa Pindul</b><br>         Category: Cave/Adventure<br>         Lat: -7.9530, Lon: 110.6500         </div>`)[0];
+                popup_0056bddd992090df24b4ea087b1aab06.setContent(html_78c2079bb3d98693e60c9d3d6b9fd426);
+            
+        
+
+        marker_db34b34625d9007d6d9237259d51eaf6.bindPopup(popup_0056bddd992090df24b4ea087b1aab06)
+        ;
+
+        
+    
+    
+            marker_db34b34625d9007d6d9237259d51eaf6.bindTooltip(
+                `<div>
+                     23. Goa Pindul
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_db34b34625d9007d6d9237259d51eaf6.setIcon(icon_022db13e4999fdbcc52febdbe9f354cc);
+            
+    
+            var marker_d5dddcf1e2e9096b4dbfb4e9fc1151b3 = L.marker(
+                [-8.15, 110.6133],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_d462c593a756a4a6ef8508aa194e1817 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bee2a60312a71036839bd2ce425c38c0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4bd01bcbb85e5b4a9ebc47aa25a7acd8 = $(`<div id="html_4bd01bcbb85e5b4a9ebc47aa25a7acd8" style="width: 100.0%; height: 100.0%;">         <b>24. Pantai Indrayanti</b><br>         Category: Beach<br>         Lat: -8.1500, Lon: 110.6133         </div>`)[0];
+                popup_bee2a60312a71036839bd2ce425c38c0.setContent(html_4bd01bcbb85e5b4a9ebc47aa25a7acd8);
+            
+        
+
+        marker_d5dddcf1e2e9096b4dbfb4e9fc1151b3.bindPopup(popup_bee2a60312a71036839bd2ce425c38c0)
+        ;
+
+        
+    
+    
+            marker_d5dddcf1e2e9096b4dbfb4e9fc1151b3.bindTooltip(
+                `<div>
+                     24. Pantai Indrayanti
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d5dddcf1e2e9096b4dbfb4e9fc1151b3.setIcon(icon_d462c593a756a4a6ef8508aa194e1817);
+            
+    
+            var marker_8c7b6b90f78f2785dad227c7ff90da0a = L.marker(
+                [-7.855, 110.454],
+                {
+}
+            ).addTo(map_3f27af093abc5a403b2b9afa77bf774d);
+        
+    
+            var icon_12f97ded9e0c423a915126737d0ca819 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightgreen",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8420659eebf493f7dcf0072012529e29 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d13025e85d3c057f33e673eedc6aa2e8 = $(`<div id="html_d13025e85d3c057f33e673eedc6aa2e8" style="width: 100.0%; height: 100.0%;">         <b>25. HeHa Sky View</b><br>         Category: Viewpoint<br>         Lat: -7.8550, Lon: 110.4540         </div>`)[0];
+                popup_8420659eebf493f7dcf0072012529e29.setContent(html_d13025e85d3c057f33e673eedc6aa2e8);
+            
+        
+
+        marker_8c7b6b90f78f2785dad227c7ff90da0a.bindPopup(popup_8420659eebf493f7dcf0072012529e29)
+        ;
+
+        
+    
+    
+            marker_8c7b6b90f78f2785dad227c7ff90da0a.bindTooltip(
+                `<div>
+                     25. HeHa Sky View
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c7b6b90f78f2785dad227c7ff90da0a.setIcon(icon_12f97ded9e0c423a915126737d0ca819);
+            
+</script>
+</html>

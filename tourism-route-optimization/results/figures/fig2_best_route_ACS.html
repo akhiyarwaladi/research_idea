@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cc23705c1b624ee382710e08d7be3704 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.3.0/leaflet-dvf.markers.min.js"></script>
+</head>
+<body>
+    
+    
+    <div style="position:fixed;top:10px;left:50%;transform:translateX(-50%);
+    z-index:1000;background:white;padding:10px 20px;border-radius:5px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:14px;font-weight:bold;">
+    Optimized Tourism Route — ACS — Total: 283.9 km
+    </div>
+    
+    
+            <div class="folium-map" id="map_cc23705c1b624ee382710e08d7be3704" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cc23705c1b624ee382710e08d7be3704 = L.map(
+                "map_cc23705c1b624ee382710e08d7be3704",
+                {
+                    center: [-7.815352000000001, 110.407096],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b96d1541e13d910a21eec4e29d5681aa = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b96d1541e13d910a21eec4e29d5681aa.addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var tile_layer_4dadd222b5c343603ed8ec9d4974b5e2 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4dadd222b5c343603ed8ec9d4974b5e2.addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var layer_control_52e08103feab623040f1db7d043aa427_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_b96d1541e13d910a21eec4e29d5681aa,
+                    "Satellite" : tile_layer_4dadd222b5c343603ed8ec9d4974b5e2,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_52e08103feab623040f1db7d043aa427 = L.control.layers(
+                layer_control_52e08103feab623040f1db7d043aa427_layers.base_layers,
+                layer_control_52e08103feab623040f1db7d043aa427_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+
+        
+    
+            var poly_line_5fb4df5f60a6b0f40ae8dbd005531b78 = L.polyline(
+                [[-7.6458634, 110.1899435], [-7.6464317, 110.1904329], [-7.6484733, 110.1904839], [-7.64932, 110.1909506], [-7.6531001, 110.1925787], [-7.6587649, 110.1997751], [-7.6607264, 110.2065616], [-7.6608255, 110.2066333], [-7.6615231, 110.204772], [-7.6709548, 110.2071118], [-7.6751425, 110.2098006], [-7.6762098, 110.210459], [-7.6790885, 110.2148733], [-7.6828072, 110.2150312], [-7.6831832, 110.2153319], [-7.6835952, 110.2154392], [-7.6910804, 110.2167883], [-7.6933983, 110.219087], [-7.6947446, 110.220803], [-7.6951021, 110.2213079], [-7.6953839, 110.2216807], [-7.6954208, 110.2224679], [-7.6954197, 110.2224854], [-7.6953892, 110.2229547], [-7.6956789, 110.2237862], [-7.6962371, 110.2246231], [-7.6973306, 110.2251731], [-7.6974427, 110.2252442], [-7.6982014, 110.2257845], [-7.70108, 110.2255833], [-7.7051149, 110.2267125], [-7.7065135, 110.2279896], [-7.7092612, 110.2306304], [-7.7095321, 110.23104], [-7.710171, 110.2321869], [-7.7111133, 110.2308833], [-7.7113659, 110.2306123], [-7.7118495, 110.2313964], [-7.7134728, 110.2302074], [-7.714245, 110.2299513], [-7.715853, 110.2296965], [-7.7159142, 110.2296536], [-7.716033, 110.2295474], [-7.7169659, 110.2292936], [-7.7178482, 110.2291086], [-7.7178794, 110.2290952], [-7.7184339, 110.2289669], [-7.7203791, 110.2288575], [-7.720529, 110.2290209], [-7.7207286, 110.2292643], [-7.7214308, 110.2301261], [-7.7217586, 110.2304454], [-7.7251954, 110.2326177], [-7.7254042, 110.2334006], [-7.7262315, 110.2346535], [-7.7257939, 110.2350212], [-7.7255373, 110.2352482], [-7.7246465, 110.235935], [-7.7242348, 110.2362585], [-7.7241723, 110.2363132], [-7.7236234, 110.2367428], [-7.7212271, 110.2386362], [-7.7208258, 110.2389745], [-7.7195321, 110.2399746], [-7.7194493, 110.2400352], [-7.717701, 110.2414019], [-7.7169131, 110.2421601], [-7.7168391, 110.2428292], [-7.7167465, 110.2436691], [-7.7166827, 110.244205], [-7.7163396, 110.2469987], [-7.716121, 110.2487923], [-7.7161087, 110.2488951], [-7.7159582, 110.2502582], [-7.715926, 110.2504991], [-7.7158454, 110.2510997], [-7.7157554, 110.2519273], [-7.7156394, 110.2527782], [-7.7155509, 110.2534354], [-7.7155014, 110.2538289], [-7.7154178, 110.2544925], [-7.715296, 110.255459], [-7.7151275, 110.2564112], [-7.7150908, 110.2566217], [-7.7150129, 110.2571678], [-7.7149738, 110.2580751], [-7.7149835, 110.2581088], [-7.7155495, 110.2595098], [-7.7155953, 110.2596203], [-7.7158348, 110.2602315], [-7.7160051, 110.260712], [-7.7161504, 110.2614982], [-7.7157867, 110.2626817], [-7.715689, 110.2630759], [-7.7159182, 110.2637771], [-7.716277, 110.2644177], [-7.7163594, 110.2645451], [-7.7167155, 110.2656957], [-7.7168351, 110.2663515], [-7.7166932, 110.267284], [-7.7165879, 110.2688487], [-7.7163474, 110.2693677], [-7.7163939, 110.2696171], [-7.7164137, 110.2699048], [-7.7165814, 110.2715001], [-7.716601, 110.272981], [-7.7166358, 110.2732328], [-7.7167231, 110.2744276], [-7.7168641, 110.2750374], [-7.7176232, 110.2766848], [-7.7178437, 110.2784975], [-7.7174849, 110.2827332], [-7.7172764, 110.2849123], [-7.7170155, 110.2870109], [-7.7169972, 110.2872786], [-7.7166452, 110.2884888], [-7.7159907, 110.2893827], [-7.7154867, 110.2900554], [-7.7153782, 110.2902471], [-7.7149117, 110.2909573], [-7.7150555, 110.2932988], [-7.7155446, 110.2968774], [-7.7175059, 110.2963078], [-7.718525, 110.2993374], [-7.7190362, 110.3008666], [-7.7190577, 110.3009306], [-7.7192256, 110.3014818], [-7.7193058, 110.301715], [-7.7196191, 110.302606], [-7.7199589, 110.3035299], [-7.7201079, 110.3038643], [-7.7204179, 110.304821], [-7.7205363, 110.3050973], [-7.7224227, 110.3081846], [-7.7225421, 110.3084683], [-7.7231512, 110.3096922], [-7.7233721, 110.3099839], [-7.7235482, 110.3102181], [-7.7236955, 110.3104103], [-7.724143, 110.3112782], [-7.7243298, 110.3116391], [-7.7244999, 110.3119676], [-7.7247364, 110.3125158], [-7.7252365, 110.3135635], [-7.7255749, 110.3138716], [-7.725832, 110.3146066], [-7.7258866, 110.3150216], [-7.7259636, 110.3155851], [-7.7261351, 110.3165243], [-7.7262693, 110.3171352], [-7.7262843, 110.3171824], [-7.7299418, 110.3173558], [-7.7305259, 110.3180873], [-7.7307093, 110.3182979], [-7.7309922, 110.318714], [-7.7310834, 110.3188223], [-7.7312935, 110.3191581], [-7.7314311, 110.3195844], [-7.7314641, 110.3197316], [-7.7315305, 110.3202098], [-7.7315684, 110.3207246], [-7.7315912, 110.3210593], [-7.7316302, 110.3212167], [-7.731704, 110.3215897], [-7.7317712, 110.3226444], [-7.7318418, 110.3237118], [-7.7318449, 110.3238494], [-7.731822, 110.3242752], [-7.7317893, 110.3245696], [-7.7318946, 110.3252341], [-7.7320422, 110.3256727], [-7.7323084, 110.3264124], [-7.7324929, 110.3270226], [-7.7325684, 110.3272511], [-7.7324688, 110.3275248], [-7.7323362, 110.3276451], [-7.7317872, 110.3279524], [-7.7316414, 110.3280216], [-7.7314438, 110.3281206], [-7.7300641, 110.3289029], [-7.7299821, 110.3294477], [-7.7305019, 110.3298314], [-7.7308149, 110.3301327], [-7.7311212, 110.3309439], [-7.7314973, 110.3320623], [-7.7316623, 110.3325872], [-7.7317171, 110.3327907], [-7.7320085, 110.3339115], [-7.7326274, 110.3353412], [-7.7326918, 110.3354864], [-7.7337278, 110.3380643], [-7.7339036, 110.3384972], [-7.7341753, 110.3393732], [-7.7342479, 110.3398473], [-7.7344208, 110.3407972], [-7.7344538, 110.3412954], [-7.7345256, 110.3415578], [-7.7346373, 110.3423714], [-7.7348549, 110.3437256], [-7.7349162, 110.3440124], [-7.7351153, 110.3454788], [-7.7369866, 110.3487474], [-7.7368334, 110.3498408], [-7.7368282, 110.3498773], [-7.7368903, 110.3501019], [-7.7371686, 110.3506866], [-7.7372343, 110.3508236], [-7.7375945, 110.3516191], [-7.737993, 110.3524205], [-7.7381111, 110.3526821], [-7.738178, 110.3529047], [-7.7382089, 110.3530457], [-7.7383027, 110.3533846], [-7.7385209, 110.3541641], [-7.7393275, 110.3557488], [-7.7394426, 110.3558439], [-7.7401339, 110.3560757], [-7.7403598, 110.356063], [-7.741712, 110.3560607], [-7.7419919, 110.3560531], [-7.7421697, 110.3560512], [-7.7434479, 110.3560696], [-7.7435996, 110.356072], [-7.7441001, 110.3560763], [-7.7448713, 110.3560685], [-7.7452153, 110.3560649], [-7.7457523, 110.3563537], [-7.7464487, 110.3577837], [-7.7466835, 110.3583868], [-7.7471729, 110.3596791], [-7.7472854, 110.360306], [-7.747333, 110.3604502], [-7.7474096, 110.3606272], [-7.7484255, 110.3607264], [-7.7489483, 110.3619671], [-7.7490058, 110.3621915], [-7.748992, 110.3622286], [-7.7490954, 110.362505], [-7.7491524, 110.3625323], [-7.7492983, 110.3628514], [-7.7497247, 110.3638239], [-7.7498232, 110.3640781], [-7.7501375, 110.3647819], [-7.7502824, 110.3654042], [-7.7503714, 110.3658468], [-7.7509453, 110.370218], [-7.7511665, 110.3712293], [-7.7513483, 110.3720608], [-7.7514101, 110.3727827], [-7.751925, 110.3754185], [-7.7519156, 110.3765584], [-7.7518564, 110.3770105], [-7.7518008, 110.3775168], [-7.751228, 110.3776981], [-7.751008, 110.3777688], [-7.7508466, 110.3778206], [-7.7505902, 110.377903], [-7.7503196, 110.37799], [-7.7502733, 110.3780048], [-7.7498492, 110.376703]],
+                {"bubblingMouseEvents": true, "color": "#0d0887", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#0d0887", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_5fb4df5f60a6b0f40ae8dbd005531b78.bindTooltip(
+                `<div>
+                     Leg 1: Candi Borobudur → Monumen Jogja Kembali (32.8 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_9fa29315ed0540c7e40ad846ca1abbc9 = new L.RegularPolygonMarker(
+                [-7.7201079, 110.3038643],
+                {
+  "stroke": true,
+  "color": "#0d0887",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#0d0887",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_b10642f917652adeb92ce3f6c85cdbc5 = L.polyline(
+                [[-7.7498492, 110.376703], [-7.7502733, 110.3780048], [-7.7503196, 110.37799], [-7.7505902, 110.377903], [-7.7508466, 110.3778206], [-7.751008, 110.3777688], [-7.751228, 110.3776981], [-7.7515793, 110.3780468], [-7.7518602, 110.3787065], [-7.7519473, 110.3790303], [-7.7521195, 110.3789689], [-7.752794, 110.3805521], [-7.7533461, 110.3816006], [-7.753497, 110.3818766], [-7.7543182, 110.3829148], [-7.7545852, 110.3832143], [-7.7547645, 110.3833873], [-7.7548163, 110.3834386], [-7.7550063, 110.3833298], [-7.7551508, 110.3834699], [-7.7558861, 110.3842582], [-7.7567127, 110.3850883], [-7.757509, 110.3858904], [-7.7576944, 110.3860768], [-7.7584538, 110.3868405], [-7.7585398, 110.386927], [-7.758905, 110.3872937], [-7.7589909, 110.3873789], [-7.7594759, 110.3879857], [-7.7597231, 110.388559], [-7.7601466, 110.3884126], [-7.7604202, 110.3883347], [-7.7605473, 110.3888362], [-7.7606686, 110.3893972], [-7.761313, 110.3892963], [-7.7614817, 110.3898869], [-7.7616633, 110.3898332], [-7.7619559, 110.3897466], [-7.7620497, 110.3897188], [-7.7623168, 110.3896398], [-7.7627232, 110.3895195], [-7.7633397, 110.3893371], [-7.7635292, 110.389281], [-7.7637621, 110.3898284], [-7.7641381, 110.3906411], [-7.7642914, 110.3909911], [-7.764461, 110.3913331], [-7.7645875, 110.3916494], [-7.7648619, 110.3921869], [-7.7650361, 110.3925564], [-7.7666258, 110.3918802], [-7.7675868, 110.3915219], [-7.7676132, 110.3916045], [-7.7677077, 110.3918818], [-7.7679008, 110.3918885], [-7.7681505, 110.3926443], [-7.7684755, 110.392555], [-7.7687403, 110.3924844], [-7.7692586, 110.3924569], [-7.7701416, 110.392319], [-7.7708387, 110.3921988], [-7.7710828, 110.3921568], [-7.7714875, 110.3920881], [-7.7724424, 110.3919017], [-7.7730284, 110.3918065], [-7.7731028, 110.3918166], [-7.7731786, 110.3918186], [-7.7736161, 110.3916645], [-7.7745488, 110.3913406], [-7.7757474, 110.3917041], [-7.7759391, 110.3917851], [-7.776437, 110.3917929], [-7.7767136, 110.391746], [-7.776844, 110.3918105], [-7.7770181, 110.3923403], [-7.7772227, 110.3929458], [-7.7777044, 110.3928244], [-7.7782046, 110.3927167], [-7.778527, 110.39392], [-7.7787211, 110.3945898], [-7.7788647, 110.3950602], [-7.7789077, 110.3952088], [-7.7789303, 110.3954106], [-7.7789608, 110.3956064], [-7.7803632, 110.3959087], [-7.7817752, 110.3956818], [-7.7831263, 110.3955097], [-7.7831572, 110.3974596]],
+                {"bubblingMouseEvents": true, "color": "#260591", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#260591", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_b10642f917652adeb92ce3f6c85cdbc5.bindTooltip(
+                `<div>
+                     Leg 2: Monumen Jogja Kembali → Museum Affandi (5.6 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_208732640eb2867b5502f873b040a32d = new L.RegularPolygonMarker(
+                [-7.7641381, 110.3906411],
+                {
+  "stroke": true,
+  "color": "#260591",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#260591",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_dc6f86dfb739a4e04b19f89741d5eefd = L.polyline(
+                [[-7.7831572, 110.3974596], [-7.7831263, 110.3955097], [-7.7831194, 110.395114], [-7.7831032, 110.3935964], [-7.7830908, 110.3922501], [-7.783086, 110.3917217], [-7.7830727, 110.3902836], [-7.7830924, 110.3880445], [-7.7830929, 110.3879732], [-7.7830943, 110.3877194], [-7.7830914, 110.3871559], [-7.7830791, 110.386164], [-7.7830675, 110.3853305], [-7.7830611, 110.3849882], [-7.7830519, 110.3836722], [-7.7830498, 110.3835945], [-7.7830467, 110.383304], [-7.783043, 110.382423], [-7.7830421, 110.3823041], [-7.7830349, 110.3814199], [-7.7830085, 110.3792346], [-7.783004, 110.3785892], [-7.7829877, 110.3762782], [-7.7829867, 110.3761261], [-7.7829812, 110.3753443], [-7.7829787, 110.3749926], [-7.7829781, 110.3749033], [-7.7829768, 110.3746159], [-7.7829684, 110.3726878], [-7.7829649, 110.372613], [-7.7829503, 110.3722956], [-7.7829472, 110.3704838], [-7.7829441, 110.3702229], [-7.782923, 110.3684602], [-7.7829506, 110.3678994], [-7.7829394, 110.3672153], [-7.7830612, 110.3670533], [-7.7830256, 110.3669822]],
+                {"bubblingMouseEvents": true, "color": "#38049a", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#38049a", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_dc6f86dfb739a4e04b19f89741d5eefd.bindTooltip(
+                `<div>
+                     Leg 3: Museum Affandi → Tugu Yogyakarta (3.4 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_a78185ceaa87654b3036f747171489c9 = new L.RegularPolygonMarker(
+                [-7.7830349, 110.3814199],
+                {
+  "stroke": true,
+  "color": "#38049a",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#38049a",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_c051197ad450ddcf22fb0a81a019e2dd = L.polyline(
+                [[-7.7830256, 110.3669822], [-7.7830612, 110.3670533], [-7.7834522, 110.3670046], [-7.7837527, 110.3669671], [-7.7840085, 110.3669353], [-7.7843351, 110.3668946], [-7.7846282, 110.366858], [-7.7849344, 110.3668199], [-7.7854877, 110.3667509], [-7.7859204, 110.366697], [-7.7862091, 110.366661], [-7.7864925, 110.3666257], [-7.7867806, 110.3665898], [-7.7870735, 110.3665533], [-7.7873434, 110.3665197], [-7.7876871, 110.3664769], [-7.7881185, 110.3664231], [-7.7884683, 110.3663795], [-7.7886843, 110.3663526], [-7.7890834, 110.3663029], [-7.7895408, 110.3663165], [-7.7896716, 110.3675496], [-7.7896762, 110.3685449], [-7.790353, 110.3680021], [-7.7908164, 110.3676179], [-7.7927667, 110.367593], [-7.792643, 110.3658511]],
+                {"bubblingMouseEvents": true, "color": "#4903a0", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#4903a0", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_c051197ad450ddcf22fb0a81a019e2dd.bindTooltip(
+                `<div>
+                     Leg 4: Tugu Yogyakarta → Malioboro Street (1.6 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_c6beb9631be907e7d87137e1b9856abc = new L.RegularPolygonMarker(
+                [-7.7870735, 110.3665533],
+                {
+  "stroke": true,
+  "color": "#4903a0",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#4903a0",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_faec9814d1ebce39e2d52c2490cec607 = L.polyline(
+                [[-7.792643, 110.3658511], [-7.7937547, 110.3657116], [-7.7940203, 110.3656783], [-7.7963616, 110.3653845], [-7.7964837, 110.3668521], [-7.7974862, 110.3667173], [-7.7985693, 110.3665566]],
+                {"bubblingMouseEvents": true, "color": "#5901a5", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#5901a5", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_faec9814d1ebce39e2d52c2490cec607.bindTooltip(
+                `<div>
+                     Leg 5: Malioboro Street → Pasar Beringharjo (0.8 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_49b13b9a7590fea1677935baf300fade = new L.RegularPolygonMarker(
+                [-7.7963616, 110.3653845],
+                {
+  "stroke": true,
+  "color": "#5901a5",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#5901a5",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_e0084dc4e78df9926f280608aebd2dbf = L.polyline(
+                [[-7.7985693, 110.3665566], [-7.7974862, 110.3667173], [-7.7974366, 110.3652559], [-7.7990731, 110.3650428], [-7.7994861, 110.364989], [-7.799674, 110.3649645], [-7.8013747, 110.3647527]],
+                {"bubblingMouseEvents": true, "color": "#6a00a8", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#6a00a8", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_e0084dc4e78df9926f280608aebd2dbf.bindTooltip(
+                `<div>
+                     Leg 6: Pasar Beringharjo → Museum Sonobudoyo (0.7 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_525a6aaeba1740507420e52e613645bb = new L.RegularPolygonMarker(
+                [-7.7990731, 110.3650428],
+                {
+  "stroke": true,
+  "color": "#6a00a8",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#6a00a8",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_5a67bdd5f3765b3e51fc8148bfd74754 = L.polyline(
+                [[-7.8013747, 110.3647527], [-7.8013887, 110.3656884]],
+                {"bubblingMouseEvents": true, "color": "#7a02a8", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#7a02a8", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_5a67bdd5f3765b3e51fc8148bfd74754.bindTooltip(
+                `<div>
+                     Leg 7: Museum Sonobudoyo → Benteng Vredeburg Museum (0.1 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_abb33f757785d94dbdde4b550af3471d = new L.RegularPolygonMarker(
+                [-7.8013887, 110.3656884],
+                {
+  "stroke": true,
+  "color": "#7a02a8",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#7a02a8",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_fd702786e161d50106a12c46bddbb3e7 = L.polyline(
+                [[-7.8013887, 110.3656884], [-7.8014432, 110.3656822], [-7.8014824, 110.3667053]],
+                {"bubblingMouseEvents": true, "color": "#8808a6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#8808a6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_fd702786e161d50106a12c46bddbb3e7.bindTooltip(
+                `<div>
+                     Leg 8: Benteng Vredeburg Museum → Taman Pintar Science Park (0.1 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_2bcfcc87204381c45e4ee7d125cd7071 = new L.RegularPolygonMarker(
+                [-7.8014432, 110.3656822],
+                {
+  "stroke": true,
+  "color": "#8808a6",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#8808a6",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_7300364fe3d3509ea80ceced576f492f = L.polyline(
+                [[-7.8014824, 110.3667053], [-7.8014432, 110.3656822], [-7.8013747, 110.3647527], [-7.8028599, 110.3645618], [-7.8029191, 110.3645541], [-7.8028756, 110.3640829]],
+                {"bubblingMouseEvents": true, "color": "#9613a1", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#9613a1", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_7300364fe3d3509ea80ceced576f492f.bindTooltip(
+                `<div>
+                     Leg 9: Taman Pintar Science Park → Alun-Alun Utara (0.4 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_141ff0cddb76dcc580480c3bb06183af = new L.RegularPolygonMarker(
+                [-7.8028599, 110.3645618],
+                {
+  "stroke": true,
+  "color": "#9613a1",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#9613a1",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_390ee14c1936df8dd78923d97cf48452 = L.polyline(
+                [[-7.8028756, 110.3640829], [-7.8029191, 110.3645541], [-7.8029619, 110.3650188], [-7.8032938, 110.3655832], [-7.8040726, 110.3654851], [-7.8052063, 110.3653391], [-7.8051691, 110.3649168]],
+                {"bubblingMouseEvents": true, "color": "#a51f99", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#a51f99", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_390ee14c1936df8dd78923d97cf48452.bindTooltip(
+                `<div>
+                     Leg 10: Alun-Alun Utara → Kraton Yogyakarta (0.4 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_e5481831a1ef33cadba77f9d3a0e0f85 = new L.RegularPolygonMarker(
+                [-7.8032938, 110.3655832],
+                {
+  "stroke": true,
+  "color": "#a51f99",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#a51f99",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_c20b43efeb41d6da370dec42bc0a326d = L.polyline(
+                [[-7.8051691, 110.3649168], [-7.8050162, 110.3632295], [-7.8051151, 110.3631413], [-7.8062356, 110.3629749], [-7.8062268, 110.3623284], [-7.8060737, 110.3603065], [-7.8079563, 110.3600625], [-7.8077414, 110.3588294], [-7.8087, 110.3580175], [-7.8097642, 110.3578621]],
+                {"bubblingMouseEvents": true, "color": "#b12a90", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#b12a90", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_c20b43efeb41d6da370dec42bc0a326d.bindTooltip(
+                `<div>
+                     Leg 11: Kraton Yogyakarta → Taman Sari Water Castle (1.3 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_0c93e6ad11a187feb15c3d744baf2e94 = new L.RegularPolygonMarker(
+                [-7.8060737, 110.3603065],
+                {
+  "stroke": true,
+  "color": "#b12a90",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#b12a90",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_ac11faae68fb39ad485562d66854c49b = L.polyline(
+                [[-7.8097642, 110.3578621], [-7.810319, 110.3577569], [-7.8106399, 110.3577451], [-7.811525, 110.3577225], [-7.8117957, 110.3599176], [-7.8118583, 110.3605393], [-7.8121181, 110.3623233], [-7.8121352, 110.3625331], [-7.8124691, 110.3630934], [-7.8122626, 110.3637572]],
+                {"bubblingMouseEvents": true, "color": "#bc3587", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#bc3587", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_ac11faae68fb39ad485562d66854c49b.bindTooltip(
+                `<div>
+                     Leg 12: Taman Sari Water Castle → Alun-Alun Kidul (0.9 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_43e8e7f5da5a22d8055f36cc1a994ceb = new L.RegularPolygonMarker(
+                [-7.8118583, 110.3605393],
+                {
+  "stroke": true,
+  "color": "#bc3587",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#bc3587",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_3a959260e79b90e119dbb3ad806e1eb5 = L.polyline(
+                [[-7.8122626, 110.3637572], [-7.8115338, 110.3638813], [-7.8118277, 110.3662853], [-7.8111088, 110.3663858], [-7.8103868, 110.3664878], [-7.8096627, 110.3665589], [-7.8091102, 110.366637], [-7.8091245, 110.3678804], [-7.809157, 110.3686526], [-7.8091631, 110.369084], [-7.8081337, 110.3691662], [-7.8070405, 110.369221], [-7.8063051, 110.3692632], [-7.8048907, 110.3693618], [-7.8039547, 110.3693966], [-7.8037311, 110.3692793], [-7.8034903, 110.369217], [-7.8015799, 110.3693032], [-7.8015099, 110.3693427], [-7.8015273, 110.3709021], [-7.8015801, 110.3726248], [-7.8015822, 110.3727185], [-7.8015868, 110.3730942], [-7.8008302, 110.3731303], [-7.8008163, 110.3738312]],
+                {"bubblingMouseEvents": true, "color": "#c6417d", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#c6417d", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_3a959260e79b90e119dbb3ad806e1eb5.bindTooltip(
+                `<div>
+                     Leg 13: Alun-Alun Kidul → Purawisata (2.4 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_5e2c110d6970893a360e4fb4fa41d3c1 = new L.RegularPolygonMarker(
+                [-7.8063051, 110.3692632],
+                {
+  "stroke": true,
+  "color": "#c6417d",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#c6417d",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_1723d4225c824d4b760aafa6a005feea = L.polyline(
+                [[-7.8008163, 110.3738312], [-7.8008043, 110.3752308], [-7.80109, 110.3756469], [-7.8016527, 110.3756363], [-7.8016634, 110.3759703], [-7.8016696, 110.3762055], [-7.8016868, 110.3768498], [-7.801695, 110.3771577], [-7.8017171, 110.3779872], [-7.8017354, 110.3786802], [-7.8017757, 110.379992], [-7.801781, 110.3801336], [-7.801789, 110.3804441], [-7.8017919, 110.3805416], [-7.8017997, 110.380781], [-7.8018094, 110.3811295], [-7.8018215, 110.3815365], [-7.8018355, 110.3820104], [-7.8018546, 110.3827178], [-7.8018664, 110.3831348], [-7.8018979, 110.3842405], [-7.8019067, 110.3845563], [-7.8019284, 110.385392], [-7.8019472, 110.3861149], [-7.8019659, 110.386757], [-7.8019765, 110.3871622], [-7.8019881, 110.3876227], [-7.802001, 110.3880827], [-7.8020093, 110.3887875], [-7.8020139, 110.3891027], [-7.8020313, 110.3898851], [-7.8020311, 110.3900952], [-7.8020457, 110.3906784], [-7.8020792, 110.391836], [-7.8020864, 110.3919979], [-7.802118, 110.392881], [-7.8021259, 110.3933294], [-7.8021269, 110.3934036], [-7.8021304, 110.3935388], [-7.8021305, 110.3942678], [-7.8021317, 110.3945638], [-7.8021535, 110.3952014], [-7.8045812, 110.3948047], [-7.8046588, 110.395278], [-7.8048761, 110.3952464], [-7.8052379, 110.3958164]],
+                {"bubblingMouseEvents": true, "color": "#d04d73", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d04d73", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_1723d4225c824d4b760aafa6a005feea.bindTooltip(
+                `<div>
+                     Leg 14: Purawisata → Kebun Binatang Gembira Loka (2.9 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_f9eb26b076f58a8a3b4f6188beced8a7 = new L.RegularPolygonMarker(
+                [-7.8019472, 110.3861149],
+                {
+  "stroke": true,
+  "color": "#d04d73",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#d04d73",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_0680ffd0cf86387adbd646b5c66c98c8 = L.polyline(
+                [[-7.8052379, 110.3958164], [-7.8048761, 110.3952464], [-7.8046588, 110.395278], [-7.8045812, 110.3948047], [-7.8060965, 110.3946043], [-7.8061833, 110.3945913], [-7.806515, 110.3945395], [-7.8076701, 110.3943479], [-7.8077029, 110.3943317], [-7.8089748, 110.3930521], [-7.8094504, 110.3930226], [-7.8099928, 110.3930792], [-7.8102784, 110.3930889], [-7.810885, 110.3930805], [-7.8109531, 110.3930765], [-7.8112974, 110.3929781], [-7.811677, 110.3927256], [-7.8126663, 110.3921073], [-7.8128594, 110.3920399], [-7.8132741, 110.3919349], [-7.8137277, 110.3918229], [-7.8138163, 110.391801], [-7.8144046, 110.3916538], [-7.8165011, 110.3910577], [-7.8167017, 110.3909995], [-7.8175539, 110.3908193], [-7.8179006, 110.3907425], [-7.8179946, 110.3907246], [-7.8212643, 110.3904807], [-7.8224983, 110.3903919], [-7.8235547, 110.3902996], [-7.8237058, 110.3902877], [-7.8238994, 110.3902712], [-7.8249506, 110.3901877], [-7.8251788, 110.3901672], [-7.8257315, 110.3911986], [-7.8259049, 110.3915045], [-7.8264025, 110.3923825], [-7.8267948, 110.3931376], [-7.8268406, 110.3932274], [-7.827251, 110.3945936], [-7.8273272, 110.3951717], [-7.8273314, 110.3952651], [-7.827377, 110.3964883], [-7.8274375, 110.398051], [-7.8271661, 110.3981033]],
+                {"bubblingMouseEvents": true, "color": "#d9586a", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#d9586a", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_0680ffd0cf86387adbd646b5c66c98c8.bindTooltip(
+                `<div>
+                     Leg 15: Kebun Binatang Gembira Loka → Kotagede Heritage Area (3.5 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_e68024d43d28cec84f8ab483119fc3f5 = new L.RegularPolygonMarker(
+                [-7.8165011, 110.3910577],
+                {
+  "stroke": true,
+  "color": "#d9586a",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#d9586a",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_e6e593d17a9c6eacd3b8e1bf70dc2e75 = L.polyline(
+                [[-7.8271661, 110.3981033], [-7.8274375, 110.398051], [-7.8275738, 110.3986631], [-7.8277815, 110.3994698], [-7.8278065, 110.4003146], [-7.8275389, 110.4004274], [-7.8277367, 110.4027687], [-7.8278705, 110.4042789], [-7.827946, 110.4047878], [-7.8279514, 110.4049044], [-7.8280417, 110.4057091], [-7.8281125, 110.4061255], [-7.8282617, 110.4070715], [-7.828335, 110.4075403], [-7.8283609, 110.4076784], [-7.8283978, 110.4078876], [-7.8284141, 110.4079796], [-7.8284585, 110.4082314], [-7.8285208, 110.4085747], [-7.8286409, 110.4092564], [-7.8286743, 110.4094996], [-7.8286776, 110.4095519], [-7.828706, 110.4097907], [-7.8288259, 110.4105747], [-7.8289691, 110.4115153], [-7.8290802, 110.412273], [-7.829163, 110.4128186], [-7.8292016, 110.4129584], [-7.8292127, 110.4130421], [-7.829297, 110.4133302], [-7.8294106, 110.413921], [-7.8295308, 110.415759], [-7.8295805, 110.4163506], [-7.8296052, 110.4164844], [-7.8296848, 110.4170014], [-7.8298202, 110.4185806], [-7.8297893, 110.4186375], [-7.8295977, 110.4189827], [-7.8293265, 110.4195238], [-7.8293039, 110.4195808], [-7.8292707, 110.4196914], [-7.8286865, 110.4218855], [-7.8289485, 110.4217634], [-7.8291684, 110.421917], [-7.8295409, 110.4219364], [-7.8302877, 110.4217668], [-7.8304241, 110.4219716], [-7.830475, 110.4222107], [-7.8305597, 110.4226791], [-7.8306557, 110.4231374], [-7.8306903, 110.4231293], [-7.8311333, 110.4249841], [-7.8306749, 110.4251618], [-7.8303594, 110.4252966], [-7.8300193, 110.4261187], [-7.8288701, 110.4268232], [-7.8286097, 110.4279597], [-7.8284991, 110.4284236], [-7.8284271, 110.4287344], [-7.8283008, 110.4292112], [-7.8282051, 110.4295827], [-7.8281865, 110.4296532], [-7.8280331, 110.4302359], [-7.8279165, 110.4307664], [-7.8277232, 110.4315762], [-7.8276556, 110.4318465], [-7.8275493, 110.4322435], [-7.8274204, 110.4327424], [-7.8270041, 110.4345086], [-7.826907, 110.4345345], [-7.8270026, 110.4352597], [-7.827059, 110.4356823], [-7.8271654, 110.4364815], [-7.8272443, 110.4371323], [-7.8272551, 110.4372207], [-7.8273064, 110.4376442], [-7.8273452, 110.4379637], [-7.8273953, 110.4383768], [-7.8274869, 110.4391326], [-7.8276935, 110.4408363], [-7.8278727, 110.4424729], [-7.8280144, 110.4441545], [-7.8280298, 110.4443403], [-7.8280795, 110.4449382], [-7.8281418, 110.4456886], [-7.8283919, 110.4486145], [-7.8284381, 110.4490956], [-7.8284423, 110.4491304], [-7.8284659, 110.4494503], [-7.828488, 110.4496758], [-7.8285202, 110.4500304], [-7.8286893, 110.4508498], [-7.8289583, 110.4528423], [-7.8290025, 110.4531571], [-7.8290287, 110.45333], [-7.8294768, 110.4547507], [-7.8299124, 110.455787], [-7.829991, 110.4559813], [-7.8300458, 110.4561233], [-7.8304476, 110.4571397], [-7.8308908, 110.4583243], [-7.8315154, 110.4599027], [-7.8316339, 110.4602022], [-7.8317553, 110.4605165], [-7.8317764, 110.4605623], [-7.8336261, 110.4603592], [-7.8362159, 110.4600029], [-7.8384847, 110.4595957], [-7.8399342, 110.4592702], [-7.8437721, 110.4570862], [-7.8489273, 110.4536144], [-7.8509738, 110.4533906], [-7.8517679, 110.4544334], [-7.8538989, 110.4546963], [-7.8543626, 110.4542215], [-7.8548056, 110.4534008]],
+                {"bubblingMouseEvents": true, "color": "#e16462", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e16462", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_e6e593d17a9c6eacd3b8e1bf70dc2e75.bindTooltip(
+                `<div>
+                     Leg 16: Kotagede Heritage Area → HeHa Sky View (10.7 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_76fa310638e860024277363d0ad0cb79 = new L.RegularPolygonMarker(
+                [-7.8284271, 110.4287344],
+                {
+  "stroke": true,
+  "color": "#e16462",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#e16462",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_bf481a189d384a96c95dd2a88fe05359 = L.polyline(
+                [[-7.8548056, 110.4534008], [-7.8548315, 110.4533505], [-7.8556818, 110.4524352], [-7.8570809, 110.451317], [-7.8583, 110.4537181], [-7.861409, 110.4572464], [-7.8615458, 110.4572645], [-7.8617092, 110.4572363], [-7.8647316, 110.4557001], [-7.8647701, 110.4555318], [-7.8675772, 110.4540807], [-7.8676888, 110.4540029], [-7.870371, 110.4516305], [-7.870917, 110.4509036], [-7.8709369, 110.4503337], [-7.8737971, 110.4482013], [-7.8743025, 110.4473826], [-7.8798003, 110.4434498], [-7.8806067, 110.4428476], [-7.8807273, 110.4427735], [-7.8818807, 110.4439969], [-7.8851048, 110.450398], [-7.8853784, 110.4519496], [-7.8856415, 110.4517244], [-7.8898924, 110.45057], [-7.8913046, 110.450132], [-7.8916299, 110.4500614], [-7.8949616, 110.4516553], [-7.8950008, 110.4516962], [-7.8964215, 110.4517257], [-7.8980421, 110.4515098], [-7.8981618, 110.451556], [-7.8989482, 110.4516731], [-7.8993706, 110.4517211], [-7.9000439, 110.4519336], [-7.9035718, 110.4508927], [-7.9043384, 110.4502241], [-7.9047878, 110.4500575], [-7.9049581, 110.4494861], [-7.90503, 110.4486719], [-7.9052419, 110.4474784], [-7.905477, 110.4471096], [-7.9091592, 110.4453769], [-7.9099412, 110.4448823], [-7.9104495, 110.443792], [-7.9107771, 110.441426], [-7.9108271, 110.4411256], [-7.9115125, 110.4397534], [-7.9135428, 110.438503], [-7.9149999, 110.4373598], [-7.9172833, 110.4367067], [-7.9188826, 110.4367201], [-7.9312544, 110.4295403]],
+                {"bubblingMouseEvents": true, "color": "#e87059", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e87059", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_bf481a189d384a96c95dd2a88fe05359.bindTooltip(
+                `<div>
+                     Leg 17: HeHa Sky View → Hutan Pinus Mangunan (13.7 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_19e5c65dca1a05de2e72a0ab084a1fed = new L.RegularPolygonMarker(
+                [-7.8916299, 110.4500614],
+                {
+  "stroke": true,
+  "color": "#e87059",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#e87059",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_472500841bb2b3cc822928a93806da4c = L.polyline(
+                [[-7.9312544, 110.4295403], [-7.9314502, 110.4293965], [-7.931749, 110.4287244], [-7.9318271, 110.4284491], [-7.9319104, 110.4278846], [-7.9312114, 110.4240934], [-7.9314795, 110.4231341], [-7.9317591, 110.4219747], [-7.9317619, 110.4218405], [-7.9327662, 110.4211664], [-7.9330867, 110.4198624], [-7.9327956, 110.4165377], [-7.9327351, 110.415521], [-7.9324634, 110.4137917], [-7.932646, 110.4129257], [-7.9363565, 110.3929621], [-7.9367282, 110.3929287], [-7.9370515, 110.3925093], [-7.938498, 110.3920942], [-7.9383911, 110.3919916], [-7.9410834, 110.3920667], [-7.944347, 110.3909241], [-7.9440249, 110.3901397], [-7.9437127, 110.3885434], [-7.9456873, 110.3880651], [-7.945642, 110.3878798], [-7.9451107, 110.3856683], [-7.9450943, 110.3856567], [-7.9449859, 110.3851019], [-7.9460949, 110.3847714], [-7.9459487, 110.3843326], [-7.9464216, 110.3841133], [-7.9464054, 110.3816098], [-7.9465114, 110.3810867], [-7.9466745, 110.3803852], [-7.9468884, 110.3779851], [-7.9468809, 110.3777489], [-7.9468464, 110.3767298], [-7.9463645, 110.3746877], [-7.9464227, 110.3740097], [-7.946324, 110.3730082], [-7.9462775, 110.3725402], [-7.9462675, 110.3719676], [-7.9461268, 110.3714593], [-7.9457227, 110.3687751], [-7.9456883, 110.367771], [-7.9456135, 110.3669254], [-7.9455415, 110.3662651], [-7.9448524, 110.3657632], [-7.9450403, 110.3648429], [-7.9455303, 110.364732], [-7.9454608, 110.3644431], [-7.9459342, 110.364344], [-7.9458863, 110.3640186], [-7.9462329, 110.3638625], [-7.9465046, 110.3637795], [-7.9463767, 110.3629394], [-7.9467701, 110.3628886], [-7.9497356, 110.3627847], [-7.9497356, 110.3617125], [-7.9497356, 110.3608436], [-7.9496741, 110.3602414], [-7.9511328, 110.3601927], [-7.9514941, 110.360194], [-7.953699, 110.3601655], [-7.9544188, 110.3601846], [-7.9551833, 110.360097], [-7.9554989, 110.3600646], [-7.9558785, 110.3593341], [-7.955934, 110.3593125], [-7.9559232, 110.3589661], [-7.9560151, 110.3558528], [-7.9560177, 110.3558313], [-7.9559933, 110.355228], [-7.9560011, 110.3534389], [-7.9568165, 110.3533379], [-7.957128, 110.3533116], [-7.9570423, 110.3523508], [-7.9570689, 110.3518711], [-7.957267, 110.3518487], [-7.9576339, 110.3507135], [-7.9577288, 110.3506544], [-7.9587895, 110.3504011], [-7.9593374, 110.3503023], [-7.9594377, 110.3502812], [-7.9600853, 110.3501011], [-7.9601419, 110.3500948], [-7.9608979, 110.3499085], [-7.9613938, 110.3497193], [-7.9618403, 110.3494763], [-7.962259, 110.3493296], [-7.9629391, 110.3491661], [-7.9634545, 110.3490441], [-7.9634976, 110.3490253], [-7.9640415, 110.3487604], [-7.9642102, 110.3486799], [-7.9652554, 110.3479953], [-7.9664233, 110.3472315], [-7.9672759, 110.3465891], [-7.9691416, 110.345635], [-7.969062, 110.3445862], [-7.9689221, 110.3437807], [-7.9711513, 110.3435568], [-7.9723064, 110.3434738], [-7.9730704, 110.3433698], [-7.9731078, 110.3433677], [-7.9737634, 110.3433888], [-7.9744768, 110.3434262], [-7.9754729, 110.3434664], [-7.9771038, 110.3435026], [-7.9783355, 110.339694], [-7.9791198, 110.3389321], [-7.9799606, 110.338106], [-7.9814614, 110.3366375], [-7.9833822, 110.3347704], [-7.9836268, 110.3345346], [-7.9843277, 110.3338268], [-7.9857616, 110.3324497], [-7.986161, 110.3320907], [-7.9870076, 110.3309945], [-7.9869618, 110.3301706], [-7.9869577, 110.3295242], [-7.9869522, 110.3286526], [-7.9869509, 110.3284463], [-7.9869649, 110.3271827], [-7.9871336, 110.3240592], [-7.9871765, 110.3239288], [-7.9877539, 110.3218707], [-7.9878804, 110.32146], [-7.9879186, 110.3212664], [-7.9882969, 110.3202292], [-7.9887998, 110.3189819], [-7.9896195, 110.3170799], [-7.9907401, 110.3157379], [-7.9908338, 110.3153541], [-7.9915839, 110.3153317], [-7.9921282, 110.3153144], [-7.9929475, 110.3153052], [-7.9950511, 110.3152178], [-7.9966093, 110.3151927], [-7.9987995, 110.3151417], [-8.0013696, 110.3156415], [-8.0020499, 110.3159174], [-8.0035549, 110.316532], [-8.0044947, 110.316899], [-8.0045713, 110.3169283], [-8.0053821, 110.3172389], [-8.0058586, 110.3174303], [-8.0066496, 110.317757], [-8.0072188, 110.3180081], [-8.007476, 110.3180898], [-8.0078115, 110.3182265], [-8.0081301, 110.3183563], [-8.0085457, 110.3185283], [-8.0090353, 110.3187345], [-8.0097763, 110.3190281], [-8.0099885, 110.3191075], [-8.0106009, 110.3193482], [-8.0113919, 110.3196721], [-8.0116442, 110.3197682], [-8.011878, 110.3198675], [-8.0120309, 110.3199346], [-8.0120614, 110.3199476], [-8.0130423, 110.3203416], [-8.0130912, 110.3203612], [-8.0139232, 110.3207212], [-8.0147162, 110.3215602], [-8.0156097, 110.3225505], [-8.0156968, 110.3225992], [-8.0168163, 110.3229949], [-8.0171377, 110.3234342], [-8.0188805, 110.3230657], [-8.0194741, 110.3229835], [-8.019506, 110.3233], [-8.021713, 110.323602], [-8.0218418, 110.324386], [-8.0219256, 110.3252295], [-8.0219495, 110.3254895], [-8.0229087, 110.3254324], [-8.0231589, 110.3261384], [-8.0234799, 110.3270318]],
+                {"bubblingMouseEvents": true, "color": "#ef7e50", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#ef7e50", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_472500841bb2b3cc822928a93806da4c.bindTooltip(
+                `<div>
+                     Leg 18: Hutan Pinus Mangunan → Pantai Parangtritis (22.6 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_21e714471bb3f90fa526aab423e37458 = new L.RegularPolygonMarker(
+                [-7.962259, 110.3493296],
+                {
+  "stroke": true,
+  "color": "#ef7e50",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#ef7e50",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_164ee02bbef0552fd1c78f00c1b6db26 = L.polyline(
+                [[-8.0234799, 110.3270318], [-8.0229014, 110.3272113], [-8.0229743, 110.3275604], [-8.0230319, 110.3278031], [-8.0231051, 110.3281354], [-8.0231196, 110.3281989], [-8.0231367, 110.3282737], [-8.0232487, 110.3287939], [-8.0233613, 110.3292743], [-8.022853, 110.329712], [-8.0225352, 110.3297966], [-8.0225649, 110.3299609], [-8.0218416, 110.330166], [-8.0221078, 110.3308029], [-8.022397, 110.3313639], [-8.0227399, 110.3330345], [-8.0227761, 110.3332761], [-8.0228786, 110.3341646], [-8.0230156, 110.334816], [-8.0230849, 110.3359389], [-8.0230828, 110.3361287], [-8.0228779, 110.3371029], [-8.0225576, 110.3373799], [-8.0222495, 110.3376308], [-8.0221778, 110.3376786], [-8.0219695, 110.3377989], [-8.0203806, 110.3385016], [-8.0222032, 110.3392761], [-8.0224848, 110.3399755], [-8.0224755, 110.3405052], [-8.0223666, 110.3421132], [-8.0225724, 110.3436776], [-8.0263069, 110.3464761], [-8.0263, 110.346911], [-8.0256543, 110.3481189], [-8.025648, 110.3482394], [-8.0228247, 110.3578886], [-8.0224914, 110.3581394], [-8.0219185, 110.3590645], [-8.0218473, 110.3591017], [-8.0217518, 110.3594685], [-8.0221368, 110.36341], [-8.023988, 110.3630532], [-8.0246945, 110.363402], [-8.0247665, 110.3641596], [-8.0245007, 110.3648959], [-8.0245778, 110.365061], [-8.0261862, 110.3678525], [-8.0261089, 110.3679986], [-8.0254203, 110.3695199], [-8.0254399, 110.3696322], [-8.0258331, 110.370949], [-8.025875, 110.3710422], [-8.0267535, 110.3723256], [-8.0270881, 110.3727895], [-8.0277436, 110.3734684], [-8.0274938, 110.3741128], [-8.0276233, 110.3746713], [-8.0277365, 110.3747934], [-8.0280005, 110.375553], [-8.0277539, 110.3760775], [-8.0276187, 110.3763202], [-8.0276678, 110.3765595], [-8.028372, 110.3776869], [-8.0284486, 110.3777909], [-8.0284756, 110.3778337], [-8.0288781, 110.379755], [-8.029254, 110.3814678], [-8.0289571, 110.3820483], [-8.0289845, 110.3841571], [-8.0338309, 110.3936404], [-8.0341442, 110.3950247], [-8.0347818, 110.395912], [-8.0346738, 110.3965637], [-8.033953, 110.3983384], [-8.0324644, 110.3988996], [-8.0322413, 110.3991142], [-8.0317036, 110.4005881], [-8.031746, 110.4007758], [-8.0318563, 110.4011902], [-8.0319252, 110.4013672], [-8.0323983, 110.4019673], [-8.0333302, 110.4034419], [-8.0333375, 110.4034984], [-8.0334551, 110.4047649], [-8.0335985, 110.40507], [-8.033732, 110.4054033], [-8.033959, 110.4057788], [-8.0344521, 110.4064066], [-8.0350478, 110.4074688], [-8.0351726, 110.407632], [-8.035102, 110.4082753], [-8.035927, 110.4102883], [-8.0359393, 110.4102975], [-8.0361701, 110.4104264], [-8.038947, 110.4158092], [-8.0411849, 110.4210439], [-8.0407187, 110.4215107], [-8.0397652, 110.4234977], [-8.0363552, 110.4301379], [-8.0364204, 110.4313678], [-8.0358996, 110.4334297], [-8.0357652, 110.4339575], [-8.0355975, 110.4344276], [-8.0346335, 110.4396766], [-8.0361129, 110.4437889], [-8.0365339, 110.4452557], [-8.0367219, 110.4457258], [-8.0368213, 110.445918], [-8.0375412, 110.4473102], [-8.0385148, 110.4492455], [-8.0385797, 110.4497218], [-8.0385716, 110.4504569], [-8.0384321, 110.4509024], [-8.037492, 110.4562196], [-8.0364156, 110.4599871], [-8.0364589, 110.4607594], [-8.0367972, 110.4639814], [-8.0367774, 110.4645857], [-8.0367098, 110.4653761], [-8.036663, 110.4656685], [-8.0366243, 110.4659129], [-8.0365838, 110.4660915], [-8.0364036, 110.4671177], [-8.0362532, 110.4678832], [-8.0363792, 110.4693612], [-8.0363712, 110.469659], [-8.0362915, 110.4699272], [-8.0360844, 110.4703442], [-8.035408, 110.4721504], [-8.0356441, 110.4732028], [-8.0356885, 110.4735741], [-8.0355377, 110.4748678], [-8.0355205, 110.4749797], [-8.0341434, 110.4785188], [-8.0344098, 110.4793597], [-8.0346034, 110.480171], [-8.0345699, 110.480416], [-8.0343142, 110.4810577], [-8.0341562, 110.4816511], [-8.0342478, 110.4821983], [-8.0347168, 110.4834397], [-8.0351197, 110.4837325], [-8.0354812, 110.4842529], [-8.035652, 110.4845374], [-8.0361182, 110.4852613], [-8.0369556, 110.4874918], [-8.0371215, 110.4879396], [-8.0371666, 110.4881448], [-8.0382658, 110.4892185], [-8.0384441, 110.4894644], [-8.0391847, 110.4917199], [-8.039073, 110.4920244], [-8.0390377, 110.4921182], [-8.039022, 110.4933933], [-8.0396006, 110.4958476], [-8.0417038, 110.4988219], [-8.042512, 110.4994898], [-8.0451279, 110.5037036], [-8.0456718, 110.5044771], [-8.0461035, 110.5050333], [-8.046227, 110.5054859], [-8.0462483, 110.5055677], [-8.0463346, 110.5059881], [-8.0464275, 110.5066581], [-8.0465138, 110.5071589], [-8.0465339, 110.5072312], [-8.0466838, 110.507686], [-8.0470755, 110.5085631], [-8.0471032, 110.5086253], [-8.0475031, 110.509534], [-8.0475931, 110.5099746], [-8.0476107, 110.5100691], [-8.0477674, 110.511079], [-8.047786, 110.5118823], [-8.0473053, 110.5125757], [-8.0471423, 110.5127446], [-8.0469733, 110.5132287], [-8.0470317, 110.514423], [-8.046153, 110.5176656], [-8.0460503, 110.5181201], [-8.0460128, 110.5183956], [-8.0457794, 110.5195024], [-8.0457087, 110.5198995], [-8.045769, 110.5202237], [-8.0458266, 110.5203245], [-8.0459893, 110.5205539], [-8.0460373, 110.5206322], [-8.0463645, 110.5210622], [-8.0469178, 110.5211654], [-8.0470094, 110.5211709], [-8.0474009, 110.5211869], [-8.047606, 110.5211741], [-8.0483065, 110.5223939], [-8.0483709, 110.5225414], [-8.0485628, 110.5230497], [-8.0487089, 110.5232441], [-8.0488267, 110.5241545], [-8.0486561, 110.5249383], [-8.0488124, 110.5254409], [-8.0486013, 110.5265406], [-8.0486703, 110.5271709], [-8.0488324, 110.5286387], [-8.0489417, 110.5290911], [-8.0504597, 110.5324233], [-8.0506622, 110.5327727], [-8.0509596, 110.53334], [-8.0520304, 110.534516], [-8.052247, 110.5348004], [-8.0528399, 110.5358827], [-8.0535557, 110.5359993], [-8.055262, 110.5372788], [-8.0570015, 110.5375631], [-8.0575273, 110.5377375], [-8.0663092, 110.5421041], [-8.0663701, 110.5422261], [-8.0676939, 110.5422975], [-8.0685136, 110.5424112], [-8.0722497, 110.5420302], [-8.0737958, 110.5424084], [-8.0744997, 110.5424273], [-8.076024, 110.5423205], [-8.0772535, 110.5426884], [-8.0774846, 110.5428296], [-8.0798433, 110.5426177], [-8.0856261, 110.5471748], [-8.0867401, 110.5484033], [-8.0907407, 110.5510479], [-8.0917127, 110.5520081], [-8.0928758, 110.5536803], [-8.0955131, 110.5547185], [-8.0965579, 110.5549921], [-8.0965761, 110.5550162], [-8.0966685, 110.5553809], [-8.0996065, 110.5602036], [-8.0997061, 110.5604571], [-8.1003925, 110.5625707], [-8.1011586, 110.5621549], [-8.1019419, 110.561593], [-8.1028846, 110.5608916], [-8.1030692, 110.560893], [-8.1042522, 110.5614831], [-8.1056064, 110.561538], [-8.1059569, 110.5616185], [-8.1069315, 110.5620624], [-8.1075183, 110.5620839], [-8.1123644, 110.5617821], [-8.1137731, 110.5612336], [-8.1172266, 110.5607958], [-8.1176078, 110.5608079], [-8.1235357, 110.5614829], [-8.1275926, 110.5706334], [-8.1322534, 110.5712599], [-8.1329584, 110.5776396], [-8.1334714, 110.5851388], [-8.1314375, 110.5875394], [-8.1374622, 110.598004], [-8.1434543, 110.5983238], [-8.1427978, 110.6049979], [-8.1422408, 110.6078812], [-8.1463085, 110.6098956], [-8.1466272, 110.6099586]],
+                {"bubblingMouseEvents": true, "color": "#f58b47", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#f58b47", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_164ee02bbef0552fd1c78f00c1b6db26.bindTooltip(
+                `<div>
+                     Leg 19: Pantai Parangtritis → Pantai Indrayanti (44.8 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_def25fe2896bef8f4675da36d6dd5590 = new L.RegularPolygonMarker(
+                [-8.0356885, 110.4735741],
+                {
+  "stroke": true,
+  "color": "#f58b47",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#f58b47",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_38a3fc5256d22f88c34566149159e405 = L.polyline(
+                [[-8.1466272, 110.6099586], [-8.1463085, 110.6098956], [-8.1422408, 110.6078812], [-8.1356779, 110.611175], [-8.1224135, 110.6257877], [-8.1214702, 110.6264236], [-8.1213038, 110.6265358], [-8.1213209, 110.6274268], [-8.1211356, 110.6276817], [-8.1195828, 110.6283154], [-8.1185758, 110.6292198], [-8.115746, 110.6282112], [-8.1108601, 110.6305158], [-8.1086339, 110.6305016], [-8.1080939, 110.6304245], [-8.1072335, 110.6306532], [-8.1065093, 110.630556], [-8.1062039, 110.6300417], [-8.1056894, 110.6301094], [-8.1051085, 110.6302234], [-8.104849, 110.6302153], [-8.0978718, 110.6297453], [-8.0969065, 110.6301322], [-8.096315, 110.6299578], [-8.0922846, 110.6312457], [-8.0918565, 110.6316201], [-8.0884994, 110.6323511], [-8.087337, 110.6327318], [-8.0857116, 110.6337532], [-8.0853015, 110.6337745], [-8.0844738, 110.6339184], [-8.0843782, 110.633928], [-8.0838822, 110.6339776], [-8.0829335, 110.6338631], [-8.0811542, 110.6338838], [-8.0805825, 110.633958], [-8.0799434, 110.6338681], [-8.0790408, 110.6338472], [-8.0786855, 110.6348537], [-8.0774318, 110.6339956], [-8.0705692, 110.6314518], [-8.0689659, 110.6318074], [-8.0685985, 110.6318093], [-8.0683038, 110.6317368], [-8.0681258, 110.6316591], [-8.066783, 110.6315884], [-8.066004, 110.6316331], [-8.0650827, 110.6321012], [-8.0645779, 110.6321097], [-8.0645185, 110.632669], [-8.0645526, 110.6332689], [-8.0618269, 110.6354738], [-8.0617134, 110.6356481], [-8.0619997, 110.6363222], [-8.0610786, 110.636608], [-8.0607262, 110.637581], [-8.0596393, 110.6379845], [-8.0585788, 110.6380507], [-8.057227, 110.6382757], [-8.0561557, 110.6392189], [-8.0548421, 110.6405553], [-8.0540328, 110.6409289], [-8.0527465, 110.6414856], [-8.0526471, 110.6414818], [-8.051193, 110.6419801], [-8.0498402, 110.6430232], [-8.047865, 110.6469664], [-8.0475297, 110.6468631], [-8.0405582, 110.6470395], [-8.0377363, 110.6469811], [-8.0366846, 110.6468001], [-8.0353381, 110.6468189], [-8.0340048, 110.6469416], [-8.0339026, 110.6469543], [-8.0335586, 110.6469597], [-8.0324232, 110.6464393], [-8.0320377, 110.6461695], [-8.0310448, 110.6457286], [-8.0288351, 110.6456628], [-8.0267595, 110.6456172], [-8.0265391, 110.6451382], [-8.0243957, 110.6451264], [-8.0241806, 110.645121], [-8.0240279, 110.6450634], [-8.0231052, 110.6445692], [-8.0219874, 110.6445935], [-8.0213811, 110.6445845], [-8.0205461, 110.6447302], [-8.0204562, 110.6447531], [-8.0193219, 110.6450582], [-8.019234, 110.6450793], [-8.0189716, 110.6451409], [-8.0185855, 110.6452323], [-8.0181557, 110.6454933], [-8.0172749, 110.6460354], [-8.016907, 110.6461842], [-8.0166549, 110.6462489], [-8.016047, 110.6461292], [-8.0160196, 110.646128], [-8.0128073, 110.6465061], [-8.010328, 110.6468003], [-8.0097006, 110.6468899], [-8.0081823, 110.647068], [-8.0078858, 110.6471653], [-8.0074997, 110.6475643], [-8.0067755, 110.6483801], [-8.0061355, 110.6491345], [-8.0056581, 110.6497303], [-8.0054888, 110.6500991], [-8.0052399, 110.6506839], [-8.0047492, 110.6508119], [-8.0037511, 110.6508793], [-8.0033236, 110.65091], [-8.0030142, 110.6509406], [-8.00232, 110.6510154], [-8.0022556, 110.6510192], [-8.0011731, 110.6511593], [-8.0009938, 110.6511797], [-8.0002977, 110.6512691], [-8.0000053, 110.651296], [-7.9993748, 110.6513735], [-7.9992045, 110.6513993], [-7.997681, 110.6514612], [-7.9975614, 110.6516604], [-7.9969867, 110.6504751], [-7.9968721, 110.6502775], [-7.9953464, 110.6504176], [-7.9946293, 110.6504602], [-7.9936127, 110.6505206], [-7.9930905, 110.650551], [-7.9905828, 110.650696], [-7.9903823, 110.6507008], [-7.9895848, 110.6508004], [-7.9889371, 110.6508123], [-7.9873063, 110.6508422], [-7.986934, 110.6507937], [-7.9855156, 110.6506089], [-7.9846603, 110.6505621], [-7.983906, 110.6505367], [-7.9826204, 110.6504956], [-7.9820307, 110.6504836], [-7.9807717, 110.6504581], [-7.9805537, 110.6504537], [-7.9794348, 110.6504301], [-7.9789547, 110.6504213], [-7.977863, 110.6504259], [-7.9772367, 110.6504479], [-7.9746002, 110.6507323], [-7.9729198, 110.6509135], [-7.9722726, 110.6509875], [-7.9694141, 110.6513035], [-7.9650634, 110.6512445], [-7.9625561, 110.651325], [-7.961159, 110.6513572], [-7.9597392, 110.6514364], [-7.9593688, 110.6514323], [-7.959155, 110.651438], [-7.9570455, 110.6517165], [-7.9568542, 110.6506061], [-7.9566728, 110.6494193], [-7.9554575, 110.6493723], [-7.9555046, 110.6492282], [-7.9530853, 110.649784]],
+                {"bubblingMouseEvents": true, "color": "#f9983e", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#f9983e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_38a3fc5256d22f88c34566149159e405.bindTooltip(
+                `<div>
+                     Leg 20: Pantai Indrayanti → Goa Pindul (26.3 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_cfd916c505ce7fec21ba8d01bef60091 = new L.RegularPolygonMarker(
+                [-8.0243957, 110.6451264],
+                {
+  "stroke": true,
+  "color": "#f9983e",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#f9983e",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_218e08134ad3966917574a9ace78528f = L.polyline(
+                [[-7.9530853, 110.649784], [-7.9530927, 110.6490328], [-7.9516123, 110.6491633], [-7.9494632, 110.6487405], [-7.9494258, 110.6487309], [-7.947822, 110.6481203], [-7.9463102, 110.6474009], [-7.9461953, 110.6471893], [-7.9456714, 110.6459403], [-7.9453916, 110.6452873], [-7.9452856, 110.6450437], [-7.9449079, 110.6441118], [-7.9441694, 110.6423383], [-7.9439664, 110.6418535], [-7.9430928, 110.6397763], [-7.9429383, 110.6393649], [-7.9427011, 110.6387588], [-7.9423059, 110.6378289], [-7.9418418, 110.6367755], [-7.9418299, 110.6367487], [-7.9408747, 110.6346247], [-7.9407967, 110.6344152], [-7.9403376, 110.6315061], [-7.9403442, 110.6309308], [-7.9401675, 110.6291265], [-7.9392952, 110.629267], [-7.9390202, 110.6283558], [-7.9390695, 110.6283445], [-7.938713, 110.6267854], [-7.9382373, 110.6268839], [-7.9379392, 110.6256221], [-7.9377225, 110.6256932], [-7.9372583, 110.6245146], [-7.9369283, 110.6233944], [-7.9365127, 110.622037], [-7.9362568, 110.621146], [-7.9356106, 110.6213091], [-7.9351574, 110.6198617], [-7.9340516, 110.6169824], [-7.933799, 110.6153297], [-7.9337187, 110.614609], [-7.9336276, 110.6118951], [-7.9336901, 110.6103784], [-7.9337259, 110.6097583], [-7.9337653, 110.6090748], [-7.9337281, 110.6082487], [-7.933687, 110.6077514], [-7.9336625, 110.6075679], [-7.9335839, 110.6069626], [-7.933234, 110.6042686], [-7.9330496, 110.6028414], [-7.9321026, 110.5993959], [-7.9320772, 110.5993144], [-7.9306352, 110.5974072], [-7.9306004, 110.5970958], [-7.9305189, 110.5962793], [-7.9304937, 110.5959383], [-7.9305662, 110.5951971], [-7.9304741, 110.5945693], [-7.9304131, 110.5937435], [-7.9304015, 110.5930996], [-7.9303738, 110.5924457], [-7.930359, 110.5920965], [-7.9303643, 110.5917516], [-7.9303502, 110.5910054], [-7.9303533, 110.5908622], [-7.9303973, 110.5903331], [-7.9314071, 110.5805361], [-7.9315739, 110.5792971], [-7.9319264, 110.5766053], [-7.9318334, 110.5758087], [-7.9317843, 110.5752307], [-7.9316528, 110.5747305], [-7.9315492, 110.5716862], [-7.9315809, 110.5699843], [-7.9321987, 110.5699588], [-7.9306911, 110.5685775], [-7.9301917, 110.568206], [-7.9283082, 110.566472], [-7.9282564, 110.566421], [-7.9272336, 110.5655372], [-7.9261325, 110.564526], [-7.9248998, 110.5633914], [-7.924658, 110.5631782], [-7.9243897, 110.5629328], [-7.9241148, 110.5626847], [-7.9236216, 110.5622428], [-7.9228102, 110.5615156], [-7.9224504, 110.5611826], [-7.921514, 110.5603525], [-7.9207588, 110.5596913], [-7.9198794, 110.5589135], [-7.9194969, 110.5585702], [-7.917885, 110.5571406], [-7.9175795, 110.5570091], [-7.914782, 110.5558826], [-7.9143636, 110.5557203], [-7.9137048, 110.5554467], [-7.9126793, 110.5550055], [-7.9122032, 110.5548197], [-7.9119222, 110.554725], [-7.9108063, 110.5542558], [-7.9092776, 110.5536022], [-7.9088344, 110.5534159], [-7.9086185, 110.5533237], [-7.9081217, 110.553132], [-7.9070418, 110.5532473], [-7.9061385, 110.5536054], [-7.8924141, 110.5477013], [-7.8919486, 110.5475412], [-7.8903758, 110.5472497], [-7.8898381, 110.547018], [-7.8889254, 110.5464319], [-7.8873778, 110.5454416], [-7.8871743, 110.5453136], [-7.8866369, 110.5450223], [-7.8815933, 110.5429197], [-7.8807166, 110.5425675], [-7.8800653, 110.5423757], [-7.878893, 110.5419603], [-7.8786619, 110.5418784], [-7.8779531, 110.5416234], [-7.8778324, 110.5417268], [-7.8778729, 110.541888], [-7.8755415, 110.5430106], [-7.8725331, 110.5429523], [-7.8720988, 110.5430271], [-7.8720169, 110.5430333], [-7.8693904, 110.5434352], [-7.867807, 110.5433943], [-7.8677689, 110.5434056], [-7.8662527, 110.5433039], [-7.8642387, 110.5419552], [-7.8634582, 110.5416601], [-7.8634046, 110.5415939], [-7.8624439, 110.5406686], [-7.8604352, 110.5399851], [-7.8594605, 110.5388603], [-7.8591691, 110.5381317], [-7.8588071, 110.5379275], [-7.8551207, 110.5386223], [-7.8501845, 110.5387663], [-7.8501283, 110.5387579], [-7.8490217, 110.5382504], [-7.8473677, 110.5379542], [-7.8470114, 110.5378802], [-7.8457425, 110.5380405], [-7.8453824, 110.5369814], [-7.843349, 110.5377267], [-7.84251, 110.5373318], [-7.8423001, 110.5362314], [-7.8417372, 110.5354122], [-7.8370097, 110.5351491], [-7.83244, 110.5352279], [-7.827382, 110.5356346], [-7.8290441, 110.5307382], [-7.8296792, 110.5273949], [-7.828793, 110.5245692], [-7.8277926, 110.5229384], [-7.8261318, 110.5254174], [-7.8251912, 110.5249755], [-7.8250889, 110.5251297], [-7.8235384, 110.5251297], [-7.8227624, 110.523743], [-7.8224143, 110.5233675], [-7.8223559, 110.5232227], [-7.8217899, 110.5231006], [-7.819789, 110.5227144], [-7.8196715, 110.5224169], [-7.8196588, 110.5223671], [-7.8194914, 110.5221337], [-7.8188536, 110.5207926], [-7.8180013, 110.5199853], [-7.8161485, 110.5150065], [-7.8160734, 110.5148696], [-7.8137264, 110.5126065], [-7.8136221, 110.5124335], [-7.8132815, 110.5121107], [-7.8127059, 110.5116356], [-7.812492, 110.5114639], [-7.8118251, 110.5108738], [-7.8117161, 110.5102301], [-7.8104579, 110.5105694], [-7.8100049, 110.5111385], [-7.8078444, 110.5113231], [-7.8066114, 110.5090982], [-7.8065702, 110.5077527], [-7.8047366, 110.5079987], [-7.8019242, 110.5053026], [-7.8009319, 110.5040241], [-7.800324, 110.5028165], [-7.7996396, 110.5014867], [-7.7995195, 110.501247], [-7.7993163, 110.500832], [-7.7990395, 110.5003903], [-7.7980329, 110.4987176], [-7.7972175, 110.4989057], [-7.7968097, 110.4988854], [-7.796795, 110.4984042], [-7.7964043, 110.4974198], [-7.7964482, 110.496941], [-7.7961505, 110.4966782], [-7.7958529, 110.4964341], [-7.7953879, 110.4961471], [-7.7942172, 110.4961472], [-7.7930307, 110.4954591], [-7.7926561, 110.4955484], [-7.7920345, 110.4956668], [-7.7920179, 110.4956496], [-7.7919535, 110.4953418], [-7.7916401, 110.4936581], [-7.791357, 110.49373], [-7.7906457, 110.493477], [-7.7897448, 110.491417], [-7.7896272, 110.4910984], [-7.7894247, 110.4906344], [-7.7893495, 110.4903211], [-7.7892854, 110.4900487], [-7.7892377, 110.4898058], [-7.7891788, 110.4895465], [-7.7891205, 110.4895573], [-7.7889548, 110.4895777], [-7.7886342, 110.4895835], [-7.7878672, 110.4896033], [-7.7873485, 110.489626], [-7.7869505, 110.4896482], [-7.7866369, 110.4896609], [-7.7861998, 110.4896595], [-7.7854743, 110.4894751], [-7.7838112, 110.4891515], [-7.7835635, 110.4891502], [-7.7829793, 110.4891435], [-7.7821009, 110.4891432], [-7.781509, 110.4886339], [-7.781379, 110.488642], [-7.7806483, 110.488586], [-7.7801824, 110.4885692], [-7.7796996, 110.4886454], [-7.7793763, 110.4887532], [-7.7790923, 110.4888572], [-7.7776573, 110.4890937], [-7.7766882, 110.4892387], [-7.7754508, 110.4894047], [-7.7746872, 110.4895455], [-7.7746233, 110.4895296], [-7.7742787, 110.4888351], [-7.7736928, 110.4890282], [-7.7725464, 110.4883701], [-7.7715521, 110.4881985], [-7.7713867, 110.4888099]],
+                {"bubblingMouseEvents": true, "color": "#fca636", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#fca636", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_218e08134ad3966917574a9ace78528f.bindTooltip(
+                `<div>
+                     Leg 21: Goa Pindul → Candi Ratu Boko (35.2 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_e7f340424df485d7372f26b8d974cf27 = new L.RegularPolygonMarker(
+                [-7.8725331, 110.5429523],
+                {
+  "stroke": true,
+  "color": "#fca636",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#fca636",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_4702dc73d91a72a6ba300187796121f2 = L.polyline(
+                [[-7.7713867, 110.4888099], [-7.7715521, 110.4881985], [-7.7725464, 110.4883701], [-7.7736928, 110.4890282], [-7.7742787, 110.4888351], [-7.7746233, 110.4895296], [-7.7746872, 110.4895455], [-7.775065, 110.4911845], [-7.7751112, 110.4913774], [-7.7754384, 110.4926455], [-7.7756227, 110.4933545], [-7.775876, 110.493733], [-7.7759229, 110.4940992], [-7.776023, 110.4946886], [-7.776421, 110.4946559], [-7.7767798, 110.494615], [-7.7768256, 110.494592], [-7.777132, 110.4945705], [-7.7775635, 110.4962688], [-7.7802177, 110.4985926], [-7.7799174, 110.4993745], [-7.7794356, 110.499503], [-7.7797467, 110.5015347], [-7.7760175, 110.5019876], [-7.7747459, 110.5003877], [-7.7739865, 110.5012044], [-7.7716393, 110.5016345], [-7.7706903, 110.5013862], [-7.7693815, 110.5024606]],
+                {"bubblingMouseEvents": true, "color": "#feb72d", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#feb72d", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_4702dc73d91a72a6ba300187796121f2.bindTooltip(
+                `<div>
+                     Leg 22: Candi Ratu Boko → Tebing Breksi (3.9 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_f814e4edf61c6da6f8d6e2e0aadeee57 = new L.RegularPolygonMarker(
+                [-7.776421, 110.4946559],
+                {
+  "stroke": true,
+  "color": "#feb72d",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#feb72d",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_9d6ecdd20775adb58ef38cbbd0babe49 = L.polyline(
+                [[-7.7693815, 110.5024606], [-7.7706903, 110.5013862], [-7.7704379, 110.4979295], [-7.7692135, 110.4974132], [-7.7670618, 110.4934359], [-7.7669884, 110.4930599], [-7.7669206, 110.4924202], [-7.766797, 110.4917946], [-7.7665352, 110.4899934], [-7.7646484, 110.4886606], [-7.7639413, 110.4889859], [-7.7633963, 110.489169], [-7.7629265, 110.4890606], [-7.7617522, 110.4887536], [-7.7613637, 110.488652], [-7.7598051, 110.4882445], [-7.7594492, 110.4881872], [-7.7591037, 110.4881394], [-7.7590231, 110.488143], [-7.7587878, 110.4881727], [-7.758209, 110.4882849], [-7.758076, 110.4883164], [-7.7578329, 110.4883862], [-7.7573558, 110.4885337], [-7.7560471, 110.4889342], [-7.7559637, 110.4889595], [-7.7555991, 110.4889695], [-7.7556343, 110.4886932], [-7.7556536, 110.4883171], [-7.7558196, 110.487246], [-7.7557392, 110.4872314], [-7.7540054, 110.4876318], [-7.7525859, 110.4875995], [-7.7493047, 110.4882738], [-7.7490339, 110.4893517], [-7.7489867, 110.4897642], [-7.7499702, 110.4899676], [-7.7511036, 110.4898158]],
+                {"bubblingMouseEvents": true, "color": "#fdc627", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#fdc627", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_9d6ecdd20775adb58ef38cbbd0babe49.bindTooltip(
+                `<div>
+                     Leg 23: Tebing Breksi → Candi Prambanan (4.5 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_055545e30c66a61685be72198a0a2e78 = new L.RegularPolygonMarker(
+                [-7.7587878, 110.4881727],
+                {
+  "stroke": true,
+  "color": "#fdc627",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#fdc627",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_5f59732b7873ba4024be5918d4ccecdd = L.polyline(
+                [[-7.7511036, 110.4898158], [-7.7499702, 110.4899676], [-7.7489867, 110.4897642], [-7.7490339, 110.4893517], [-7.7493047, 110.4882738], [-7.7488054, 110.4862228], [-7.7487659, 110.4859542], [-7.7486858, 110.4856128], [-7.7486332, 110.4853486], [-7.7485274, 110.4847437], [-7.7482989, 110.4847601], [-7.7481323, 110.4847732], [-7.747753, 110.484785], [-7.746446, 110.4848533], [-7.7465035, 110.4826893], [-7.7464695, 110.4821894], [-7.7464156, 110.4817672], [-7.7463418, 110.4812021], [-7.7453949, 110.4812126], [-7.7452035, 110.4812126], [-7.744761, 110.4812019], [-7.7439516, 110.4813032], [-7.7434316, 110.4813683], [-7.7414738, 110.481524], [-7.7413297, 110.4815358], [-7.7383127, 110.4818408], [-7.7378024, 110.482017], [-7.7376619, 110.4820696], [-7.7368523, 110.4821992], [-7.7363393, 110.482253], [-7.7354447, 110.4822828], [-7.7346384, 110.4818611], [-7.734142, 110.4818068], [-7.7286446, 110.4813053], [-7.725907, 110.4806431], [-7.7256628, 110.4807317], [-7.7230944, 110.479913], [-7.7195581, 110.4780288], [-7.7178611, 110.476752], [-7.7171587, 110.4763699], [-7.7131539, 110.4733686], [-7.7121194, 110.4740764], [-7.7115472, 110.474377], [-7.7113541, 110.4741293], [-7.7108826, 110.473502], [-7.710367, 110.4731498], [-7.7098486, 110.4728127], [-7.7094222, 110.4724895], [-7.7081438, 110.4703363], [-7.7076963, 110.4701906], [-7.7067512, 110.4693029], [-7.7058655, 110.4687107], [-7.7052228, 110.4682982], [-7.7048145, 110.4680282], [-7.7043666, 110.4676929], [-7.7043368, 110.467326], [-7.7016721, 110.4663424], [-7.7007023, 110.4660071], [-7.6998862, 110.4656657], [-7.6991374, 110.4653596], [-7.6985211, 110.4651051], [-7.6976085, 110.4647466], [-7.6972449, 110.4645793], [-7.6968533, 110.4644087], [-7.6966, 110.4643055], [-7.6963563, 110.4641975], [-7.6958289, 110.463959], [-7.6938955, 110.4632494], [-7.6928862, 110.4629092], [-7.6926134, 110.4628203], [-7.6908112, 110.4622421], [-7.6902571, 110.4620601], [-7.6861447, 110.4607879], [-7.6859069, 110.4607182], [-7.6831278, 110.4599262], [-7.6829614, 110.4598826], [-7.6824552, 110.4597881], [-7.6816012, 110.4595502], [-7.6786092, 110.4577103], [-7.6773049, 110.4571215], [-7.6770816, 110.4570294], [-7.6765785, 110.4568553], [-7.6759568, 110.4566631], [-7.6753928, 110.45646], [-7.6716254, 110.4551558], [-7.6705174, 110.4547965], [-7.6704909, 110.4547902], [-7.6684906, 110.45346], [-7.6654261, 110.4525798], [-7.6657418, 110.4498846], [-7.6620881, 110.4476444], [-7.6627306, 110.4452867], [-7.6625794, 110.445222], [-7.661189, 110.4449009], [-7.6585189, 110.4443294], [-7.6581788, 110.4443073], [-7.6583103, 110.4424681], [-7.6583217, 110.4423817], [-7.658372, 110.4417172], [-7.65849, 110.4410488], [-7.6578995, 110.4404636], [-7.6578023, 110.4404112], [-7.6575456, 110.4402721], [-7.6555321, 110.4391071], [-7.6548187, 110.4385534], [-7.6545615, 110.4383098], [-7.6541587, 110.4377407], [-7.6535168, 110.4359871], [-7.6526627, 110.4356728], [-7.6525285, 110.4354936], [-7.6520211, 110.4353315], [-7.6521032, 110.4345968], [-7.6511736, 110.4335853], [-7.6492323, 110.434019], [-7.6476824, 110.4343463], [-7.6472887, 110.4344563], [-7.6467201, 110.4343812], [-7.6459304, 110.4342387], [-7.6409959, 110.4333823], [-7.6396201, 110.4333711], [-7.6388181, 110.4332882], [-7.6383209, 110.4332051], [-7.6346975, 110.4321429], [-7.63389, 110.4299902], [-7.6248193, 110.4285078], [-7.6242936, 110.4286631], [-7.6238854, 110.4258607], [-7.6236217, 110.425138], [-7.6228792, 110.4253216], [-7.6219728, 110.4255033], [-7.621693, 110.4255463], [-7.6215626, 110.4255664], [-7.6213129, 110.4255612], [-7.6208641, 110.4255822], [-7.620411, 110.4257368], [-7.6193858, 110.4259006], [-7.6192836, 110.4255836], [-7.618387, 110.4259724], [-7.6183146, 110.4259777], [-7.6181364, 110.4259957], [-7.6175143, 110.4260586], [-7.6164622, 110.4261626], [-7.6153816, 110.426268], [-7.6142297, 110.4264307], [-7.6111186, 110.4268144], [-7.6108671, 110.4268072], [-7.6104698, 110.4269357], [-7.6100442, 110.4269851], [-7.6088675, 110.4271919], [-7.6085108, 110.4275042], [-7.6077289, 110.4273812], [-7.6070159, 110.4272726], [-7.606986, 110.4272686], [-7.6059494, 110.4273037], [-7.6058419, 110.427333], [-7.6051853, 110.4272545], [-7.6039257, 110.4274318], [-7.6037427, 110.4272867], [-7.6034877, 110.4271325], [-7.6032974, 110.4269459], [-7.603233, 110.42689], [-7.60311, 110.42671], [-7.6031464, 110.4249237], [-7.6033325, 110.4250226], [-7.6038001, 110.4251155], [-7.6039037, 110.4253877], [-7.6038825, 110.4257499]],
+                {"bubblingMouseEvents": true, "color": "#fbd724", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#fbd724", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_5f59732b7873ba4024be5918d4ccecdd.bindTooltip(
+                `<div>
+                     Leg 24: Candi Prambanan → Museum Ullen Sentalu (21.4 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_47e3aed9ce981c54e5cce8cc5fd6e2c2 = new L.RegularPolygonMarker(
+                [-7.6753928, 110.45646],
+                {
+  "stroke": true,
+  "color": "#fbd724",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#fbd724",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var poly_line_3e1ab7df6aabf71e38b9c6d1c11b2516 = L.polyline(
+                [[-7.6038825, 110.4257499], [-7.6039037, 110.4253877], [-7.6038001, 110.4251155], [-7.6033325, 110.4250226], [-7.6031464, 110.4249237], [-7.6033195, 110.4237715], [-7.6030126, 110.423215], [-7.6028135, 110.4229335], [-7.6031966, 110.4229295], [-7.6043876, 110.4225419], [-7.6046788, 110.422452], [-7.6048742, 110.4223917], [-7.6065004, 110.4219469], [-7.6066785, 110.4219127], [-7.606893, 110.4218714], [-7.6078279, 110.4216916], [-7.6088292, 110.421161], [-7.609111, 110.4210969], [-7.6093476, 110.4210714], [-7.6116204, 110.4206215], [-7.6119035, 110.4205182], [-7.612369, 110.4202702], [-7.6135744, 110.4197136], [-7.61393, 110.4196655], [-7.61403, 110.419652], [-7.6139333, 110.4192281], [-7.6143018, 110.4187442], [-7.6146471, 110.4182124], [-7.6146392, 110.4181867], [-7.6155351, 110.4179299], [-7.6154487, 110.4174095], [-7.6154505, 110.4160759], [-7.6164536, 110.415241], [-7.6172419, 110.4145852], [-7.6189494, 110.4137195], [-7.6190723, 110.4130912], [-7.6216005, 110.4119888], [-7.6213998, 110.4104532], [-7.6221931, 110.4101806], [-7.6265746, 110.4058573], [-7.626223, 110.4039549], [-7.6259384, 110.4031893], [-7.6291664, 110.4018474], [-7.6315704, 110.4009193], [-7.6320072, 110.400694], [-7.6318091, 110.4002447], [-7.6311129, 110.3989957], [-7.6351483, 110.3974561], [-7.6346124, 110.3961329], [-7.635618, 110.3955998], [-7.6397316, 110.3925943], [-7.6411651, 110.3918807], [-7.6426103, 110.3912141], [-7.64248, 110.3909502], [-7.6423178, 110.3906733], [-7.6421658, 110.3871175], [-7.6421131, 110.3869289], [-7.6458135, 110.3846112], [-7.647863, 110.3809777], [-7.6494861, 110.3786914], [-7.6497342, 110.3785487], [-7.6505923, 110.3782549], [-7.6517295, 110.377497], [-7.653482, 110.3763623], [-7.6559864, 110.3747387], [-7.656507, 110.3743903], [-7.6570692, 110.3737616], [-7.6581623, 110.3733638], [-7.658889, 110.3731539], [-7.6592972, 110.3722427], [-7.6594781, 110.3721707], [-7.6607642, 110.3715534], [-7.6607897, 110.3701492], [-7.6616222, 110.369203], [-7.6629527, 110.3677003], [-7.6636315, 110.3669044], [-7.6648236, 110.3655867], [-7.6650902, 110.3652789], [-7.6653468, 110.3649997], [-7.6656166, 110.3648215], [-7.666222, 110.3644217], [-7.6677017, 110.3634332], [-7.6684538, 110.3629192], [-7.6690987, 110.3625551], [-7.6696778, 110.3622496], [-7.670564, 110.3616547], [-7.6715288, 110.3613471], [-7.6716031, 110.3613227], [-7.6726965, 110.3609377], [-7.6733596, 110.3606577], [-7.6734428, 110.360622], [-7.6744272, 110.3602031], [-7.6779001, 110.3587481], [-7.6813549, 110.3573428], [-7.680884, 110.3559139], [-7.6808119, 110.3556194], [-7.6808236, 110.3552439], [-7.6808254, 110.3551903], [-7.6804427, 110.3548256], [-7.6798314, 110.3537074], [-7.6793493, 110.3528908], [-7.6806401, 110.351871], [-7.6811413, 110.351517], [-7.6817979, 110.3509977], [-7.6820081, 110.3508311], [-7.6821917, 110.3506841], [-7.6824044, 110.3505113], [-7.6826223, 110.3503456], [-7.6830683, 110.3498212], [-7.6832119, 110.3495751], [-7.6836709, 110.3487888], [-7.6858584, 110.3460861], [-7.6861065, 110.3458528], [-7.6864647, 110.3455395], [-7.6865564, 110.3454593], [-7.686823, 110.3452309], [-7.6872376, 110.3448501], [-7.6878004, 110.3443462], [-7.6885777, 110.343625], [-7.6888565, 110.3433631], [-7.6893693, 110.3428689], [-7.6893919, 110.3427182], [-7.6884086, 110.3422266], [-7.6884345, 110.3421691], [-7.6890001, 110.3424152], [-7.6892898, 110.3419073], [-7.6903849, 110.3411221], [-7.6905659, 110.3409995], [-7.6909717, 110.3407405], [-7.690956, 110.3407143], [-7.6902596, 110.339533], [-7.6900759, 110.3392171], [-7.6890028, 110.3373932], [-7.6887079, 110.3367411], [-7.6884383, 110.335743], [-7.6879585, 110.3341779], [-7.687923, 110.3340728], [-7.6875946, 110.3330916], [-7.6874641, 110.3327174], [-7.6873759, 110.3324085], [-7.6872776, 110.3321184], [-7.6871478, 110.3316902], [-7.68691, 110.3309534], [-7.6868337, 110.3307267], [-7.6858602, 110.3279291], [-7.6886585, 110.3259182], [-7.6889859, 110.3256203], [-7.6895951, 110.3251268], [-7.6899421, 110.3248144], [-7.6905796, 110.3242808], [-7.6908864, 110.3240241], [-7.6920287, 110.3229173], [-7.6923494, 110.3226687], [-7.6941439, 110.3211946], [-7.694342, 110.3210207], [-7.6948487, 110.3205738], [-7.6953872, 110.3200502], [-7.6956393, 110.3198609], [-7.6959997, 110.319536], [-7.6963126, 110.3192446], [-7.6966771, 110.3188992], [-7.6971687, 110.318385], [-7.6976509, 110.3177797], [-7.6978402, 110.3175895], [-7.6984649, 110.3167489], [-7.6985257, 110.3166555], [-7.6986891, 110.3164147], [-7.6988804, 110.3161327], [-7.6998002, 110.3147409], [-7.6998268, 110.3147044], [-7.700784, 110.3134865], [-7.701149, 110.3132327], [-7.7016442, 110.3128322], [-7.7020823, 110.3124227], [-7.7038882, 110.3109473], [-7.7047733, 110.310211], [-7.7054795, 110.3096097], [-7.7061176, 110.3090805], [-7.7059595, 110.3087369], [-7.7056565, 110.3080804], [-7.706075, 110.3078053], [-7.7057806, 110.3070495], [-7.7065374, 110.3064879], [-7.7080852, 110.3053022], [-7.7078155, 110.304801], [-7.7089743, 110.3042365], [-7.7096627, 110.3042203], [-7.7091304, 110.3030191], [-7.7090331, 110.3012917], [-7.7089811, 110.3010302], [-7.7086158, 110.2991471], [-7.7084668, 110.2984082], [-7.709113, 110.2985388], [-7.7093664, 110.2983066], [-7.7111101, 110.2962014], [-7.7128269, 110.2938895], [-7.7141095, 110.2920377], [-7.7144424, 110.2915893], [-7.7149117, 110.2909573], [-7.7153782, 110.2902471], [-7.7154867, 110.2900554], [-7.7159907, 110.2893827], [-7.7166452, 110.2884888], [-7.7169972, 110.2872786], [-7.7170155, 110.2870109], [-7.7172764, 110.2849123], [-7.7174849, 110.2827332], [-7.7178437, 110.2784975], [-7.7176232, 110.2766848], [-7.7168641, 110.2750374], [-7.7167231, 110.2744276], [-7.7166358, 110.2732328], [-7.716601, 110.272981], [-7.7165814, 110.2715001], [-7.7164137, 110.2699048], [-7.7163939, 110.2696171], [-7.7163474, 110.2693677], [-7.7165879, 110.2688487], [-7.7166932, 110.267284], [-7.7168351, 110.2663515], [-7.7167155, 110.2656957], [-7.7163594, 110.2645451], [-7.716277, 110.2644177], [-7.7159182, 110.2637771], [-7.715689, 110.2630759], [-7.7157867, 110.2626817], [-7.7161504, 110.2614982], [-7.7160051, 110.260712], [-7.7158348, 110.2602315], [-7.7155953, 110.2596203], [-7.7155495, 110.2595098], [-7.7149835, 110.2581088], [-7.7149738, 110.2580751], [-7.7150129, 110.2571678], [-7.7150908, 110.2566217], [-7.7151275, 110.2564112], [-7.715296, 110.255459], [-7.7154178, 110.2544925], [-7.7155014, 110.2538289], [-7.7155509, 110.2534354], [-7.7156394, 110.2527782], [-7.7157554, 110.2519273], [-7.7158454, 110.2510997], [-7.715926, 110.2504991], [-7.7159582, 110.2502582], [-7.7161087, 110.2488951], [-7.716121, 110.2487923], [-7.7163396, 110.2469987], [-7.7166827, 110.244205], [-7.7167465, 110.2436691], [-7.7168391, 110.2428292], [-7.7169131, 110.2421601], [-7.717701, 110.2414019], [-7.7194493, 110.2400352], [-7.7195321, 110.2399746], [-7.7208258, 110.2389745], [-7.7212271, 110.2386362], [-7.7236234, 110.2367428], [-7.7241723, 110.2363132], [-7.7242348, 110.2362585], [-7.7246465, 110.235935], [-7.7255373, 110.2352482], [-7.7257939, 110.2350212], [-7.7262315, 110.2346535], [-7.7254042, 110.2334006], [-7.7251954, 110.2326177], [-7.7217586, 110.2304454], [-7.7214308, 110.2301261], [-7.7207286, 110.2292643], [-7.720529, 110.2290209], [-7.7203791, 110.2288575], [-7.7184339, 110.2289669], [-7.7178794, 110.2290952], [-7.7178482, 110.2291086], [-7.7169659, 110.2292936], [-7.716033, 110.2295474], [-7.7159142, 110.2296536], [-7.715853, 110.2296965], [-7.714245, 110.2299513], [-7.7134728, 110.2302074], [-7.7118495, 110.2313964], [-7.7113659, 110.2306123], [-7.7111133, 110.2308833], [-7.710171, 110.2321869], [-7.7095321, 110.23104], [-7.7092612, 110.2306304], [-7.7065135, 110.2279896], [-7.7051149, 110.2267125], [-7.70108, 110.2255833], [-7.6982014, 110.2257845], [-7.6974427, 110.2252442], [-7.6973306, 110.2251731], [-7.6962371, 110.2246231], [-7.6956789, 110.2237862], [-7.6953892, 110.2229547], [-7.6954197, 110.2224854], [-7.6954208, 110.2224679], [-7.6953839, 110.2216807], [-7.6951021, 110.2213079], [-7.6947446, 110.220803], [-7.6933983, 110.219087], [-7.6910804, 110.2167883], [-7.6835952, 110.2154392], [-7.6831832, 110.2153319], [-7.6828072, 110.2150312], [-7.6790885, 110.2148733], [-7.6762098, 110.210459], [-7.6751425, 110.2098006], [-7.6709548, 110.2071118], [-7.6615231, 110.204772], [-7.6608255, 110.2066333], [-7.6607264, 110.2065616], [-7.6587649, 110.1997751], [-7.6531001, 110.1925787], [-7.64932, 110.1909506], [-7.6484733, 110.1904839], [-7.6464317, 110.1904329], [-7.6458634, 110.1899435]],
+                {"bubblingMouseEvents": true, "color": "#f6e826", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#f6e826", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            poly_line_3e1ab7df6aabf71e38b9c6d1c11b2516.bindTooltip(
+                `<div>
+                     Leg 25: Museum Ullen Sentalu → Candi Borobudur (43.9 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var regular_polygon_marker_84559e23dc2dbc132598652bc10ecc9f = new L.RegularPolygonMarker(
+                [-7.6963126, 110.3192446],
+                {
+  "stroke": true,
+  "color": "#f6e826",
+  "weight": 3,
+  "opacity": 1.0,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "#f6e826",
+  "fillOpacity": 0.8,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "radius": 6,
+  "numberOfSides": 3,
+  "rotation": 0,
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var marker_5d841cb94e62f3456f1b66dca5fd4aa7 = L.marker(
+                [-7.6078, 110.2038],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_34edfd6e533f2f4d8b81f550a7e5ded4 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#e74c3c;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        1\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_e54a488660a9cf799841b95dd080dbab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_753cdc33e8aa0bb90fc6a87745a1b50b = $(`<div id="html_753cdc33e8aa0bb90fc6a87745a1b50b" style="width: 100.0%; height: 100.0%;">         <b>Stop 1: Candi Borobudur</b><br>         Category: Temple<br>         <i>START/END POINT</i>         </div>`)[0];
+                popup_e54a488660a9cf799841b95dd080dbab.setContent(html_753cdc33e8aa0bb90fc6a87745a1b50b);
+            
+        
+
+        marker_5d841cb94e62f3456f1b66dca5fd4aa7.bindPopup(popup_e54a488660a9cf799841b95dd080dbab)
+        ;
+
+        
+    
+    
+            marker_5d841cb94e62f3456f1b66dca5fd4aa7.bindTooltip(
+                `<div>
+                     Stop 1: Candi Borobudur
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5d841cb94e62f3456f1b66dca5fd4aa7.setIcon(div_icon_34edfd6e533f2f4d8b81f550a7e5ded4);
+            
+    
+            var marker_26e78d0d874bf888061b80c5549512d8 = L.marker(
+                [-7.75, 110.3767],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_1570cceecd324b7ce4b05039845f29cd = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        2\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_6e9230c50dd7bc9e5ddb8c25a620af00 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b42cfd056c7484b9262a0f2f7bd5e3ce = $(`<div id="html_b42cfd056c7484b9262a0f2f7bd5e3ce" style="width: 100.0%; height: 100.0%;">         <b>Stop 2: Monumen Jogja Kembali</b><br>         Category: Monument/Museum<br>                  </div>`)[0];
+                popup_6e9230c50dd7bc9e5ddb8c25a620af00.setContent(html_b42cfd056c7484b9262a0f2f7bd5e3ce);
+            
+        
+
+        marker_26e78d0d874bf888061b80c5549512d8.bindPopup(popup_6e9230c50dd7bc9e5ddb8c25a620af00)
+        ;
+
+        
+    
+    
+            marker_26e78d0d874bf888061b80c5549512d8.bindTooltip(
+                `<div>
+                     Stop 2: Monumen Jogja Kembali
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_26e78d0d874bf888061b80c5549512d8.setIcon(div_icon_1570cceecd324b7ce4b05039845f29cd);
+            
+    
+            var marker_5824dce5a76ef6b314760d7676132552 = L.marker(
+                [-7.7825, 110.3973],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_807eadcf29d08f8ff3e7af7170ef969a = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        3\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_28bc3e12aca798d7c081d69b50cf2cc1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b4ca02c104b6e4521eac6fa565bdf6f5 = $(`<div id="html_b4ca02c104b6e4521eac6fa565bdf6f5" style="width: 100.0%; height: 100.0%;">         <b>Stop 3: Museum Affandi</b><br>         Category: Art Museum<br>                  </div>`)[0];
+                popup_28bc3e12aca798d7c081d69b50cf2cc1.setContent(html_b4ca02c104b6e4521eac6fa565bdf6f5);
+            
+        
+
+        marker_5824dce5a76ef6b314760d7676132552.bindPopup(popup_28bc3e12aca798d7c081d69b50cf2cc1)
+        ;
+
+        
+    
+    
+            marker_5824dce5a76ef6b314760d7676132552.bindTooltip(
+                `<div>
+                     Stop 3: Museum Affandi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5824dce5a76ef6b314760d7676132552.setIcon(div_icon_807eadcf29d08f8ff3e7af7170ef969a);
+            
+    
+            var marker_f149ccf8a73720ac408537d75db89ef2 = L.marker(
+                [-7.783, 110.367],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_be10f7c4d435e11eecce744a1bf88bbd = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        4\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_8587175f5fde16ccc310fe9e43567358 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bdcc8e2d63925921b975fce28b9d92bd = $(`<div id="html_bdcc8e2d63925921b975fce28b9d92bd" style="width: 100.0%; height: 100.0%;">         <b>Stop 4: Tugu Yogyakarta</b><br>         Category: Monument<br>                  </div>`)[0];
+                popup_8587175f5fde16ccc310fe9e43567358.setContent(html_bdcc8e2d63925921b975fce28b9d92bd);
+            
+        
+
+        marker_f149ccf8a73720ac408537d75db89ef2.bindPopup(popup_8587175f5fde16ccc310fe9e43567358)
+        ;
+
+        
+    
+    
+            marker_f149ccf8a73720ac408537d75db89ef2.bindTooltip(
+                `<div>
+                     Stop 4: Tugu Yogyakarta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f149ccf8a73720ac408537d75db89ef2.setIcon(div_icon_be10f7c4d435e11eecce744a1bf88bbd);
+            
+    
+            var marker_55784c191ea5481d003ef495f256ba46 = L.marker(
+                [-7.7925, 110.366],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_a9b24787b7d303e54aa93008aa49d3c6 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        5\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_885fc45500deed1010325943824c3c35 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_afccd98b4f0a7cca4cd061a70d1d9877 = $(`<div id="html_afccd98b4f0a7cca4cd061a70d1d9877" style="width: 100.0%; height: 100.0%;">         <b>Stop 5: Malioboro Street</b><br>         Category: Shopping/Cultural<br>                  </div>`)[0];
+                popup_885fc45500deed1010325943824c3c35.setContent(html_afccd98b4f0a7cca4cd061a70d1d9877);
+            
+        
+
+        marker_55784c191ea5481d003ef495f256ba46.bindPopup(popup_885fc45500deed1010325943824c3c35)
+        ;
+
+        
+    
+    
+            marker_55784c191ea5481d003ef495f256ba46.bindTooltip(
+                `<div>
+                     Stop 5: Malioboro Street
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_55784c191ea5481d003ef495f256ba46.setIcon(div_icon_a9b24787b7d303e54aa93008aa49d3c6);
+            
+    
+            var marker_8869942696c3a2f04c8aadb274ed8a29 = L.marker(
+                [-7.7983, 110.366],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_9cbba6f2163c02f34d13aecc3652f58c = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        6\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_0d9c7d037ca6f39cf59dbae815a07343 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9aebac30736fba96116e28012fd0f81a = $(`<div id="html_9aebac30736fba96116e28012fd0f81a" style="width: 100.0%; height: 100.0%;">         <b>Stop 6: Pasar Beringharjo</b><br>         Category: Traditional Market<br>                  </div>`)[0];
+                popup_0d9c7d037ca6f39cf59dbae815a07343.setContent(html_9aebac30736fba96116e28012fd0f81a);
+            
+        
+
+        marker_8869942696c3a2f04c8aadb274ed8a29.bindPopup(popup_0d9c7d037ca6f39cf59dbae815a07343)
+        ;
+
+        
+    
+    
+            marker_8869942696c3a2f04c8aadb274ed8a29.bindTooltip(
+                `<div>
+                     Stop 6: Pasar Beringharjo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8869942696c3a2f04c8aadb274ed8a29.setIcon(div_icon_9cbba6f2163c02f34d13aecc3652f58c);
+            
+    
+            var marker_0b3f212a24a78fb1308238b425e0c74e = L.marker(
+                [-7.8018, 110.3638],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_7119b123ff7e53f8c6f34c8fd412529a = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        7\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_5728cf84e06420e82497dfbbded731bf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b25fb8cf00bbefa5a67b55ed093b9eef = $(`<div id="html_b25fb8cf00bbefa5a67b55ed093b9eef" style="width: 100.0%; height: 100.0%;">         <b>Stop 7: Museum Sonobudoyo</b><br>         Category: Museum<br>                  </div>`)[0];
+                popup_5728cf84e06420e82497dfbbded731bf.setContent(html_b25fb8cf00bbefa5a67b55ed093b9eef);
+            
+        
+
+        marker_0b3f212a24a78fb1308238b425e0c74e.bindPopup(popup_5728cf84e06420e82497dfbbded731bf)
+        ;
+
+        
+    
+    
+            marker_0b3f212a24a78fb1308238b425e0c74e.bindTooltip(
+                `<div>
+                     Stop 7: Museum Sonobudoyo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0b3f212a24a78fb1308238b425e0c74e.setIcon(div_icon_7119b123ff7e53f8c6f34c8fd412529a);
+            
+    
+            var marker_d4a6d233b7f89511be7071ada5bf8d15 = L.marker(
+                [-7.8003, 110.366],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_136016b803d80f6d2640323a6d888141 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        8\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_827b12b5615326a6dedbc3c437aa9a73 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_376bf87a43e6f02e8de43d3191f8b609 = $(`<div id="html_376bf87a43e6f02e8de43d3191f8b609" style="width: 100.0%; height: 100.0%;">         <b>Stop 8: Benteng Vredeburg Museum</b><br>         Category: Museum<br>                  </div>`)[0];
+                popup_827b12b5615326a6dedbc3c437aa9a73.setContent(html_376bf87a43e6f02e8de43d3191f8b609);
+            
+        
+
+        marker_d4a6d233b7f89511be7071ada5bf8d15.bindPopup(popup_827b12b5615326a6dedbc3c437aa9a73)
+        ;
+
+        
+    
+    
+            marker_d4a6d233b7f89511be7071ada5bf8d15.bindTooltip(
+                `<div>
+                     Stop 8: Benteng Vredeburg Museum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d4a6d233b7f89511be7071ada5bf8d15.setIcon(div_icon_136016b803d80f6d2640323a6d888141);
+            
+    
+            var marker_b4b8491b145a25bf3ec6b6f39761bed8 = L.marker(
+                [-7.8005, 110.367],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_3b0073998f8f7f1cf99d190d27a212bf = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        9\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_b587660352f03a4a1c4f9be6284ad7d5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c0531cbc40e453b416309effa6a3157a = $(`<div id="html_c0531cbc40e453b416309effa6a3157a" style="width: 100.0%; height: 100.0%;">         <b>Stop 9: Taman Pintar Science Park</b><br>         Category: Educational<br>                  </div>`)[0];
+                popup_b587660352f03a4a1c4f9be6284ad7d5.setContent(html_c0531cbc40e453b416309effa6a3157a);
+            
+        
+
+        marker_b4b8491b145a25bf3ec6b6f39761bed8.bindPopup(popup_b587660352f03a4a1c4f9be6284ad7d5)
+        ;
+
+        
+    
+    
+            marker_b4b8491b145a25bf3ec6b6f39761bed8.bindTooltip(
+                `<div>
+                     Stop 9: Taman Pintar Science Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b4b8491b145a25bf3ec6b6f39761bed8.setIcon(div_icon_3b0073998f8f7f1cf99d190d27a212bf);
+            
+    
+            var marker_4ce60944a744214ce4f17c442e9df19a = L.marker(
+                [-7.803, 110.3638],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_9300da659c5e39a92e93184f994e3512 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        10\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_93df3ca6d4a16639a651f6c5aa866dea = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2a783ac2f6243df666960038996a1f8d = $(`<div id="html_2a783ac2f6243df666960038996a1f8d" style="width: 100.0%; height: 100.0%;">         <b>Stop 10: Alun-Alun Utara</b><br>         Category: Public Square<br>                  </div>`)[0];
+                popup_93df3ca6d4a16639a651f6c5aa866dea.setContent(html_2a783ac2f6243df666960038996a1f8d);
+            
+        
+
+        marker_4ce60944a744214ce4f17c442e9df19a.bindPopup(popup_93df3ca6d4a16639a651f6c5aa866dea)
+        ;
+
+        
+    
+    
+            marker_4ce60944a744214ce4f17c442e9df19a.bindTooltip(
+                `<div>
+                     Stop 10: Alun-Alun Utara
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ce60944a744214ce4f17c442e9df19a.setIcon(div_icon_9300da659c5e39a92e93184f994e3512);
+            
+    
+            var marker_db114277b9cb767bcf95f2895835525b = L.marker(
+                [-7.8053, 110.3642],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_399a23b4dac102dd1b971cce33304166 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        11\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_34e8f1c3a634332ed82f891747dc72b6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c0ad80e7567ff10d6fde79cda9b66cc9 = $(`<div id="html_c0ad80e7567ff10d6fde79cda9b66cc9" style="width: 100.0%; height: 100.0%;">         <b>Stop 11: Kraton Yogyakarta</b><br>         Category: Cultural Heritage<br>                  </div>`)[0];
+                popup_34e8f1c3a634332ed82f891747dc72b6.setContent(html_c0ad80e7567ff10d6fde79cda9b66cc9);
+            
+        
+
+        marker_db114277b9cb767bcf95f2895835525b.bindPopup(popup_34e8f1c3a634332ed82f891747dc72b6)
+        ;
+
+        
+    
+    
+            marker_db114277b9cb767bcf95f2895835525b.bindTooltip(
+                `<div>
+                     Stop 11: Kraton Yogyakarta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_db114277b9cb767bcf95f2895835525b.setIcon(div_icon_399a23b4dac102dd1b971cce33304166);
+            
+    
+            var marker_766557698119fa6855953cc30acfae6d = L.marker(
+                [-7.81, 110.3592],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_6278829526779347a3d011f004f1eb0b = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        12\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_736e64e25522f29d2db08efcefa1edcb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_583d0193651de0247e226149f52ac9e3 = $(`<div id="html_583d0193651de0247e226149f52ac9e3" style="width: 100.0%; height: 100.0%;">         <b>Stop 12: Taman Sari Water Castle</b><br>         Category: Historical<br>                  </div>`)[0];
+                popup_736e64e25522f29d2db08efcefa1edcb.setContent(html_583d0193651de0247e226149f52ac9e3);
+            
+        
+
+        marker_766557698119fa6855953cc30acfae6d.bindPopup(popup_736e64e25522f29d2db08efcefa1edcb)
+        ;
+
+        
+    
+    
+            marker_766557698119fa6855953cc30acfae6d.bindTooltip(
+                `<div>
+                     Stop 12: Taman Sari Water Castle
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_766557698119fa6855953cc30acfae6d.setIcon(div_icon_6278829526779347a3d011f004f1eb0b);
+            
+    
+            var marker_1be299592a0544ec74e703a0d94d583f = L.marker(
+                [-7.812, 110.3635],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_b470a087d459eae03f278cda98835cab = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        13\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_aca25a8a4eb9210bf90c1434297e5ea0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_043b9f2ed8671092b0869980c6594393 = $(`<div id="html_043b9f2ed8671092b0869980c6594393" style="width: 100.0%; height: 100.0%;">         <b>Stop 13: Alun-Alun Kidul</b><br>         Category: Public Square<br>                  </div>`)[0];
+                popup_aca25a8a4eb9210bf90c1434297e5ea0.setContent(html_043b9f2ed8671092b0869980c6594393);
+            
+        
+
+        marker_1be299592a0544ec74e703a0d94d583f.bindPopup(popup_aca25a8a4eb9210bf90c1434297e5ea0)
+        ;
+
+        
+    
+    
+            marker_1be299592a0544ec74e703a0d94d583f.bindTooltip(
+                `<div>
+                     Stop 13: Alun-Alun Kidul
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1be299592a0544ec74e703a0d94d583f.setIcon(div_icon_b470a087d459eae03f278cda98835cab);
+            
+    
+            var marker_96f8b614c45bfcee78b6db25b3b51bc6 = L.marker(
+                [-7.801, 110.3735],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_fdce3248f5caea5e84962b08a7fe80d0 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        14\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_b579eb0766082dbf039456466dd9aa90 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7ffd77b1e25cf705aec1015f2a306274 = $(`<div id="html_7ffd77b1e25cf705aec1015f2a306274" style="width: 100.0%; height: 100.0%;">         <b>Stop 14: Purawisata</b><br>         Category: Cultural Performance<br>                  </div>`)[0];
+                popup_b579eb0766082dbf039456466dd9aa90.setContent(html_7ffd77b1e25cf705aec1015f2a306274);
+            
+        
+
+        marker_96f8b614c45bfcee78b6db25b3b51bc6.bindPopup(popup_b579eb0766082dbf039456466dd9aa90)
+        ;
+
+        
+    
+    
+            marker_96f8b614c45bfcee78b6db25b3b51bc6.bindTooltip(
+                `<div>
+                     Stop 14: Purawisata
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_96f8b614c45bfcee78b6db25b3b51bc6.setIcon(div_icon_fdce3248f5caea5e84962b08a7fe80d0);
+            
+    
+            var marker_1218abe2a946a2b12f99569ca80eb719 = L.marker(
+                [-7.8056, 110.3953],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_ed2f4adacd6065c0f3c20d90bb2dd79e = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        15\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_43cd777fba2afea32a09ec8eccb539a1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_661ed5cce8d98a61c10422b2b786ff64 = $(`<div id="html_661ed5cce8d98a61c10422b2b786ff64" style="width: 100.0%; height: 100.0%;">         <b>Stop 15: Kebun Binatang Gembira Loka</b><br>         Category: Zoo<br>                  </div>`)[0];
+                popup_43cd777fba2afea32a09ec8eccb539a1.setContent(html_661ed5cce8d98a61c10422b2b786ff64);
+            
+        
+
+        marker_1218abe2a946a2b12f99569ca80eb719.bindPopup(popup_43cd777fba2afea32a09ec8eccb539a1)
+        ;
+
+        
+    
+    
+            marker_1218abe2a946a2b12f99569ca80eb719.bindTooltip(
+                `<div>
+                     Stop 15: Kebun Binatang Gembira Loka
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1218abe2a946a2b12f99569ca80eb719.setIcon(div_icon_ed2f4adacd6065c0f3c20d90bb2dd79e);
+            
+    
+            var marker_e944c5285186e448d8ccaa212f9054ef = L.marker(
+                [-7.8273, 110.3983],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_85c2f34d56ae1e416ed8b06da1bf871b = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        16\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_e7986fbbacfb63c47977f6ec8738a2f7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b86771a7bb7c1e981fde05f52af7a818 = $(`<div id="html_b86771a7bb7c1e981fde05f52af7a818" style="width: 100.0%; height: 100.0%;">         <b>Stop 16: Kotagede Heritage Area</b><br>         Category: Heritage District<br>                  </div>`)[0];
+                popup_e7986fbbacfb63c47977f6ec8738a2f7.setContent(html_b86771a7bb7c1e981fde05f52af7a818);
+            
+        
+
+        marker_e944c5285186e448d8ccaa212f9054ef.bindPopup(popup_e7986fbbacfb63c47977f6ec8738a2f7)
+        ;
+
+        
+    
+    
+            marker_e944c5285186e448d8ccaa212f9054ef.bindTooltip(
+                `<div>
+                     Stop 16: Kotagede Heritage Area
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e944c5285186e448d8ccaa212f9054ef.setIcon(div_icon_85c2f34d56ae1e416ed8b06da1bf871b);
+            
+    
+            var marker_ec646e9942a9a889587c68700bbee088 = L.marker(
+                [-7.855, 110.454],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_6740362c67c1bb16ed36f3dc6b0b23d6 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        17\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_1e4ccdcae5246784efe9586a9a5a077f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_44db8d86d5c31ac2d474f916cafc0ace = $(`<div id="html_44db8d86d5c31ac2d474f916cafc0ace" style="width: 100.0%; height: 100.0%;">         <b>Stop 17: HeHa Sky View</b><br>         Category: Viewpoint<br>                  </div>`)[0];
+                popup_1e4ccdcae5246784efe9586a9a5a077f.setContent(html_44db8d86d5c31ac2d474f916cafc0ace);
+            
+        
+
+        marker_ec646e9942a9a889587c68700bbee088.bindPopup(popup_1e4ccdcae5246784efe9586a9a5a077f)
+        ;
+
+        
+    
+    
+            marker_ec646e9942a9a889587c68700bbee088.bindTooltip(
+                `<div>
+                     Stop 17: HeHa Sky View
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ec646e9942a9a889587c68700bbee088.setIcon(div_icon_6740362c67c1bb16ed36f3dc6b0b23d6);
+            
+    
+            var marker_37a27ac3a8ee935056c58736cee616a3 = L.marker(
+                [-7.931, 110.431],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_1d11658dca49a7783e60bd447a5b0e6c = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        18\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_0577b9836d5774313ec55ee71c43d4a5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d03fecfa899dece94982b8788a57f4fe = $(`<div id="html_d03fecfa899dece94982b8788a57f4fe" style="width: 100.0%; height: 100.0%;">         <b>Stop 18: Hutan Pinus Mangunan</b><br>         Category: Nature<br>                  </div>`)[0];
+                popup_0577b9836d5774313ec55ee71c43d4a5.setContent(html_d03fecfa899dece94982b8788a57f4fe);
+            
+        
+
+        marker_37a27ac3a8ee935056c58736cee616a3.bindPopup(popup_0577b9836d5774313ec55ee71c43d4a5)
+        ;
+
+        
+    
+    
+            marker_37a27ac3a8ee935056c58736cee616a3.bindTooltip(
+                `<div>
+                     Stop 18: Hutan Pinus Mangunan
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_37a27ac3a8ee935056c58736cee616a3.setIcon(div_icon_1d11658dca49a7783e60bd447a5b0e6c);
+            
+    
+            var marker_c549579d5c4cc57c68ffd9c9d3c52d4b = L.marker(
+                [-8.0254, 110.3264],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_067392301fce119c3b62e58690aff13d = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        19\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_bf21f8e2330ec6fc02e4976353e059ed = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b5bf4a244e1b6c2b72c933e168d2fca5 = $(`<div id="html_b5bf4a244e1b6c2b72c933e168d2fca5" style="width: 100.0%; height: 100.0%;">         <b>Stop 19: Pantai Parangtritis</b><br>         Category: Beach<br>                  </div>`)[0];
+                popup_bf21f8e2330ec6fc02e4976353e059ed.setContent(html_b5bf4a244e1b6c2b72c933e168d2fca5);
+            
+        
+
+        marker_c549579d5c4cc57c68ffd9c9d3c52d4b.bindPopup(popup_bf21f8e2330ec6fc02e4976353e059ed)
+        ;
+
+        
+    
+    
+            marker_c549579d5c4cc57c68ffd9c9d3c52d4b.bindTooltip(
+                `<div>
+                     Stop 19: Pantai Parangtritis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c549579d5c4cc57c68ffd9c9d3c52d4b.setIcon(div_icon_067392301fce119c3b62e58690aff13d);
+            
+    
+            var marker_b3b6fe85cca530086129354cd49be503 = L.marker(
+                [-8.15, 110.6133],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_1f886e08c6f9ad08d4f78f9f80936dc3 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        20\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_a5f43460b47f556b55c963f96bf9a9ff = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_76fdc86266d32410d32c78d1bbdf9d1a = $(`<div id="html_76fdc86266d32410d32c78d1bbdf9d1a" style="width: 100.0%; height: 100.0%;">         <b>Stop 20: Pantai Indrayanti</b><br>         Category: Beach<br>                  </div>`)[0];
+                popup_a5f43460b47f556b55c963f96bf9a9ff.setContent(html_76fdc86266d32410d32c78d1bbdf9d1a);
+            
+        
+
+        marker_b3b6fe85cca530086129354cd49be503.bindPopup(popup_a5f43460b47f556b55c963f96bf9a9ff)
+        ;
+
+        
+    
+    
+            marker_b3b6fe85cca530086129354cd49be503.bindTooltip(
+                `<div>
+                     Stop 20: Pantai Indrayanti
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b3b6fe85cca530086129354cd49be503.setIcon(div_icon_1f886e08c6f9ad08d4f78f9f80936dc3);
+            
+    
+            var marker_7aea02fb38bc83ca8bfecb88b9679681 = L.marker(
+                [-7.953, 110.65],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_03cc7ca5866d07caf567ed324c558af7 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        21\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_eb4ef1a1628b1096beccf7f50dfc9511 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_99d6afb80972c19691cab92af9fede9e = $(`<div id="html_99d6afb80972c19691cab92af9fede9e" style="width: 100.0%; height: 100.0%;">         <b>Stop 21: Goa Pindul</b><br>         Category: Cave/Adventure<br>                  </div>`)[0];
+                popup_eb4ef1a1628b1096beccf7f50dfc9511.setContent(html_99d6afb80972c19691cab92af9fede9e);
+            
+        
+
+        marker_7aea02fb38bc83ca8bfecb88b9679681.bindPopup(popup_eb4ef1a1628b1096beccf7f50dfc9511)
+        ;
+
+        
+    
+    
+            marker_7aea02fb38bc83ca8bfecb88b9679681.bindTooltip(
+                `<div>
+                     Stop 21: Goa Pindul
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7aea02fb38bc83ca8bfecb88b9679681.setIcon(div_icon_03cc7ca5866d07caf567ed324c558af7);
+            
+    
+            var marker_71650ea06f9dd6156d1152de3c9cb761 = L.marker(
+                [-7.7704, 110.4892],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_3c4c5bc94638c059860259833b297ebf = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        22\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_587c27728b8b3fc49e09799a7be3f8b0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ede70473199ea047fe3fc5c863ca0f7b = $(`<div id="html_ede70473199ea047fe3fc5c863ca0f7b" style="width: 100.0%; height: 100.0%;">         <b>Stop 22: Candi Ratu Boko</b><br>         Category: Archaeological Site<br>                  </div>`)[0];
+                popup_587c27728b8b3fc49e09799a7be3f8b0.setContent(html_ede70473199ea047fe3fc5c863ca0f7b);
+            
+        
+
+        marker_71650ea06f9dd6156d1152de3c9cb761.bindPopup(popup_587c27728b8b3fc49e09799a7be3f8b0)
+        ;
+
+        
+    
+    
+            marker_71650ea06f9dd6156d1152de3c9cb761.bindTooltip(
+                `<div>
+                     Stop 22: Candi Ratu Boko
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_71650ea06f9dd6156d1152de3c9cb761.setIcon(div_icon_3c4c5bc94638c059860259833b297ebf);
+            
+    
+            var marker_b8fdf6f54839ce8771238000d60c3987 = L.marker(
+                [-7.762, 110.5043],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_62fb20e12a5a61459d12ab2ed59198d7 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        23\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_2363ecfe8fd63216511bbe27f03532ba = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fc9f4dcbbce742534349b65251b4baf6 = $(`<div id="html_fc9f4dcbbce742534349b65251b4baf6" style="width: 100.0%; height: 100.0%;">         <b>Stop 23: Tebing Breksi</b><br>         Category: Nature/Cliff<br>                  </div>`)[0];
+                popup_2363ecfe8fd63216511bbe27f03532ba.setContent(html_fc9f4dcbbce742534349b65251b4baf6);
+            
+        
+
+        marker_b8fdf6f54839ce8771238000d60c3987.bindPopup(popup_2363ecfe8fd63216511bbe27f03532ba)
+        ;
+
+        
+    
+    
+            marker_b8fdf6f54839ce8771238000d60c3987.bindTooltip(
+                `<div>
+                     Stop 23: Tebing Breksi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b8fdf6f54839ce8771238000d60c3987.setIcon(div_icon_62fb20e12a5a61459d12ab2ed59198d7);
+            
+    
+            var marker_2101ef8777fab2fb86b5d94b1f0895d0 = L.marker(
+                [-7.752, 110.4914],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_c5e7323721b8e02310e703c60ab870ad = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        24\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_0fc73df12fe86bae229bb6a561138bef = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_81c213bfd6ee58e731ad27b0ba005a8e = $(`<div id="html_81c213bfd6ee58e731ad27b0ba005a8e" style="width: 100.0%; height: 100.0%;">         <b>Stop 24: Candi Prambanan</b><br>         Category: Temple<br>                  </div>`)[0];
+                popup_0fc73df12fe86bae229bb6a561138bef.setContent(html_81c213bfd6ee58e731ad27b0ba005a8e);
+            
+        
+
+        marker_2101ef8777fab2fb86b5d94b1f0895d0.bindPopup(popup_0fc73df12fe86bae229bb6a561138bef)
+        ;
+
+        
+    
+    
+            marker_2101ef8777fab2fb86b5d94b1f0895d0.bindTooltip(
+                `<div>
+                     Stop 24: Candi Prambanan
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2101ef8777fab2fb86b5d94b1f0895d0.setIcon(div_icon_c5e7323721b8e02310e703c60ab870ad);
+            
+    
+            var marker_78409a894c6debc3c1c1d9d914028b7e = L.marker(
+                [-7.6041, 110.4264],
+                {
+}
+            ).addTo(map_cc23705c1b624ee382710e08d7be3704);
+        
+    
+            var div_icon_4ba789483098092578afb1c2f0903e38 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color:#3498db;\n        color:white;border-radius:50%;width:28px;height:28px;\n        display:flex;align-items:center;justify-content:center;\n        font-weight:bold;font-size:12px;border:2px solid white;\n        box-shadow:0 2px 4px rgba(0,0,0,0.3);\"\u003e\n        25\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_42b6f573603048402372d03cfe871506 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d87e6234b4754156fb4263bb22c9704 = $(`<div id="html_4d87e6234b4754156fb4263bb22c9704" style="width: 100.0%; height: 100.0%;">         <b>Stop 25: Museum Ullen Sentalu</b><br>         Category: Museum<br>                  </div>`)[0];
+                popup_42b6f573603048402372d03cfe871506.setContent(html_4d87e6234b4754156fb4263bb22c9704);
+            
+        
+
+        marker_78409a894c6debc3c1c1d9d914028b7e.bindPopup(popup_42b6f573603048402372d03cfe871506)
+        ;
+
+        
+    
+    
+            marker_78409a894c6debc3c1c1d9d914028b7e.bindTooltip(
+                `<div>
+                     Stop 25: Museum Ullen Sentalu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_78409a894c6debc3c1c1d9d914028b7e.setIcon(div_icon_4ba789483098092578afb1c2f0903e38);
+            
+</script>
+</html>

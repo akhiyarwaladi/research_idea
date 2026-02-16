@@ -1,0 +1,5 @@
+Comparison,W statistic,p-value,Significant (p<0.05),Ref Mean (m),Other Mean (m)
+MMAS vs ACS,7.0000,1.000000,No,285503.35,285453.55
+MMAS vs GA,0.0000,0.062500,No,285503.35,300573.34
+MMAS vs SA,0.0000,0.062500,No,285503.35,283798.72
+MMAS vs NN,N/A,N/A,N/A (deterministic),285503.35,297100.43

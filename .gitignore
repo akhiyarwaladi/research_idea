@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+.env
+tourism-route-optimization/cache/
+tourism-route-optimization/data/yogyakarta_road_network.graphml
