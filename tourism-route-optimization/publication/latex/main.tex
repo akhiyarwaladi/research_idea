@@ -12,8 +12,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{cite}
-\usepackage{caption}
-\usepackage{subcaption}
+\usepackage[caption=false]{subfig}
 
 %% --- Figure path ---
 \graphicspath{{figures/}{../../results/figures/}}
@@ -278,27 +277,15 @@ The ACS route (Fig.~\ref{fig:routes}c) followed a nearly identical sequence, dif
 
 \begin{figure*}[!t]
 \centering
-\begin{subfigure}[b]{0.48\textwidth}
-  \includegraphics[width=\textwidth]{fig2_best_route_SA.png}
-  \caption{SA: \SI{283.76}{km}}
-\end{subfigure}
+\subfloat[SA: \SI{283.76}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_SA.png}}
 \hfill
-\begin{subfigure}[b]{0.48\textwidth}
-  \includegraphics[width=\textwidth]{fig2_best_route_MMAS.png}
-  \caption{MMAS: \SI{283.76}{km}}
-\end{subfigure}
+\subfloat[MMAS: \SI{283.76}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_MMAS.png}}
 
 \vspace{4pt}
 
-\begin{subfigure}[b]{0.48\textwidth}
-  \includegraphics[width=\textwidth]{fig2_best_route_ACS.png}
-  \caption{ACS: \SI{283.94}{km}}
-\end{subfigure}
+\subfloat[ACS: \SI{283.94}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_ACS.png}}
 \hfill
-\begin{subfigure}[b]{0.48\textwidth}
-  \includegraphics[width=\textwidth]{fig2_best_route_GA.png}
-  \caption{GA: \SI{291.31}{km}}
-\end{subfigure}
+\subfloat[GA: \SI{291.31}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_GA.png}}
 \caption{Best routes found by each algorithm on the road network. Green marker: start; red: end; blue: intermediate stops. SA and MMAS share the same optimal tour structure; GA shows visible detours between geographic clusters.}
 \label{fig:routes}
 \end{figure*}
