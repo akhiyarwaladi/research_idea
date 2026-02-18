@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_033335d05290211343a4dca356f62e8e {
+                #map_7d4c7eeb52c7ed86c017df2f36bff1a9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -50,28 +50,34 @@
             </script>
 
         
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
 </head>
 <body>
     
     
     <div style="position:fixed;top:10px;left:50%;transform:translateX(-50%);
-    z-index:1000;background:white;padding:10px;border-radius:5px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.3);font-size:16px;font-weight:bold;">
-    Tourist Attractions in DIY Yogyakarta (25 Locations)</div>
+    z-index:1000;background:white;padding:12px 20px;border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.25);text-align:center;">
+    <div style="font-size:16px;font-weight:bold;color:#333;">
+    Tourist Attractions in DIY Yogyakarta</div>
+    <div style="font-size:11px;color:#888;margin-top:2px;">
+    25 Locations — Categorized by Type</div></div>
+    <div style="position:fixed;bottom:30px;right:10px;z-index:1000;background:white;padding:10px 14px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.25);max-height:300px;overflow-y:auto;"><div style="font-weight:bold;font-size:12px;margin-bottom:6px;border-bottom:1px solid #eee;padding-bottom:4px;">Categories</div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-gopuram" style="color:#8B0000;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Archaeological Site</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-palette" style="color:#5F9EA0;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Art Museum</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-umbrella-beach" style="color:#87CEEB;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Beach</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-dungeon" style="color:#808080;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Cave/Adventure</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-university" style="color:#D62728;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Cultural Heritage</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-music" style="color:#FF69B4;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Cultural Performance</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-graduation-cap" style="color:#87CEEB;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Educational</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-archway" style="color:#8B0000;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Heritage District</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-landmark" style="color:#8B0000;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Historical</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-monument" style="color:#9467BD;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Monument</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-monument" style="color:#9467BD;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Monument/Museum</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-building-columns" style="color:#1F77B4;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Museum</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-leaf" style="color:#2CA02C;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Nature</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-mountain" style="color:#006400;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Nature/Cliff</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-tree-city" style="color:#2CA02C;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Public Square</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-store" style="color:#FF7F0E;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Shopping/Cultural</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-place-of-worship" style="color:#D62728;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Temple</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-cart-shopping" style="color:#FF7F0E;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Traditional Market</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-binoculars" style="color:#90EE90;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Viewpoint</span></div><div style="display:flex;align-items:center;margin:3px 0;"><i class="fa fa-hippo" style="color:#006400;width:18px;text-align:center;margin-right:6px;"></i><span style="font-size:11px;">Zoo</span></div></div>
     
-            <div class="folium-map" id="map_033335d05290211343a4dca356f62e8e" ></div>
+            <div class="folium-map" id="map_7d4c7eeb52c7ed86c017df2f36bff1a9" ></div>
         
 </body>
 <script>
     
     
-            var map_033335d05290211343a4dca356f62e8e = L.map(
-                "map_033335d05290211343a4dca356f62e8e",
+            var map_7d4c7eeb52c7ed86c017df2f36bff1a9 = L.map(
+                "map_7d4c7eeb52c7ed86c017df2f36bff1a9",
                 {
                     center: [-7.815352000000001, 110.407096],
                     crs: L.CRS.EPSG3857,
                     ...{
-  "zoom": 11,
+  "zoom": 12,
   "zoomControl": true,
   "preferCanvas": false,
 }
@@ -83,15 +89,15 @@
 
         
     
-            var tile_layer_cc8cfbff4641e807a0bfd4458b2c110c = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            var tile_layer_f301e1fd144691f2c56695a08b2724bf = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
-  "maxZoom": 19,
-  "maxNativeZoom": 19,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
-  "subdomains": "abc",
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
@@ -100,10 +106,10 @@
             );
         
     
-            tile_layer_cc8cfbff4641e807a0bfd4458b2c110c.addTo(map_033335d05290211343a4dca356f62e8e);
+            tile_layer_f301e1fd144691f2c56695a08b2724bf.addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var tile_layer_b39bf06b93cccd0d01cafdc912e12ce0 = L.tileLayer(
+            var tile_layer_bd8f60437394573de7e258b00a5f16ef = L.tileLayer(
                 "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 0,
@@ -120,65 +126,88 @@
             );
         
     
-            tile_layer_b39bf06b93cccd0d01cafdc912e12ce0.addTo(map_033335d05290211343a4dca356f62e8e);
+            tile_layer_bd8f60437394573de7e258b00a5f16ef.addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var layer_control_9b83370e8eec3776737c9dac013de559_layers = {
+            var layer_control_352542ca1ca6aa5961b0cac5b7825e40_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_cc8cfbff4641e807a0bfd4458b2c110c,
-                    "Satellite" : tile_layer_b39bf06b93cccd0d01cafdc912e12ce0,
+                    "cartodbpositron" : tile_layer_f301e1fd144691f2c56695a08b2724bf,
+                    "Satellite" : tile_layer_bd8f60437394573de7e258b00a5f16ef,
                 },
                 overlays :  {
                 },
             };
-            let layer_control_9b83370e8eec3776737c9dac013de559 = L.control.layers(
-                layer_control_9b83370e8eec3776737c9dac013de559_layers.base_layers,
-                layer_control_9b83370e8eec3776737c9dac013de559_layers.overlays,
+            let layer_control_352542ca1ca6aa5961b0cac5b7825e40 = L.control.layers(
+                layer_control_352542ca1ca6aa5961b0cac5b7825e40_layers.base_layers,
+                layer_control_352542ca1ca6aa5961b0cac5b7825e40_layers.overlays,
                 {
   "position": "topright",
   "collapsed": true,
   "autoZIndex": true,
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
 
         
     
-            var marker_abfe9b07912cc5b60f0002b916d1a280 = L.marker(
+            var tile_layer_a4019881103ca7fcacc5e59710ebc0b9 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_9b804682aec62ab939cf0402f047ecfb = new L.Control.MiniMap(
+                tile_layer_a4019881103ca7fcacc5e59710ebc0b9,
+                {
+  "position": "bottomleft",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_7d4c7eeb52c7ed86c017df2f36bff1a9.addControl(mini_map_9b804682aec62ab939cf0402f047ecfb);
+        
+    
+            var marker_e8c3ac45a36cf2c27dc513c45e3a0796 = L.marker(
                 [-7.8053, 110.3642],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_989b86eb5d8225bccd29c51b413fcd4e = L.AwesomeMarkers.icon(
+            var icon_22d3b94bdd25dd511007ec8adb9cd0a4 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "red",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#D62728",
+  "icon": "university",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_20a6174ea1320321f8712d1576a7bddd = L.popup({
-  "maxWidth": 250,
+        var popup_6479ec04e7967ef35765b78138a513c6 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_6a7ccf86e0419559d42c03fad4dd9381 = $(`<div id="html_6a7ccf86e0419559d42c03fad4dd9381" style="width: 100.0%; height: 100.0%;"><b>1. Kraton Yogyakarta</b><br>Category: Cultural Heritage<br>Lat: -7.8053, Lon: 110.3642</div>`)[0];
-                popup_20a6174ea1320321f8712d1576a7bddd.setContent(html_6a7ccf86e0419559d42c03fad4dd9381);
+                var html_f79036a8106dd7f9710371936b602d9a = $(`<div id="html_f79036a8106dd7f9710371936b602d9a" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">1</span><b style="font-size:13px;">Kraton Yogyakarta</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Cultural Heritage</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8053, 110.3642</div></div></div>`)[0];
+                popup_6479ec04e7967ef35765b78138a513c6.setContent(html_f79036a8106dd7f9710371936b602d9a);
             
         
 
-        marker_abfe9b07912cc5b60f0002b916d1a280.bindPopup(popup_20a6174ea1320321f8712d1576a7bddd)
+        marker_e8c3ac45a36cf2c27dc513c45e3a0796.bindPopup(popup_6479ec04e7967ef35765b78138a513c6)
         ;
 
         
     
     
-            marker_abfe9b07912cc5b60f0002b916d1a280.bindTooltip(
+            marker_e8c3ac45a36cf2c27dc513c45e3a0796.bindTooltip(
                 `<div>
                      1. Kraton Yogyakarta
                  </div>`,
@@ -188,45 +217,45 @@
             );
         
     
-                marker_abfe9b07912cc5b60f0002b916d1a280.setIcon(icon_989b86eb5d8225bccd29c51b413fcd4e);
+                marker_e8c3ac45a36cf2c27dc513c45e3a0796.setIcon(icon_22d3b94bdd25dd511007ec8adb9cd0a4);
             
     
-            var marker_548b90e1a2bf910b93cdf9f7595f5bb6 = L.marker(
+            var marker_c402f05888c5520304c2beb6dedc9f83 = L.marker(
                 [-7.81, 110.3592],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_ba8a0f639ac04b1482c4823c4121d2f6 = L.AwesomeMarkers.icon(
+            var icon_1640ef73dc2a8bb912206fac3a4c4fe7 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "darkred",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#8B0000",
+  "icon": "landmark",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_9f62feca867a5d076fc2f71244407d64 = L.popup({
-  "maxWidth": 250,
+        var popup_d43d8312c207c113b92c3a7f820685f5 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_bb8526fddec4c9d80a1bfadf8b88cfca = $(`<div id="html_bb8526fddec4c9d80a1bfadf8b88cfca" style="width: 100.0%; height: 100.0%;"><b>2. Taman Sari Water Castle</b><br>Category: Historical<br>Lat: -7.8100, Lon: 110.3592</div>`)[0];
-                popup_9f62feca867a5d076fc2f71244407d64.setContent(html_bb8526fddec4c9d80a1bfadf8b88cfca);
+                var html_8d15535537d8555f7b4ac80bd9bd00c0 = $(`<div id="html_8d15535537d8555f7b4ac80bd9bd00c0" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">2</span><b style="font-size:13px;">Taman Sari Water Castle</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Historical</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8100, 110.3592</div></div></div>`)[0];
+                popup_d43d8312c207c113b92c3a7f820685f5.setContent(html_8d15535537d8555f7b4ac80bd9bd00c0);
             
         
 
-        marker_548b90e1a2bf910b93cdf9f7595f5bb6.bindPopup(popup_9f62feca867a5d076fc2f71244407d64)
+        marker_c402f05888c5520304c2beb6dedc9f83.bindPopup(popup_d43d8312c207c113b92c3a7f820685f5)
         ;
 
         
     
     
-            marker_548b90e1a2bf910b93cdf9f7595f5bb6.bindTooltip(
+            marker_c402f05888c5520304c2beb6dedc9f83.bindTooltip(
                 `<div>
                      2. Taman Sari Water Castle
                  </div>`,
@@ -236,45 +265,45 @@
             );
         
     
-                marker_548b90e1a2bf910b93cdf9f7595f5bb6.setIcon(icon_ba8a0f639ac04b1482c4823c4121d2f6);
+                marker_c402f05888c5520304c2beb6dedc9f83.setIcon(icon_1640ef73dc2a8bb912206fac3a4c4fe7);
             
     
-            var marker_39fc909cd1351e92c2a0d7b4dd7da28b = L.marker(
+            var marker_9b0121b3c53d80743221397ceea3a452 = L.marker(
                 [-7.8003, 110.366],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_cd27d00fee3b455306ef8ab921722abf = L.AwesomeMarkers.icon(
+            var icon_63371768edc8e120751a5d3473da31fa = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#1F77B4",
+  "icon": "building-columns",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_372a9b73257a7770c5c506b80d943e1c = L.popup({
-  "maxWidth": 250,
+        var popup_15c23aba3101a35be36c260929ef0931 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_7c20c763897bb7f56e38250935d2e52f = $(`<div id="html_7c20c763897bb7f56e38250935d2e52f" style="width: 100.0%; height: 100.0%;"><b>3. Benteng Vredeburg Museum</b><br>Category: Museum<br>Lat: -7.8003, Lon: 110.3660</div>`)[0];
-                popup_372a9b73257a7770c5c506b80d943e1c.setContent(html_7c20c763897bb7f56e38250935d2e52f);
+                var html_0a15b36991351e1ab5ad96a60a64d06f = $(`<div id="html_0a15b36991351e1ab5ad96a60a64d06f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">3</span><b style="font-size:13px;">Benteng Vredeburg Museum</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Museum</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8003, 110.3660</div></div></div>`)[0];
+                popup_15c23aba3101a35be36c260929ef0931.setContent(html_0a15b36991351e1ab5ad96a60a64d06f);
             
         
 
-        marker_39fc909cd1351e92c2a0d7b4dd7da28b.bindPopup(popup_372a9b73257a7770c5c506b80d943e1c)
+        marker_9b0121b3c53d80743221397ceea3a452.bindPopup(popup_15c23aba3101a35be36c260929ef0931)
         ;
 
         
     
     
-            marker_39fc909cd1351e92c2a0d7b4dd7da28b.bindTooltip(
+            marker_9b0121b3c53d80743221397ceea3a452.bindTooltip(
                 `<div>
                      3. Benteng Vredeburg Museum
                  </div>`,
@@ -284,45 +313,45 @@
             );
         
     
-                marker_39fc909cd1351e92c2a0d7b4dd7da28b.setIcon(icon_cd27d00fee3b455306ef8ab921722abf);
+                marker_9b0121b3c53d80743221397ceea3a452.setIcon(icon_63371768edc8e120751a5d3473da31fa);
             
     
-            var marker_4c97e714cba1c048d1a126cec084e451 = L.marker(
+            var marker_f6c85c797004cddca1b721beae7ce7a0 = L.marker(
                 [-7.783, 110.367],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_c132c144806cf29a77ae5925f56b83e9 = L.AwesomeMarkers.icon(
+            var icon_09c2e4719bfc9dc1b9d549802056e401 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "purple",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#9467BD",
+  "icon": "monument",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_a1ab8b26ddbc4c6f54b6d4f4c87b159c = L.popup({
-  "maxWidth": 250,
+        var popup_d8bf040fdfe49fa95c37055e4ba8178c = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_95c51bd07c34dda694b4d9c8dfbad889 = $(`<div id="html_95c51bd07c34dda694b4d9c8dfbad889" style="width: 100.0%; height: 100.0%;"><b>4. Tugu Yogyakarta</b><br>Category: Monument<br>Lat: -7.7830, Lon: 110.3670</div>`)[0];
-                popup_a1ab8b26ddbc4c6f54b6d4f4c87b159c.setContent(html_95c51bd07c34dda694b4d9c8dfbad889);
+                var html_64b8a0cd0389478998e3ef4fb25d1888 = $(`<div id="html_64b8a0cd0389478998e3ef4fb25d1888" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">4</span><b style="font-size:13px;">Tugu Yogyakarta</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Monument</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7830, 110.3670</div></div></div>`)[0];
+                popup_d8bf040fdfe49fa95c37055e4ba8178c.setContent(html_64b8a0cd0389478998e3ef4fb25d1888);
             
         
 
-        marker_4c97e714cba1c048d1a126cec084e451.bindPopup(popup_a1ab8b26ddbc4c6f54b6d4f4c87b159c)
+        marker_f6c85c797004cddca1b721beae7ce7a0.bindPopup(popup_d8bf040fdfe49fa95c37055e4ba8178c)
         ;
 
         
     
     
-            marker_4c97e714cba1c048d1a126cec084e451.bindTooltip(
+            marker_f6c85c797004cddca1b721beae7ce7a0.bindTooltip(
                 `<div>
                      4. Tugu Yogyakarta
                  </div>`,
@@ -332,45 +361,45 @@
             );
         
     
-                marker_4c97e714cba1c048d1a126cec084e451.setIcon(icon_c132c144806cf29a77ae5925f56b83e9);
+                marker_f6c85c797004cddca1b721beae7ce7a0.setIcon(icon_09c2e4719bfc9dc1b9d549802056e401);
             
     
-            var marker_aacb3ac560fa6b5ecadd4f8e7ff29db8 = L.marker(
+            var marker_2d21d7b5f36eea312a90a7b50f8936d2 = L.marker(
                 [-7.7925, 110.366],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_129278c71f1b4812daca794dfd7ca160 = L.AwesomeMarkers.icon(
+            var icon_6028ea77406e1c839d7e5faced14e956 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "orange",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#FF7F0E",
+  "icon": "store",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_c93dd2bb22d229cdd00b8c450ef9705f = L.popup({
-  "maxWidth": 250,
+        var popup_98f7c02b90c064b9f359c3e8dd9c63a9 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_64e45be7439e420a497293094455b64f = $(`<div id="html_64e45be7439e420a497293094455b64f" style="width: 100.0%; height: 100.0%;"><b>5. Malioboro Street</b><br>Category: Shopping/Cultural<br>Lat: -7.7925, Lon: 110.3660</div>`)[0];
-                popup_c93dd2bb22d229cdd00b8c450ef9705f.setContent(html_64e45be7439e420a497293094455b64f);
+                var html_f5661a5e609b90f118141ab2b96339c7 = $(`<div id="html_f5661a5e609b90f118141ab2b96339c7" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">5</span><b style="font-size:13px;">Malioboro Street</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Shopping/Cultural</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7925, 110.3660</div></div></div>`)[0];
+                popup_98f7c02b90c064b9f359c3e8dd9c63a9.setContent(html_f5661a5e609b90f118141ab2b96339c7);
             
         
 
-        marker_aacb3ac560fa6b5ecadd4f8e7ff29db8.bindPopup(popup_c93dd2bb22d229cdd00b8c450ef9705f)
+        marker_2d21d7b5f36eea312a90a7b50f8936d2.bindPopup(popup_98f7c02b90c064b9f359c3e8dd9c63a9)
         ;
 
         
     
     
-            marker_aacb3ac560fa6b5ecadd4f8e7ff29db8.bindTooltip(
+            marker_2d21d7b5f36eea312a90a7b50f8936d2.bindTooltip(
                 `<div>
                      5. Malioboro Street
                  </div>`,
@@ -380,45 +409,45 @@
             );
         
     
-                marker_aacb3ac560fa6b5ecadd4f8e7ff29db8.setIcon(icon_129278c71f1b4812daca794dfd7ca160);
+                marker_2d21d7b5f36eea312a90a7b50f8936d2.setIcon(icon_6028ea77406e1c839d7e5faced14e956);
             
     
-            var marker_e29291c28c482e78634e06bffbf49119 = L.marker(
+            var marker_0aa58410e98cfafd74561d2a3d885ce1 = L.marker(
                 [-7.7983, 110.366],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_791366dc492140b91c3b8d14363732fb = L.AwesomeMarkers.icon(
+            var icon_87590bdce273c30eee9b4d9fe7a2c4e6 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "orange",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#FF7F0E",
+  "icon": "cart-shopping",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_47d948f1119be35205fa29b521fd6191 = L.popup({
-  "maxWidth": 250,
+        var popup_47a562d4d6c47b378a0f8e394167b368 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_0f12bf14138f9f082bb23cafb2666a64 = $(`<div id="html_0f12bf14138f9f082bb23cafb2666a64" style="width: 100.0%; height: 100.0%;"><b>6. Pasar Beringharjo</b><br>Category: Traditional Market<br>Lat: -7.7983, Lon: 110.3660</div>`)[0];
-                popup_47d948f1119be35205fa29b521fd6191.setContent(html_0f12bf14138f9f082bb23cafb2666a64);
+                var html_8ea158e7ba84037ca04b38cd2599b73d = $(`<div id="html_8ea158e7ba84037ca04b38cd2599b73d" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">6</span><b style="font-size:13px;">Pasar Beringharjo</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Traditional Market</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7983, 110.3660</div></div></div>`)[0];
+                popup_47a562d4d6c47b378a0f8e394167b368.setContent(html_8ea158e7ba84037ca04b38cd2599b73d);
             
         
 
-        marker_e29291c28c482e78634e06bffbf49119.bindPopup(popup_47d948f1119be35205fa29b521fd6191)
+        marker_0aa58410e98cfafd74561d2a3d885ce1.bindPopup(popup_47a562d4d6c47b378a0f8e394167b368)
         ;
 
         
     
     
-            marker_e29291c28c482e78634e06bffbf49119.bindTooltip(
+            marker_0aa58410e98cfafd74561d2a3d885ce1.bindTooltip(
                 `<div>
                      6. Pasar Beringharjo
                  </div>`,
@@ -428,45 +457,45 @@
             );
         
     
-                marker_e29291c28c482e78634e06bffbf49119.setIcon(icon_791366dc492140b91c3b8d14363732fb);
+                marker_0aa58410e98cfafd74561d2a3d885ce1.setIcon(icon_87590bdce273c30eee9b4d9fe7a2c4e6);
             
     
-            var marker_1bceee30f1d0054106f969b8c171df47 = L.marker(
+            var marker_676167155a51a2c47431f6db9e323e58 = L.marker(
                 [-7.8018, 110.3638],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_776b05b9077ae1c7180c72f2785b8210 = L.AwesomeMarkers.icon(
+            var icon_ddc103a6d7f84ff3cf51e39c2944108d = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#1F77B4",
+  "icon": "building-columns",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_3bd5ea0696ff5c3346aef32061b6c6da = L.popup({
-  "maxWidth": 250,
+        var popup_155fb4f374e3d3dad4d09e7fe08e2a08 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_1e9b945f3896d935c506362517db1f3d = $(`<div id="html_1e9b945f3896d935c506362517db1f3d" style="width: 100.0%; height: 100.0%;"><b>7. Museum Sonobudoyo</b><br>Category: Museum<br>Lat: -7.8018, Lon: 110.3638</div>`)[0];
-                popup_3bd5ea0696ff5c3346aef32061b6c6da.setContent(html_1e9b945f3896d935c506362517db1f3d);
+                var html_c9ea9cd9057bb1cc4890c93f2d3d8df9 = $(`<div id="html_c9ea9cd9057bb1cc4890c93f2d3d8df9" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">7</span><b style="font-size:13px;">Museum Sonobudoyo</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Museum</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8018, 110.3638</div></div></div>`)[0];
+                popup_155fb4f374e3d3dad4d09e7fe08e2a08.setContent(html_c9ea9cd9057bb1cc4890c93f2d3d8df9);
             
         
 
-        marker_1bceee30f1d0054106f969b8c171df47.bindPopup(popup_3bd5ea0696ff5c3346aef32061b6c6da)
+        marker_676167155a51a2c47431f6db9e323e58.bindPopup(popup_155fb4f374e3d3dad4d09e7fe08e2a08)
         ;
 
         
     
     
-            marker_1bceee30f1d0054106f969b8c171df47.bindTooltip(
+            marker_676167155a51a2c47431f6db9e323e58.bindTooltip(
                 `<div>
                      7. Museum Sonobudoyo
                  </div>`,
@@ -476,45 +505,45 @@
             );
         
     
-                marker_1bceee30f1d0054106f969b8c171df47.setIcon(icon_776b05b9077ae1c7180c72f2785b8210);
+                marker_676167155a51a2c47431f6db9e323e58.setIcon(icon_ddc103a6d7f84ff3cf51e39c2944108d);
             
     
-            var marker_10f79841eb63764f8ec36d8a8e9e755b = L.marker(
+            var marker_ea6ed45780e43b02332d91df454f56cb = L.marker(
                 [-7.812, 110.3635],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_4499624bac3c0eb1368caf4acfb809b9 = L.AwesomeMarkers.icon(
+            var icon_52d21a5c17d69166ba32a53246267247 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "green",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#2CA02C",
+  "icon": "tree-city",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_66568e63db2600dce7fc1b6ce3231b6d = L.popup({
-  "maxWidth": 250,
+        var popup_548119dbf01ac2724c51f150afae041a = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_667f1710b6f0bb48fe1845d4f5e0981d = $(`<div id="html_667f1710b6f0bb48fe1845d4f5e0981d" style="width: 100.0%; height: 100.0%;"><b>8. Alun-Alun Kidul</b><br>Category: Public Square<br>Lat: -7.8120, Lon: 110.3635</div>`)[0];
-                popup_66568e63db2600dce7fc1b6ce3231b6d.setContent(html_667f1710b6f0bb48fe1845d4f5e0981d);
+                var html_90ec11e540548af25057e6ff42d505a3 = $(`<div id="html_90ec11e540548af25057e6ff42d505a3" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">8</span><b style="font-size:13px;">Alun-Alun Kidul</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Public Square</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8120, 110.3635</div></div></div>`)[0];
+                popup_548119dbf01ac2724c51f150afae041a.setContent(html_90ec11e540548af25057e6ff42d505a3);
             
         
 
-        marker_10f79841eb63764f8ec36d8a8e9e755b.bindPopup(popup_66568e63db2600dce7fc1b6ce3231b6d)
+        marker_ea6ed45780e43b02332d91df454f56cb.bindPopup(popup_548119dbf01ac2724c51f150afae041a)
         ;
 
         
     
     
-            marker_10f79841eb63764f8ec36d8a8e9e755b.bindTooltip(
+            marker_ea6ed45780e43b02332d91df454f56cb.bindTooltip(
                 `<div>
                      8. Alun-Alun Kidul
                  </div>`,
@@ -524,45 +553,45 @@
             );
         
     
-                marker_10f79841eb63764f8ec36d8a8e9e755b.setIcon(icon_4499624bac3c0eb1368caf4acfb809b9);
+                marker_ea6ed45780e43b02332d91df454f56cb.setIcon(icon_52d21a5c17d69166ba32a53246267247);
             
     
-            var marker_db87e2b939191ab17186f31d4448f7ad = L.marker(
+            var marker_af9115cea55c238efc1b4428391f2bdc = L.marker(
                 [-7.803, 110.3638],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_687b195ae5565d3302d0f6c3ac85dd15 = L.AwesomeMarkers.icon(
+            var icon_0d26929bd2e14b491fe804e914a07c7c = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "green",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#2CA02C",
+  "icon": "tree-city",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_9a4b07624e57831c78211a32a43df06b = L.popup({
-  "maxWidth": 250,
+        var popup_8c27ea3fcf80dcb483e8d6dc4573b559 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_8146e11c11670a19fe78edb7abbfa206 = $(`<div id="html_8146e11c11670a19fe78edb7abbfa206" style="width: 100.0%; height: 100.0%;"><b>9. Alun-Alun Utara</b><br>Category: Public Square<br>Lat: -7.8030, Lon: 110.3638</div>`)[0];
-                popup_9a4b07624e57831c78211a32a43df06b.setContent(html_8146e11c11670a19fe78edb7abbfa206);
+                var html_a93ce2f29332854859dca974439af8e8 = $(`<div id="html_a93ce2f29332854859dca974439af8e8" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">9</span><b style="font-size:13px;">Alun-Alun Utara</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Public Square</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8030, 110.3638</div></div></div>`)[0];
+                popup_8c27ea3fcf80dcb483e8d6dc4573b559.setContent(html_a93ce2f29332854859dca974439af8e8);
             
         
 
-        marker_db87e2b939191ab17186f31d4448f7ad.bindPopup(popup_9a4b07624e57831c78211a32a43df06b)
+        marker_af9115cea55c238efc1b4428391f2bdc.bindPopup(popup_8c27ea3fcf80dcb483e8d6dc4573b559)
         ;
 
         
     
     
-            marker_db87e2b939191ab17186f31d4448f7ad.bindTooltip(
+            marker_af9115cea55c238efc1b4428391f2bdc.bindTooltip(
                 `<div>
                      9. Alun-Alun Utara
                  </div>`,
@@ -572,45 +601,45 @@
             );
         
     
-                marker_db87e2b939191ab17186f31d4448f7ad.setIcon(icon_687b195ae5565d3302d0f6c3ac85dd15);
+                marker_af9115cea55c238efc1b4428391f2bdc.setIcon(icon_0d26929bd2e14b491fe804e914a07c7c);
             
     
-            var marker_59e87b11ce06ef8afc42ff3e6ea4e01d = L.marker(
+            var marker_9f873d1b340d5649a9bb564eeb137d34 = L.marker(
                 [-7.8005, 110.367],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_31efc15c74dc5466151ee7c565c90809 = L.AwesomeMarkers.icon(
+            var icon_b0e89ca23ee497dae14443d5724e874a = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "lightblue",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#87CEEB",
+  "icon": "graduation-cap",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_6fd1abf026139d076032b10d851e1e2f = L.popup({
-  "maxWidth": 250,
+        var popup_ea03c44471973f0d4073f7e5f9e11e36 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_1aa9c36e517d0167db8b2dc299f46b35 = $(`<div id="html_1aa9c36e517d0167db8b2dc299f46b35" style="width: 100.0%; height: 100.0%;"><b>10. Taman Pintar Science Park</b><br>Category: Educational<br>Lat: -7.8005, Lon: 110.3670</div>`)[0];
-                popup_6fd1abf026139d076032b10d851e1e2f.setContent(html_1aa9c36e517d0167db8b2dc299f46b35);
+                var html_6cf35a3e74d4d35413e7647ec95a68a1 = $(`<div id="html_6cf35a3e74d4d35413e7647ec95a68a1" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">10</span><b style="font-size:13px;">Taman Pintar Science Park</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Educational</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8005, 110.3670</div></div></div>`)[0];
+                popup_ea03c44471973f0d4073f7e5f9e11e36.setContent(html_6cf35a3e74d4d35413e7647ec95a68a1);
             
         
 
-        marker_59e87b11ce06ef8afc42ff3e6ea4e01d.bindPopup(popup_6fd1abf026139d076032b10d851e1e2f)
+        marker_9f873d1b340d5649a9bb564eeb137d34.bindPopup(popup_ea03c44471973f0d4073f7e5f9e11e36)
         ;
 
         
     
     
-            marker_59e87b11ce06ef8afc42ff3e6ea4e01d.bindTooltip(
+            marker_9f873d1b340d5649a9bb564eeb137d34.bindTooltip(
                 `<div>
                      10. Taman Pintar Science Park
                  </div>`,
@@ -620,45 +649,45 @@
             );
         
     
-                marker_59e87b11ce06ef8afc42ff3e6ea4e01d.setIcon(icon_31efc15c74dc5466151ee7c565c90809);
+                marker_9f873d1b340d5649a9bb564eeb137d34.setIcon(icon_b0e89ca23ee497dae14443d5724e874a);
             
     
-            var marker_bc27c57e7968e02937718ec0c6485e8b = L.marker(
+            var marker_5237c4520c87e14221386a80a4e82528 = L.marker(
                 [-7.8056, 110.3953],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_a3f4484cab08cd264d5ec8b373af8743 = L.AwesomeMarkers.icon(
+            var icon_1d7e9f14b833398f990b77211e1b4ac2 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "darkgreen",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#006400",
+  "icon": "hippo",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_f0d463f22c9dc9a47f12e26fde6b159b = L.popup({
-  "maxWidth": 250,
+        var popup_b0957762e9db13122919ae7149538281 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_0a692a0f4e723c4d9072f51ae36763e8 = $(`<div id="html_0a692a0f4e723c4d9072f51ae36763e8" style="width: 100.0%; height: 100.0%;"><b>11. Kebun Binatang Gembira Loka</b><br>Category: Zoo<br>Lat: -7.8056, Lon: 110.3953</div>`)[0];
-                popup_f0d463f22c9dc9a47f12e26fde6b159b.setContent(html_0a692a0f4e723c4d9072f51ae36763e8);
+                var html_c6bedf2c44565d475191e6af196a47d6 = $(`<div id="html_c6bedf2c44565d475191e6af196a47d6" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">11</span><b style="font-size:13px;">Kebun Binatang Gembira Loka</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Zoo</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8056, 110.3953</div></div></div>`)[0];
+                popup_b0957762e9db13122919ae7149538281.setContent(html_c6bedf2c44565d475191e6af196a47d6);
             
         
 
-        marker_bc27c57e7968e02937718ec0c6485e8b.bindPopup(popup_f0d463f22c9dc9a47f12e26fde6b159b)
+        marker_5237c4520c87e14221386a80a4e82528.bindPopup(popup_b0957762e9db13122919ae7149538281)
         ;
 
         
     
     
-            marker_bc27c57e7968e02937718ec0c6485e8b.bindTooltip(
+            marker_5237c4520c87e14221386a80a4e82528.bindTooltip(
                 `<div>
                      11. Kebun Binatang Gembira Loka
                  </div>`,
@@ -668,45 +697,45 @@
             );
         
     
-                marker_bc27c57e7968e02937718ec0c6485e8b.setIcon(icon_a3f4484cab08cd264d5ec8b373af8743);
+                marker_5237c4520c87e14221386a80a4e82528.setIcon(icon_1d7e9f14b833398f990b77211e1b4ac2);
             
     
-            var marker_5cf7f23cc654cc6842d78f507c3fefb9 = L.marker(
+            var marker_269f4d99b1ecd5dac106d41dce60cb77 = L.marker(
                 [-7.7825, 110.3973],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_bc8b8ddaf8b65166c160173c708445c4 = L.AwesomeMarkers.icon(
+            var icon_79ba9b068631f849a235d44e20193ffc = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "cadetblue",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#5F9EA0",
+  "icon": "palette",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_9a6df55f39d2e32f7a4e01c1d423835f = L.popup({
-  "maxWidth": 250,
+        var popup_aa9edb82aaec13002af3fe9da0948b00 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_70d5e806c87daa15d0632ed5062acb92 = $(`<div id="html_70d5e806c87daa15d0632ed5062acb92" style="width: 100.0%; height: 100.0%;"><b>12. Museum Affandi</b><br>Category: Art Museum<br>Lat: -7.7825, Lon: 110.3973</div>`)[0];
-                popup_9a6df55f39d2e32f7a4e01c1d423835f.setContent(html_70d5e806c87daa15d0632ed5062acb92);
+                var html_1f2fe9d155e8742ae60f1c84770f2f54 = $(`<div id="html_1f2fe9d155e8742ae60f1c84770f2f54" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">12</span><b style="font-size:13px;">Museum Affandi</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Art Museum</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7825, 110.3973</div></div></div>`)[0];
+                popup_aa9edb82aaec13002af3fe9da0948b00.setContent(html_1f2fe9d155e8742ae60f1c84770f2f54);
             
         
 
-        marker_5cf7f23cc654cc6842d78f507c3fefb9.bindPopup(popup_9a6df55f39d2e32f7a4e01c1d423835f)
+        marker_269f4d99b1ecd5dac106d41dce60cb77.bindPopup(popup_aa9edb82aaec13002af3fe9da0948b00)
         ;
 
         
     
     
-            marker_5cf7f23cc654cc6842d78f507c3fefb9.bindTooltip(
+            marker_269f4d99b1ecd5dac106d41dce60cb77.bindTooltip(
                 `<div>
                      12. Museum Affandi
                  </div>`,
@@ -716,45 +745,45 @@
             );
         
     
-                marker_5cf7f23cc654cc6842d78f507c3fefb9.setIcon(icon_bc8b8ddaf8b65166c160173c708445c4);
+                marker_269f4d99b1ecd5dac106d41dce60cb77.setIcon(icon_79ba9b068631f849a235d44e20193ffc);
             
     
-            var marker_12b5f18e1592ddf1d6f1a7a739bf3a8b = L.marker(
+            var marker_b55e35a4875b65f0985603be5d72ad36 = L.marker(
                 [-7.8273, 110.3983],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_a64408f1796fc7d29c3603f2bd84a686 = L.AwesomeMarkers.icon(
+            var icon_21acbe29134fd6b881bf15f22f4d85be = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "darkred",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#8B0000",
+  "icon": "archway",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_87c884a00613734366b1d6b43db5eff2 = L.popup({
-  "maxWidth": 250,
+        var popup_ba8528d9ce34e67a0f8a03c8c284808f = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_429b6f411c2330e4f7c2ce7677fc6a98 = $(`<div id="html_429b6f411c2330e4f7c2ce7677fc6a98" style="width: 100.0%; height: 100.0%;"><b>13. Kotagede Heritage Area</b><br>Category: Heritage District<br>Lat: -7.8273, Lon: 110.3983</div>`)[0];
-                popup_87c884a00613734366b1d6b43db5eff2.setContent(html_429b6f411c2330e4f7c2ce7677fc6a98);
+                var html_61ca8fc1c278a86ab23f3b2a0a5a06c3 = $(`<div id="html_61ca8fc1c278a86ab23f3b2a0a5a06c3" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">13</span><b style="font-size:13px;">Kotagede Heritage Area</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Heritage District</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8273, 110.3983</div></div></div>`)[0];
+                popup_ba8528d9ce34e67a0f8a03c8c284808f.setContent(html_61ca8fc1c278a86ab23f3b2a0a5a06c3);
             
         
 
-        marker_12b5f18e1592ddf1d6f1a7a739bf3a8b.bindPopup(popup_87c884a00613734366b1d6b43db5eff2)
+        marker_b55e35a4875b65f0985603be5d72ad36.bindPopup(popup_ba8528d9ce34e67a0f8a03c8c284808f)
         ;
 
         
     
     
-            marker_12b5f18e1592ddf1d6f1a7a739bf3a8b.bindTooltip(
+            marker_b55e35a4875b65f0985603be5d72ad36.bindTooltip(
                 `<div>
                      13. Kotagede Heritage Area
                  </div>`,
@@ -764,45 +793,45 @@
             );
         
     
-                marker_12b5f18e1592ddf1d6f1a7a739bf3a8b.setIcon(icon_a64408f1796fc7d29c3603f2bd84a686);
+                marker_b55e35a4875b65f0985603be5d72ad36.setIcon(icon_21acbe29134fd6b881bf15f22f4d85be);
             
     
-            var marker_1bc6f34464015f83a692788f71c49152 = L.marker(
+            var marker_c95e93bd18b9d79a09c314df9c7b2a46 = L.marker(
                 [-7.75, 110.3767],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_53f6f4c64eda3d4232d57c6c70d43692 = L.AwesomeMarkers.icon(
+            var icon_5e322d425fbd02cf74024272789638de = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "purple",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#9467BD",
+  "icon": "monument",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_6fd5174f6e78f15a580f5e39f2d4cc79 = L.popup({
-  "maxWidth": 250,
+        var popup_de4ff8fb3a8c91adaaf3433a428cb927 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_7ba4e94e30769cc7c1186d48140576de = $(`<div id="html_7ba4e94e30769cc7c1186d48140576de" style="width: 100.0%; height: 100.0%;"><b>14. Monumen Jogja Kembali</b><br>Category: Monument/Museum<br>Lat: -7.7500, Lon: 110.3767</div>`)[0];
-                popup_6fd5174f6e78f15a580f5e39f2d4cc79.setContent(html_7ba4e94e30769cc7c1186d48140576de);
+                var html_4d9a07ddb6278a1ba4956ba7f7254169 = $(`<div id="html_4d9a07ddb6278a1ba4956ba7f7254169" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">14</span><b style="font-size:13px;">Monumen Jogja Kembali</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Monument/Museum</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7500, 110.3767</div></div></div>`)[0];
+                popup_de4ff8fb3a8c91adaaf3433a428cb927.setContent(html_4d9a07ddb6278a1ba4956ba7f7254169);
             
         
 
-        marker_1bc6f34464015f83a692788f71c49152.bindPopup(popup_6fd5174f6e78f15a580f5e39f2d4cc79)
+        marker_c95e93bd18b9d79a09c314df9c7b2a46.bindPopup(popup_de4ff8fb3a8c91adaaf3433a428cb927)
         ;
 
         
     
     
-            marker_1bc6f34464015f83a692788f71c49152.bindTooltip(
+            marker_c95e93bd18b9d79a09c314df9c7b2a46.bindTooltip(
                 `<div>
                      14. Monumen Jogja Kembali
                  </div>`,
@@ -812,45 +841,45 @@
             );
         
     
-                marker_1bc6f34464015f83a692788f71c49152.setIcon(icon_53f6f4c64eda3d4232d57c6c70d43692);
+                marker_c95e93bd18b9d79a09c314df9c7b2a46.setIcon(icon_5e322d425fbd02cf74024272789638de);
             
     
-            var marker_78e883923edb2994a00292e13391df87 = L.marker(
+            var marker_5c6b9024f252d875497c0f63ef701749 = L.marker(
                 [-7.801, 110.3735],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_ccd6cd19ff650b9ab0aad472f9a2df10 = L.AwesomeMarkers.icon(
+            var icon_47181f923f9bd73eeb2d0cb0b84d3774 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "pink",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#FF69B4",
+  "icon": "music",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_ec118c851fe3c42b5102402b0d5938af = L.popup({
-  "maxWidth": 250,
+        var popup_e814f195927c7a9096c7474774e77ed9 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_2c3cdc57cd6da2e63e90e764f88c1d61 = $(`<div id="html_2c3cdc57cd6da2e63e90e764f88c1d61" style="width: 100.0%; height: 100.0%;"><b>15. Purawisata</b><br>Category: Cultural Performance<br>Lat: -7.8010, Lon: 110.3735</div>`)[0];
-                popup_ec118c851fe3c42b5102402b0d5938af.setContent(html_2c3cdc57cd6da2e63e90e764f88c1d61);
+                var html_346d876addeefd74523674e82bede5e5 = $(`<div id="html_346d876addeefd74523674e82bede5e5" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">15</span><b style="font-size:13px;">Purawisata</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Cultural Performance</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8010, 110.3735</div></div></div>`)[0];
+                popup_e814f195927c7a9096c7474774e77ed9.setContent(html_346d876addeefd74523674e82bede5e5);
             
         
 
-        marker_78e883923edb2994a00292e13391df87.bindPopup(popup_ec118c851fe3c42b5102402b0d5938af)
+        marker_5c6b9024f252d875497c0f63ef701749.bindPopup(popup_e814f195927c7a9096c7474774e77ed9)
         ;
 
         
     
     
-            marker_78e883923edb2994a00292e13391df87.bindTooltip(
+            marker_5c6b9024f252d875497c0f63ef701749.bindTooltip(
                 `<div>
                      15. Purawisata
                  </div>`,
@@ -860,45 +889,45 @@
             );
         
     
-                marker_78e883923edb2994a00292e13391df87.setIcon(icon_ccd6cd19ff650b9ab0aad472f9a2df10);
+                marker_5c6b9024f252d875497c0f63ef701749.setIcon(icon_47181f923f9bd73eeb2d0cb0b84d3774);
             
     
-            var marker_bd4a1a499ee36dfd23b50e6839f0bf4b = L.marker(
+            var marker_742e7b29abeb7356227af15ebd4a53f0 = L.marker(
                 [-7.752, 110.4914],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_e8549eb185453b78ee501258c73d9f4e = L.AwesomeMarkers.icon(
+            var icon_1f26eb6781c8db7807ba5251f33d3296 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "red",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#D62728",
+  "icon": "place-of-worship",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_1a96fe9c16428a710becb3bec315bdf0 = L.popup({
-  "maxWidth": 250,
+        var popup_2bc07e0019ba7d209f817fa08107b619 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_905edf3ad6dd11b2cccd16dcf7391304 = $(`<div id="html_905edf3ad6dd11b2cccd16dcf7391304" style="width: 100.0%; height: 100.0%;"><b>16. Candi Prambanan</b><br>Category: Temple<br>Lat: -7.7520, Lon: 110.4914</div>`)[0];
-                popup_1a96fe9c16428a710becb3bec315bdf0.setContent(html_905edf3ad6dd11b2cccd16dcf7391304);
+                var html_a9a5cade21dd940850010b8bb27fb5bd = $(`<div id="html_a9a5cade21dd940850010b8bb27fb5bd" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">16</span><b style="font-size:13px;">Candi Prambanan</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Temple</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7520, 110.4914</div></div></div>`)[0];
+                popup_2bc07e0019ba7d209f817fa08107b619.setContent(html_a9a5cade21dd940850010b8bb27fb5bd);
             
         
 
-        marker_bd4a1a499ee36dfd23b50e6839f0bf4b.bindPopup(popup_1a96fe9c16428a710becb3bec315bdf0)
+        marker_742e7b29abeb7356227af15ebd4a53f0.bindPopup(popup_2bc07e0019ba7d209f817fa08107b619)
         ;
 
         
     
     
-            marker_bd4a1a499ee36dfd23b50e6839f0bf4b.bindTooltip(
+            marker_742e7b29abeb7356227af15ebd4a53f0.bindTooltip(
                 `<div>
                      16. Candi Prambanan
                  </div>`,
@@ -908,45 +937,45 @@
             );
         
     
-                marker_bd4a1a499ee36dfd23b50e6839f0bf4b.setIcon(icon_e8549eb185453b78ee501258c73d9f4e);
+                marker_742e7b29abeb7356227af15ebd4a53f0.setIcon(icon_1f26eb6781c8db7807ba5251f33d3296);
             
     
-            var marker_1166f3556d2627b287bda086d74f3573 = L.marker(
+            var marker_7d4af5c7d104bf6d379c7f603c8cda51 = L.marker(
                 [-7.7704, 110.4892],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_59e799a8241a5b92e211d22ebcb3339c = L.AwesomeMarkers.icon(
+            var icon_3a66936e0554d241ea7b21e4db84ed8e = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "darkred",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#8B0000",
+  "icon": "gopuram",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_2c154d9c08ee6353b14f49bb8a5c2e8b = L.popup({
-  "maxWidth": 250,
+        var popup_1a2871575ec813114a62f05cea0a6db5 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_b2f980c7a9c4e3aa5b3099a0f829db53 = $(`<div id="html_b2f980c7a9c4e3aa5b3099a0f829db53" style="width: 100.0%; height: 100.0%;"><b>17. Candi Ratu Boko</b><br>Category: Archaeological Site<br>Lat: -7.7704, Lon: 110.4892</div>`)[0];
-                popup_2c154d9c08ee6353b14f49bb8a5c2e8b.setContent(html_b2f980c7a9c4e3aa5b3099a0f829db53);
+                var html_724d4b322aefe495850fc36a07f173ab = $(`<div id="html_724d4b322aefe495850fc36a07f173ab" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">17</span><b style="font-size:13px;">Candi Ratu Boko</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Archaeological Site</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7704, 110.4892</div></div></div>`)[0];
+                popup_1a2871575ec813114a62f05cea0a6db5.setContent(html_724d4b322aefe495850fc36a07f173ab);
             
         
 
-        marker_1166f3556d2627b287bda086d74f3573.bindPopup(popup_2c154d9c08ee6353b14f49bb8a5c2e8b)
+        marker_7d4af5c7d104bf6d379c7f603c8cda51.bindPopup(popup_1a2871575ec813114a62f05cea0a6db5)
         ;
 
         
     
     
-            marker_1166f3556d2627b287bda086d74f3573.bindTooltip(
+            marker_7d4af5c7d104bf6d379c7f603c8cda51.bindTooltip(
                 `<div>
                      17. Candi Ratu Boko
                  </div>`,
@@ -956,45 +985,45 @@
             );
         
     
-                marker_1166f3556d2627b287bda086d74f3573.setIcon(icon_59e799a8241a5b92e211d22ebcb3339c);
+                marker_7d4af5c7d104bf6d379c7f603c8cda51.setIcon(icon_3a66936e0554d241ea7b21e4db84ed8e);
             
     
-            var marker_977f6e4866d364a352292da622e34e80 = L.marker(
+            var marker_c71c644bfef7435e2038187aecfe0881 = L.marker(
                 [-7.762, 110.5043],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_ff521867c5706c28e71b31a9aa54eb55 = L.AwesomeMarkers.icon(
+            var icon_392796728ee10949b213624ed0bd75b6 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "darkgreen",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#006400",
+  "icon": "mountain",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_c4e9f2f89051cb0d7d5ccbf63c954e97 = L.popup({
-  "maxWidth": 250,
+        var popup_06e127175d9aeb5d845d4b85f60966f3 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_9ea43c2086dd4f1bbc9e0ac1e2950936 = $(`<div id="html_9ea43c2086dd4f1bbc9e0ac1e2950936" style="width: 100.0%; height: 100.0%;"><b>18. Tebing Breksi</b><br>Category: Nature/Cliff<br>Lat: -7.7620, Lon: 110.5043</div>`)[0];
-                popup_c4e9f2f89051cb0d7d5ccbf63c954e97.setContent(html_9ea43c2086dd4f1bbc9e0ac1e2950936);
+                var html_29092a9f0f605f22e8412b907689b442 = $(`<div id="html_29092a9f0f605f22e8412b907689b442" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">18</span><b style="font-size:13px;">Tebing Breksi</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Nature/Cliff</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.7620, 110.5043</div></div></div>`)[0];
+                popup_06e127175d9aeb5d845d4b85f60966f3.setContent(html_29092a9f0f605f22e8412b907689b442);
             
         
 
-        marker_977f6e4866d364a352292da622e34e80.bindPopup(popup_c4e9f2f89051cb0d7d5ccbf63c954e97)
+        marker_c71c644bfef7435e2038187aecfe0881.bindPopup(popup_06e127175d9aeb5d845d4b85f60966f3)
         ;
 
         
     
     
-            marker_977f6e4866d364a352292da622e34e80.bindTooltip(
+            marker_c71c644bfef7435e2038187aecfe0881.bindTooltip(
                 `<div>
                      18. Tebing Breksi
                  </div>`,
@@ -1004,45 +1033,45 @@
             );
         
     
-                marker_977f6e4866d364a352292da622e34e80.setIcon(icon_ff521867c5706c28e71b31a9aa54eb55);
+                marker_c71c644bfef7435e2038187aecfe0881.setIcon(icon_392796728ee10949b213624ed0bd75b6);
             
     
-            var marker_d5e25b77ed6ab1385331397ad895b2be = L.marker(
+            var marker_f0f28cb37d580042c635320d309c3853 = L.marker(
                 [-7.6041, 110.4264],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_4a850d6907e92d6862306a71e042fc4b = L.AwesomeMarkers.icon(
+            var icon_7ad840189d76042d1308e2afb68f670f = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "blue",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#1F77B4",
+  "icon": "building-columns",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_435387ce30e7d3b80ece1705d0314d8b = L.popup({
-  "maxWidth": 250,
+        var popup_1ddcaba0fd9ba670439a2220cb5a7eeb = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_baa01137d8f1c04b549a1a8e5201de9b = $(`<div id="html_baa01137d8f1c04b549a1a8e5201de9b" style="width: 100.0%; height: 100.0%;"><b>19. Museum Ullen Sentalu</b><br>Category: Museum<br>Lat: -7.6041, Lon: 110.4264</div>`)[0];
-                popup_435387ce30e7d3b80ece1705d0314d8b.setContent(html_baa01137d8f1c04b549a1a8e5201de9b);
+                var html_ffb26247c78f313c630aa8eb7d5dcfa4 = $(`<div id="html_ffb26247c78f313c630aa8eb7d5dcfa4" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">19</span><b style="font-size:13px;">Museum Ullen Sentalu</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Museum</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.6041, 110.4264</div></div></div>`)[0];
+                popup_1ddcaba0fd9ba670439a2220cb5a7eeb.setContent(html_ffb26247c78f313c630aa8eb7d5dcfa4);
             
         
 
-        marker_d5e25b77ed6ab1385331397ad895b2be.bindPopup(popup_435387ce30e7d3b80ece1705d0314d8b)
+        marker_f0f28cb37d580042c635320d309c3853.bindPopup(popup_1ddcaba0fd9ba670439a2220cb5a7eeb)
         ;
 
         
     
     
-            marker_d5e25b77ed6ab1385331397ad895b2be.bindTooltip(
+            marker_f0f28cb37d580042c635320d309c3853.bindTooltip(
                 `<div>
                      19. Museum Ullen Sentalu
                  </div>`,
@@ -1052,45 +1081,45 @@
             );
         
     
-                marker_d5e25b77ed6ab1385331397ad895b2be.setIcon(icon_4a850d6907e92d6862306a71e042fc4b);
+                marker_f0f28cb37d580042c635320d309c3853.setIcon(icon_7ad840189d76042d1308e2afb68f670f);
             
     
-            var marker_76eaf8a9c343496533ab2dc441c5cf64 = L.marker(
+            var marker_52bb6afcbcfcb8db4fe62b48f5204024 = L.marker(
                 [-7.6078, 110.2038],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_a496c35f317897c2ecd8d49797590b62 = L.AwesomeMarkers.icon(
+            var icon_ae684e0194c660303e975f6abee3120d = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "red",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#D62728",
+  "icon": "place-of-worship",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_fe3785a57b9afe32c742a08e1431140c = L.popup({
-  "maxWidth": 250,
+        var popup_2795f9afa7fa31ca5292cbb525699def = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_ecde74fd91c5d1caaab03ccaeefe9e6a = $(`<div id="html_ecde74fd91c5d1caaab03ccaeefe9e6a" style="width: 100.0%; height: 100.0%;"><b>20. Candi Borobudur</b><br>Category: Temple<br>Lat: -7.6078, Lon: 110.2038</div>`)[0];
-                popup_fe3785a57b9afe32c742a08e1431140c.setContent(html_ecde74fd91c5d1caaab03ccaeefe9e6a);
+                var html_32c33da921ed7e4ef0a9c7ad8fac5aba = $(`<div id="html_32c33da921ed7e4ef0a9c7ad8fac5aba" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">20</span><b style="font-size:13px;">Candi Borobudur</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Temple</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.6078, 110.2038</div></div></div>`)[0];
+                popup_2795f9afa7fa31ca5292cbb525699def.setContent(html_32c33da921ed7e4ef0a9c7ad8fac5aba);
             
         
 
-        marker_76eaf8a9c343496533ab2dc441c5cf64.bindPopup(popup_fe3785a57b9afe32c742a08e1431140c)
+        marker_52bb6afcbcfcb8db4fe62b48f5204024.bindPopup(popup_2795f9afa7fa31ca5292cbb525699def)
         ;
 
         
     
     
-            marker_76eaf8a9c343496533ab2dc441c5cf64.bindTooltip(
+            marker_52bb6afcbcfcb8db4fe62b48f5204024.bindTooltip(
                 `<div>
                      20. Candi Borobudur
                  </div>`,
@@ -1100,45 +1129,45 @@
             );
         
     
-                marker_76eaf8a9c343496533ab2dc441c5cf64.setIcon(icon_a496c35f317897c2ecd8d49797590b62);
+                marker_52bb6afcbcfcb8db4fe62b48f5204024.setIcon(icon_ae684e0194c660303e975f6abee3120d);
             
     
-            var marker_1f52d7bc60a31a5481ae342ac2c474f6 = L.marker(
+            var marker_8ffc7732b104b644727d58d319b35adc = L.marker(
                 [-8.0254, 110.3264],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_953d79fa59cdcd9671de21853c3ada09 = L.AwesomeMarkers.icon(
+            var icon_698f19f8c68b7740e23b1b75e182d4fd = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "lightblue",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#87CEEB",
+  "icon": "umbrella-beach",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_6297512a634f535cbd5b63e6bed73297 = L.popup({
-  "maxWidth": 250,
+        var popup_ebacea1e8444cff21ba1ceeb3efa1d70 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_b72744082cda5e8cc804aec90398fafe = $(`<div id="html_b72744082cda5e8cc804aec90398fafe" style="width: 100.0%; height: 100.0%;"><b>21. Pantai Parangtritis</b><br>Category: Beach<br>Lat: -8.0254, Lon: 110.3264</div>`)[0];
-                popup_6297512a634f535cbd5b63e6bed73297.setContent(html_b72744082cda5e8cc804aec90398fafe);
+                var html_1e81da25e147d23409ae289490993c6b = $(`<div id="html_1e81da25e147d23409ae289490993c6b" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">21</span><b style="font-size:13px;">Pantai Parangtritis</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Beach</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -8.0254, 110.3264</div></div></div>`)[0];
+                popup_ebacea1e8444cff21ba1ceeb3efa1d70.setContent(html_1e81da25e147d23409ae289490993c6b);
             
         
 
-        marker_1f52d7bc60a31a5481ae342ac2c474f6.bindPopup(popup_6297512a634f535cbd5b63e6bed73297)
+        marker_8ffc7732b104b644727d58d319b35adc.bindPopup(popup_ebacea1e8444cff21ba1ceeb3efa1d70)
         ;
 
         
     
     
-            marker_1f52d7bc60a31a5481ae342ac2c474f6.bindTooltip(
+            marker_8ffc7732b104b644727d58d319b35adc.bindTooltip(
                 `<div>
                      21. Pantai Parangtritis
                  </div>`,
@@ -1148,45 +1177,45 @@
             );
         
     
-                marker_1f52d7bc60a31a5481ae342ac2c474f6.setIcon(icon_953d79fa59cdcd9671de21853c3ada09);
+                marker_8ffc7732b104b644727d58d319b35adc.setIcon(icon_698f19f8c68b7740e23b1b75e182d4fd);
             
     
-            var marker_c48f37254c075b55b0a5805c07829af0 = L.marker(
+            var marker_d4ed92d4749ff42dc74fb39d787c3f5b = L.marker(
                 [-7.931, 110.431],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_c627f82a06e1df826176e9f5b4348e20 = L.AwesomeMarkers.icon(
+            var icon_7f38b51e6af8476c73dd328f12920eb0 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "green",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#2CA02C",
+  "icon": "leaf",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_82ebbda9c3a4e825b72976f4d7b2817e = L.popup({
-  "maxWidth": 250,
+        var popup_46f13c4ceb530fcbec5d1b5077d7f9a8 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_13b9aa2407c718d032b4976f2399195f = $(`<div id="html_13b9aa2407c718d032b4976f2399195f" style="width: 100.0%; height: 100.0%;"><b>22. Hutan Pinus Mangunan</b><br>Category: Nature<br>Lat: -7.9310, Lon: 110.4310</div>`)[0];
-                popup_82ebbda9c3a4e825b72976f4d7b2817e.setContent(html_13b9aa2407c718d032b4976f2399195f);
+                var html_e0d3c561cfdf47fa9b2d68d8b7ed1ae4 = $(`<div id="html_e0d3c561cfdf47fa9b2d68d8b7ed1ae4" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">22</span><b style="font-size:13px;">Hutan Pinus Mangunan</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Nature</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.9310, 110.4310</div></div></div>`)[0];
+                popup_46f13c4ceb530fcbec5d1b5077d7f9a8.setContent(html_e0d3c561cfdf47fa9b2d68d8b7ed1ae4);
             
         
 
-        marker_c48f37254c075b55b0a5805c07829af0.bindPopup(popup_82ebbda9c3a4e825b72976f4d7b2817e)
+        marker_d4ed92d4749ff42dc74fb39d787c3f5b.bindPopup(popup_46f13c4ceb530fcbec5d1b5077d7f9a8)
         ;
 
         
     
     
-            marker_c48f37254c075b55b0a5805c07829af0.bindTooltip(
+            marker_d4ed92d4749ff42dc74fb39d787c3f5b.bindTooltip(
                 `<div>
                      22. Hutan Pinus Mangunan
                  </div>`,
@@ -1196,45 +1225,45 @@
             );
         
     
-                marker_c48f37254c075b55b0a5805c07829af0.setIcon(icon_c627f82a06e1df826176e9f5b4348e20);
+                marker_d4ed92d4749ff42dc74fb39d787c3f5b.setIcon(icon_7f38b51e6af8476c73dd328f12920eb0);
             
     
-            var marker_7a883b21ce8005013a0bd15e39b65362 = L.marker(
+            var marker_7d0f4ce2755d8b4754f7c28f26e2da35 = L.marker(
                 [-7.953, 110.65],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_0cd1986c671a53893de9bfdb691359a3 = L.AwesomeMarkers.icon(
+            var icon_2f3df47101769d2b5024b97a9b759792 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "gray",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#808080",
+  "icon": "dungeon",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_0cf6e7202948a213d2360b8f4fede649 = L.popup({
-  "maxWidth": 250,
+        var popup_7591d5ea870ca1c491aa68d69f3fb16b = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_47905daa13bdbbacd4ee91f2ba079445 = $(`<div id="html_47905daa13bdbbacd4ee91f2ba079445" style="width: 100.0%; height: 100.0%;"><b>23. Goa Pindul</b><br>Category: Cave/Adventure<br>Lat: -7.9530, Lon: 110.6500</div>`)[0];
-                popup_0cf6e7202948a213d2360b8f4fede649.setContent(html_47905daa13bdbbacd4ee91f2ba079445);
+                var html_83a66117c783bd44d1911f446ce0d383 = $(`<div id="html_83a66117c783bd44d1911f446ce0d383" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">23</span><b style="font-size:13px;">Goa Pindul</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Cave/Adventure</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.9530, 110.6500</div></div></div>`)[0];
+                popup_7591d5ea870ca1c491aa68d69f3fb16b.setContent(html_83a66117c783bd44d1911f446ce0d383);
             
         
 
-        marker_7a883b21ce8005013a0bd15e39b65362.bindPopup(popup_0cf6e7202948a213d2360b8f4fede649)
+        marker_7d0f4ce2755d8b4754f7c28f26e2da35.bindPopup(popup_7591d5ea870ca1c491aa68d69f3fb16b)
         ;
 
         
     
     
-            marker_7a883b21ce8005013a0bd15e39b65362.bindTooltip(
+            marker_7d0f4ce2755d8b4754f7c28f26e2da35.bindTooltip(
                 `<div>
                      23. Goa Pindul
                  </div>`,
@@ -1244,45 +1273,45 @@
             );
         
     
-                marker_7a883b21ce8005013a0bd15e39b65362.setIcon(icon_0cd1986c671a53893de9bfdb691359a3);
+                marker_7d0f4ce2755d8b4754f7c28f26e2da35.setIcon(icon_2f3df47101769d2b5024b97a9b759792);
             
     
-            var marker_77c8f7518090a4fdb98844cd81054e3f = L.marker(
+            var marker_1bee862ebc58c1567c442533114ee701 = L.marker(
                 [-8.15, 110.6133],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_c554e5f646cc4f6a1d3dca96a68f76c4 = L.AwesomeMarkers.icon(
+            var icon_af8a9934440f631df57609a18d32c1bc = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "lightblue",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#87CEEB",
+  "icon": "umbrella-beach",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_26474e224dfba6a43eea75e76688ce6b = L.popup({
-  "maxWidth": 250,
+        var popup_cc5b92a765e197f092519c7bc5886d62 = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_0c79db95f4485d02542d446198d56098 = $(`<div id="html_0c79db95f4485d02542d446198d56098" style="width: 100.0%; height: 100.0%;"><b>24. Pantai Indrayanti</b><br>Category: Beach<br>Lat: -8.1500, Lon: 110.6133</div>`)[0];
-                popup_26474e224dfba6a43eea75e76688ce6b.setContent(html_0c79db95f4485d02542d446198d56098);
+                var html_59ac6694df4c8bdf6aeddfbe12bcd92d = $(`<div id="html_59ac6694df4c8bdf6aeddfbe12bcd92d" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">24</span><b style="font-size:13px;">Pantai Indrayanti</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Beach</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -8.1500, 110.6133</div></div></div>`)[0];
+                popup_cc5b92a765e197f092519c7bc5886d62.setContent(html_59ac6694df4c8bdf6aeddfbe12bcd92d);
             
         
 
-        marker_77c8f7518090a4fdb98844cd81054e3f.bindPopup(popup_26474e224dfba6a43eea75e76688ce6b)
+        marker_1bee862ebc58c1567c442533114ee701.bindPopup(popup_cc5b92a765e197f092519c7bc5886d62)
         ;
 
         
     
     
-            marker_77c8f7518090a4fdb98844cd81054e3f.bindTooltip(
+            marker_1bee862ebc58c1567c442533114ee701.bindTooltip(
                 `<div>
                      24. Pantai Indrayanti
                  </div>`,
@@ -1292,45 +1321,45 @@
             );
         
     
-                marker_77c8f7518090a4fdb98844cd81054e3f.setIcon(icon_c554e5f646cc4f6a1d3dca96a68f76c4);
+                marker_1bee862ebc58c1567c442533114ee701.setIcon(icon_af8a9934440f631df57609a18d32c1bc);
             
     
-            var marker_7a429c3dfb20c9026f308d1b3d1130e7 = L.marker(
+            var marker_997817cc1f24ef6c7361fe8a59f7c5b2 = L.marker(
                 [-7.855, 110.454],
                 {
 }
-            ).addTo(map_033335d05290211343a4dca356f62e8e);
+            ).addTo(map_7d4c7eeb52c7ed86c017df2f36bff1a9);
         
     
-            var icon_3b03b0217d9911450975e2903f28c345 = L.AwesomeMarkers.icon(
+            var icon_220af0cb612ce3b5004f436d77de7d97 = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "lightgreen",
-  "iconColor": "white",
-  "icon": "star",
+  "markerColor": "white",
+  "iconColor": "#90EE90",
+  "icon": "binoculars",
   "prefix": "fa",
   "extraClasses": "fa-rotate-0",
 }
             );
         
     
-        var popup_9d77d9aef260efa915a91a2c61ef1967 = L.popup({
-  "maxWidth": 250,
+        var popup_22fe98b29511406c1745f80e00e1058a = L.popup({
+  "maxWidth": 280,
 });
 
         
             
-                var html_2c9285dd98ce9252cdf2a0a288938221 = $(`<div id="html_2c9285dd98ce9252cdf2a0a288938221" style="width: 100.0%; height: 100.0%;"><b>25. HeHa Sky View</b><br>Category: Viewpoint<br>Lat: -7.8550, Lon: 110.4540</div>`)[0];
-                popup_9d77d9aef260efa915a91a2c61ef1967.setContent(html_2c9285dd98ce9252cdf2a0a288938221);
+                var html_145f68c77155c4ab103c9ea7bfb34f09 = $(`<div id="html_145f68c77155c4ab103c9ea7bfb34f09" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial,sans-serif;min-width:200px;"><div style="display:flex;align-items:center;margin-bottom:6px;"><span style="background:#1F77B4;color:white;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;margin-right:8px;">25</span><b style="font-size:13px;">HeHa Sky View</b></div><div style="color:#666;font-size:11px;margin-bottom:4px;"><i class="fa fa-tag"></i> Viewpoint</div><div style="color:#888;font-size:10px;"><i class="fa fa-map-pin"></i> -7.8550, 110.4540</div></div></div>`)[0];
+                popup_22fe98b29511406c1745f80e00e1058a.setContent(html_145f68c77155c4ab103c9ea7bfb34f09);
             
         
 
-        marker_7a429c3dfb20c9026f308d1b3d1130e7.bindPopup(popup_9d77d9aef260efa915a91a2c61ef1967)
+        marker_997817cc1f24ef6c7361fe8a59f7c5b2.bindPopup(popup_22fe98b29511406c1745f80e00e1058a)
         ;
 
         
     
     
-            marker_7a429c3dfb20c9026f308d1b3d1130e7.bindTooltip(
+            marker_997817cc1f24ef6c7361fe8a59f7c5b2.bindTooltip(
                 `<div>
                      25. HeHa Sky View
                  </div>`,
@@ -1340,7 +1369,13 @@
             );
         
     
-                marker_7a429c3dfb20c9026f308d1b3d1130e7.setIcon(icon_3b03b0217d9911450975e2903f28c345);
+                marker_997817cc1f24ef6c7361fe8a59f7c5b2.setIcon(icon_220af0cb612ce3b5004f436d77de7d97);
             
+    
+            map_7d4c7eeb52c7ed86c017df2f36bff1a9.fitBounds(
+                [[-8.15, 110.2038], [-7.6041, 110.65]],
+                {"padding": [20, 20]}
+            );
+        
 </script>
 </html>

@@ -130,7 +130,7 @@ ID & Name & Lat. & Long. & ID & Name & Lat. & Long. \\
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{fig1_attraction_map.png}
+\includegraphics[width=0.95\textwidth]{fig1_attraction_map.png}
 \caption{Spatial distribution of 25 tourist attractions in Yogyakarta Special Region.}
 \label{fig:attraction_map}
 \end{figure*}
@@ -197,7 +197,7 @@ Solution consistency is assessed by the Coefficient of Variation (CV), defined a
 
 \subsection{Algorithm Performance}
 
-Table~\ref{tab:performance} summarises the results of all 30 independent runs for each algorithm. As the table shows, SA and MMAS both discovered the same best-known tour of \SI{283.76}{km}, but SA was far more consistent: its mean distance was only \SI{0.06}{km} above the best, with a standard deviation of \SI{0.08}{km}. The RPD and CV columns in Table~\ref{tab:performance} quantify this gap: SA's RPD from the optimum was just 0.02\% with a CV of 0.03\%, while GA's RPD reached 6.47\% with a CV of 2.25\%. The trade-off between quality and speed is also visible in the table: although ACS tours averaged about \SI{1.7}{km} longer than SA's, ACS completed each run 10.7 times faster (\SI{0.327}{s} versus \SI{3.496}{s}). GA was the weakest performer overall; its mean tour length exceeded even the deterministic NN baseline, suggesting that basic OX crossover alone is insufficient for this problem size.
+Table~\ref{tab:performance} summarises all 30 independent runs per algorithm. SA and MMAS both discovered the same best-known tour of \SI{283.76}{km}, but SA was far more consistent, with a mean only \SI{0.06}{km} above the best and a standard deviation of just \SI{0.08}{km}. SA's RPD of 0.02\% and CV of 0.03\% stand in sharp contrast to GA's 6.47\% RPD and 2.25\% CV, reflecting the difference between a tightly focused local search and a population-based method that struggles with permutation structure. ACS offers a practical middle ground: its tours averaged about \SI{1.7}{km} longer than SA's, but it ran 10.7 times faster (\SI{0.327}{s} versus \SI{3.496}{s}). GA performed worst overall, with a mean tour length that exceeded even the deterministic NN baseline, confirming that basic OX crossover alone cannot solve this 25-node problem effectively.
 
 \begin{table*}[!htbp]
 \centering
@@ -224,16 +224,16 @@ NN   & {297.10} & {297.10} & {297.10} & {0.00} & {4.70} & {0.00} & {0.001} \\
 \end{tabular}
 \end{table*}
 
-Fig.~\ref{fig:boxplot} illustrates the run-level distributions for each algorithm. As the box plots and violin overlays show, SA found the global optimum in 19 of its 30 runs; the remaining runs converged to one of three near-optimal tours, all within \SI{0.21}{km} of the best. This tight clustering in Fig.~\ref{fig:boxplot} confirms that SA's 2-opt neighbourhood search consistently funnels solutions toward a small set of structurally similar tours. MMAS reached the optimum only once, but 19 of its 30 runs fell within 0.06\% of the best-known distance. The violin panel of Fig.~\ref{fig:boxplot} reveals a bimodal distribution for ACS: roughly half the runs converged to its best tour, while the other half settled on longer routes. This split arises from the high exploitation probability (0.9), which can lock the colony onto established pheromone trails before sufficient exploration has occurred. GA produced the widest spread, with a \SI{26.7}{km} gap between its best and worst runs, and no concentration around any particular tour structure.
+The run-level distributions in Fig.~\ref{fig:boxplot} reveal how each algorithm explores the solution space. SA found the global optimum in 19 of 30 runs; the remaining 11 settled on one of three near-optimal tours within \SI{0.21}{km} of the best, showing that the 2-opt neighbourhood funnels solutions toward a small family of structurally similar tours. MMAS hit the optimum only once, but 19 runs still fell within 0.06\% of it, forming a tight cluster. ACS shows a distinct bimodal pattern: about half the runs reached its best tour, while the other half got trapped on longer routes because the high exploitation probability (0.9) can lock the colony onto early pheromone trails. GA produced the widest spread (\SI{26.7}{km} between best and worst), with no concentration around any single tour structure.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{fig4_boxplot.png}
+\includegraphics[width=0.95\textwidth]{fig4_boxplot.png}
 \caption{Distribution of best distances across 30 runs. Box plots show median, interquartile range, and outliers; violin overlays show kernel density.}
 \label{fig:boxplot}
 \end{figure*}
 
-To verify whether the observed differences are statistically meaningful, Table~\ref{tab:wilcoxon} reports the Wilcoxon signed-rank test results for all six pairwise comparisons. As Table~\ref{tab:wilcoxon} shows, every pair is statistically significant ($p < 0.05$), establishing the ranking SA $>$ MMAS $>$ ACS $>$ GA. Even the closest pair, MMAS versus ACS, yielded $p = 0.011$, while the remaining five comparisons all returned $p < 0.0001$. For every pair involving GA, all 30 matched observations favoured the competing algorithm ($W = 0$).
+Table~\ref{tab:wilcoxon} reports the Wilcoxon signed-rank test results for all six pairwise comparisons. Every pair is statistically significant ($p < 0.05$), establishing the ranking SA $>$ MMAS $>$ ACS $>$ GA. Even the closest pair, MMAS versus ACS, yielded $p = 0.011$, while the remaining five returned $p < 0.0001$. For every pair involving GA, all 30 matched observations favoured the competing algorithm ($W = 0$).
 
 \begin{table*}[!htbp]
 \centering
@@ -253,28 +253,28 @@ MMAS vs SA  & 31.0 & $< 0.0001$ & GA vs SA   & 0.0 & $< 0.0001$ \\
 
 \subsection{Convergence Behaviour}
 
-Fig.~\ref{fig:convergence} plots the mean best-so-far distance over 500 iterations, averaged across the 30 runs. The four algorithms display markedly different convergence profiles, as the figure shows.
+Fig.~\ref{fig:convergence} plots the mean best-so-far distance over 500 iterations, averaged across 30 runs. The four algorithms converge at very different rates.
 
-The SA curve in Fig.~\ref{fig:convergence} begins with the poorest initial solutions due to its random permutation start, but it descends the fastest and reaches its final value by roughly iteration~223, less than half the allocated budget. The 2-opt neighbourhood generates large improving moves early in the cooling schedule, while the Metropolis acceptance criterion (Eq.~\ref{eq:sa_accept}) preserves enough randomness to escape local optima before the temperature drops.
+SA starts with the poorest initial solutions (random permutations), but descends the fastest and reaches its final value by roughly iteration~223---less than half the allocated budget. The 2-opt neighbourhood produces large improving moves early on, and the Metropolis criterion (Eq.~\ref{eq:sa_accept}) keeps enough randomness to escape local optima before the temperature drops too low.
 
-As Fig.~\ref{fig:convergence} further illustrates, MMAS follows a steadier trajectory. The bounded pheromone trail mechanism prevents premature convergence, allowing the colony to continue improving until around iteration~357 before the trails fully consolidate. Compared to SA, this colony-based search was slower to refine the final solution, but the bounded trails ensured that no run stagnated early.
+MMAS follows a steadier trajectory. Its bounded pheromone trails prevent premature convergence, so the colony keeps improving until around iteration~357. The trade-off is slower final refinement compared to SA, but no run stagnated early.
 
-The ACS curve shows the fastest initial descent among the ACO variants, cutting over \SI{15}{km} from its starting tour in the first 50 iterations. However, it plateaus around iteration~178, much sooner than MMAS, with little subsequent improvement. The high exploitation probability (0.9) drives aggressive early exploitation but leaves insufficient diversity for later refinement.
+ACS shows the fastest initial descent among the ACO variants, cutting over \SI{15}{km} in the first 50 iterations. It then plateaus around iteration~178, much sooner than MMAS. The high exploitation probability (0.9) drives aggressive early search but leaves too little diversity for later refinement.
 
-GA converged the most slowly, as the rightmost portion of Fig.~\ref{fig:convergence} confirms. Its initial solutions were substantially longer than those of the other algorithms because it uses purely random permutations without a nearest-neighbour seed. More importantly, GA was still improving at the final generation (iteration~500), suggesting that the allocated budget was insufficient and that hybridisation with local search operators could narrow the quality gap.
+GA converged the most slowly. Its initial solutions were substantially longer because it starts from purely random permutations without a nearest-neighbour seed. GA was still improving at iteration~500, suggesting the budget was insufficient and that hybridisation with local search operators could narrow the gap.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{fig3_convergence.png}
+\includegraphics[width=0.95\textwidth]{fig3_convergence.png}
 \caption{Convergence curves showing mean best-so-far distance over iterations (averaged across 30 runs). SA converges fastest to the lowest value; GA is still improving at iteration~500.}
 \label{fig:convergence}
 \end{figure*}
 
 \subsection{Optimised Routes}
 
-Fig.~\ref{fig:routes} compares the best routes obtained by each algorithm, plotted over the road network of Yogyakarta. As Fig.~\ref{fig:routes}a and \ref{fig:routes}b show, the optimal tour (\SI{283.76}{km}, found by both SA and MMAS) traces a geographically efficient loop that avoids crossing legs. Starting from the urban core (Kraton, Taman Sari, Alun-Alun Kidul), the route heads southeast through Purawisata and Gembira Loka Zoo to Kotagede, then swings south to the coastal zone (Parangtritis, Pantai Indrayanti, Goa Pindul). From the coast, it climbs northeast through the forested hills (Hutan Pinus Mangunan, HeHa Sky View) to the eastern temple complex (Ratu Boko, Tebing Breksi, Prambanan), continues north to Museum Ullen Sentalu in the highland, crosses west to Candi Borobudur, and returns through northern Yogyakarta (Monumen Jogja Kembali, Museum Affandi, Tugu, Malioboro) before closing the loop. This geographic clustering naturally minimises backtracking across the region's distinct tourism zones.
+Fig.~\ref{fig:routes} compares the best routes found by each algorithm. The optimal tour (\SI{283.76}{km}, found by both SA and MMAS) traces a loop that avoids crossing legs. Starting from the urban core (Kraton, Taman Sari, Alun-Alun Kidul), the route heads southeast through Purawisata and Gembira Loka Zoo to Kotagede, then swings south to the coast (Parangtritis, Indrayanti, Goa Pindul). From there it climbs northeast through the hills (Hutan Pinus Mangunan, HeHa Sky View) to the eastern temples (Ratu Boko, Tebing Breksi, Prambanan), north to Ullen Sentalu, west to Borobudur, and back through northern Yogyakarta (Monumen Jogja Kembali, Museum Affandi, Tugu, Malioboro) to close the loop. This geographic clustering minimises backtracking across the region's distinct tourism zones.
 
-The ACS route in Fig.~\ref{fig:routes}c followed a nearly identical sequence, differing by only one swap in the urban core segment and adding less than \SI{0.2}{km} to the total distance. Fig.~\ref{fig:routes}d reveals that GA's best tour contained visible detours where the route jumped between non-adjacent zones instead of completing one geographic cluster before moving to the next, a typical weakness of OX crossover, which preserves relative ordering but does not directly optimise edge connections.
+The ACS route (Fig.~\ref{fig:routes}c) followed a nearly identical sequence, differing by only one swap in the urban core and adding less than \SI{0.2}{km}. GA's best tour (Fig.~\ref{fig:routes}d) contained visible detours where the route jumped between non-adjacent zones instead of completing one cluster before moving to the next---a typical weakness of OX crossover, which preserves relative ordering but does not directly optimise edge connections.
 
 \begin{figure*}[!htbp]
 \centering
@@ -305,61 +305,61 @@ The ACS route in Fig.~\ref{fig:routes}c followed a nearly identical sequence, di
 
 \subsection{Parameter Sensitivity}
 
-To assess how sensitive MMAS is to its control parameters, 27 configurations were evaluated (10 runs each) over a factorial grid of pheromone weight, heuristic weight, and evaporation rate. Fig.~\ref{fig:sensitivity} presents the resulting heatmaps, where each cell corresponds to the mean distance for a given combination. The colour gradient in Fig.~\ref{fig:sensitivity} indicates that the best configuration (pheromone weight 2.0, heuristic weight 2, evaporation rate 0.02) achieved a mean distance of \SI{283.82}{km}, matching SA's performance reported in Table~\ref{tab:performance}, while the worst configuration yielded \SI{290.22}{km}, a \SI{6.4}{km} gap from parameter choice alone.
+Fig.~\ref{fig:sensitivity} shows how MMAS performance varies across 27 configurations (10 runs each), combining three levels each of pheromone weight, heuristic weight, and evaporation rate. The best configuration (pheromone weight 2.0, heuristic weight 2, evaporation rate 0.02) achieved a mean distance of \SI{283.82}{km}---matching SA in Table~\ref{tab:performance}---while the worst reached \SI{290.22}{km}, a \SI{6.4}{km} gap from parameter choice alone.
 
-Comparing the three panels in Fig.~\ref{fig:sensitivity} reveals that the interaction between pheromone weight and evaporation rate was the dominant factor. When pheromone weight is high (right panel), low evaporation works best because the colony can steadily reinforce high-quality edges over many iterations. When pheromone weight is low (left panel), the trails carry less information and need to be refreshed more frequently; higher evaporation rates compensate by clearing outdated pheromone and encouraging re-exploration. Simply raising the evaporation rate from 0.02 to 0.10 at the lowest pheromone weight reduced the mean distance by \SI{2.3}{km}, as the left panel of Fig.~\ref{fig:sensitivity} shows.
+The interaction between pheromone weight and evaporation rate dominated. When pheromone weight is high, low evaporation works best because the colony can steadily reinforce good edges over many iterations. When pheromone weight is low, the trails carry less information and need faster refreshing; higher evaporation compensates by clearing outdated pheromone and encouraging re-exploration. At the lowest pheromone weight, raising the evaporation rate from 0.02 to 0.10 reduced the mean distance by \SI{2.3}{km}.
 
-By contrast, the heuristic weight had a comparatively minor influence. Moving vertically within any single panel of Fig.~\ref{fig:sensitivity} (i.e., changing the heuristic weight from 2 to 5) rarely shifted the mean distance by more than \SI{1}{km}. One exception occurred at moderate pheromone weight with high heuristic weight and mid-range evaporation, where all 10 runs converged to the identical tour with zero variance, indicating that a strong distance heuristic can force complete convergence at the expense of solution diversity.
+The heuristic weight had a smaller effect. Changing it from 2 to 5 within any panel rarely shifted the mean distance by more than \SI{1}{km}. One exception occurred at moderate pheromone weight with high heuristic weight and mid-range evaporation, where all 10 runs converged to the same tour with zero variance---a sign that a strong distance heuristic can force complete convergence at the cost of solution diversity.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{fig5_parameter_sensitivity.png}
+\includegraphics[width=0.95\textwidth]{fig5_parameter_sensitivity.png}
 \caption{MMAS parameter sensitivity heatmaps. Each cell shows the mean distance (km) over 10 runs for a given heuristic weight and evaporation rate combination at three levels of pheromone weight. The best configuration (pheromone weight 2.0, heuristic weight 2, evaporation rate 0.02) matches SA's mean of \SI{283.82}{km}.}
 \label{fig:sensitivity}
 \end{figure*}
 
 \subsection{Scalability}
 
-Fig.~\ref{fig:scalability} reports the mean distance and computation time for subsets of 10, 12, 15, and 20 attractions (10 runs each), alongside the full 25-attraction results from Table~\ref{tab:performance}. The top panel of Fig.~\ref{fig:scalability} shows that at small sizes (12 or fewer attractions), all four metaheuristics found the optimal tour in every run. GA also reached the optimum in its best runs but already showed non-zero variance at 12 attractions, foreshadowing its later difficulties.
+Fig.~\ref{fig:scalability} reports mean distance and computation time for subsets of 10, 12, 15, and 20 attractions (10 runs each), alongside the full 25-attraction results from Table~\ref{tab:performance}. At 12 or fewer attractions, all four metaheuristics found the optimal tour in every run, though GA already showed non-zero variance at 12 attractions.
 
-As the distance curves in Fig.~\ref{fig:scalability} illustrate, the algorithms began to separate at 15 attractions. While MMAS, ACS, and SA continued to find the optimum reliably, GA's mean rose to 3.1\% above the best-known solution, and the NN baseline diverged even further. At 20 attractions, SA still produced near-perfect results, MMAS and ACS remained within 0.2\% of the optimum, but GA's gap grew to 5.2\%. This widening continued at the full 25-attraction problem (see Table~\ref{tab:performance}), where GA trailed by 6.5\%.
+The algorithms separated at 15 attractions. MMAS, ACS, and SA still found the optimum reliably, but GA's mean rose to 3.1\% above the best-known solution. At 20 attractions, SA still produced near-perfect results, MMAS and ACS stayed within 0.2\%, but GA's gap grew to 5.2\%. This widening continued at 25 attractions, where GA trailed by 6.5\% (Table~\ref{tab:performance}).
 
-The bottom panel of Fig.~\ref{fig:scalability} shows the corresponding runtime behaviour. MMAS and ACS exhibited approximately quadratic growth with problem size, consistent with their pheromone update mechanism. GA scaled roughly linearly. SA's runtime stayed nearly constant at about \SI{3.5}{s} regardless of problem size, since its computation is governed by the cooling schedule rather than the number of cities.
+The bottom panel of Fig.~\ref{fig:scalability} shows runtime. MMAS and ACS grew roughly quadratically with problem size, consistent with their pheromone update mechanism. GA scaled linearly. SA's runtime stayed nearly constant at about \SI{3.5}{s} regardless of problem size, since the cooling schedule---not the number of cities---governs its computation.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{fig8_scalability.png}
+\includegraphics[width=0.95\textwidth]{fig8_scalability.png}
 \caption{Scalability analysis for 10, 12, 15, 20, and 25 attractions. Top: mean distance; bottom: mean computation time. GA diverges from the other algorithms as problem size increases; SA runtime remains constant.}
 \label{fig:scalability}
 \end{figure*}
 
 \subsection{Euclidean Versus Road Distance}
 
-A central motivation for this study is that Euclidean distances are an imperfect proxy for actual travel. To quantify this, we computed the detour ratio for each attraction pair:
+Euclidean distances are an imperfect proxy for actual travel. To quantify the gap, we computed the detour ratio for each attraction pair:
 \begin{equation}
   r_{ij} = \frac{d_{\mathrm{road}}(i,j)}{d_{\mathrm{euclid}}(i,j)}
   \label{eq:detour_ratio}
 \end{equation}
 where a ratio of 1 would mean a perfectly straight road.
 
-Fig.~\ref{fig:euclidean_road} visualises the comparison across all 300 attraction pairs. The scatter plot on the left side of Fig.~\ref{fig:euclidean_road} shows a strong linear correlation (R-squared of 0.97) between Euclidean and road distances, but with a consistent positive bias: road distances were on average 18\% longer, with a mean ratio of 1.18 and a standard deviation of 0.12. The histogram on the right side of Fig.~\ref{fig:euclidean_road} shows the distribution of detour ratios. The ratio was lowest (around 1.05) for pairs connected by direct highway segments, such as the Yogyakarta--Prambanan corridor, and highest (up to 1.72) for pairs separated by rivers, mountain slopes, or dense urban fabric. Although the overall correlation is high, the consistent positive bias means that the errors compound across a multi-stop tour. For the 25-attraction problem in Table~\ref{tab:attractions}, relying on Euclidean distances would underestimate the total tour length by roughly \SI{40}{--}\SI{50}{km}, enough to render a planned day trip infeasible in practice.
+Fig.~\ref{fig:euclidean_road} compares the two distance measures across all 300 attraction pairs. The scatter plot shows a strong linear correlation (R-squared = 0.97), but with a consistent positive bias: road distances averaged 18\% longer (mean ratio 1.18, standard deviation 0.12). The ratio was lowest (around 1.05) for pairs connected by direct highway segments, such as the Yogyakarta--Prambanan corridor, and highest (up to 1.72) for pairs separated by rivers, mountain slopes, or dense urban fabric. Because the bias is consistent, the errors compound across a multi-stop tour. For the 25-attraction problem, relying on Euclidean distances would underestimate total tour length by roughly \SI{40}{--}\SI{50}{km}---enough to make a planned day trip infeasible.
 
 \begin{figure*}[!htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{fig7_euclidean_vs_road.png}
+\includegraphics[width=0.95\textwidth]{fig7_euclidean_vs_road.png}
 \caption{Euclidean versus road distance comparison. Left: scatter plot with linear regression (R-squared = 0.97); right: histogram of detour ratios (mean 1.18, range 1.05--1.72).}
 \label{fig:euclidean_road}
 \end{figure*}
 
 \subsection{Discussion}
 
-\textbf{Algorithm selection trade-offs.} The results in Table~\ref{tab:performance} and the convergence profiles in Fig.~\ref{fig:convergence} together inform algorithm selection for different application contexts. SA with 2-opt is the strongest option when a few seconds of computation time is acceptable, as in offline trip planning tools or pre-computed itinerary brochures. ACS is better suited to interactive applications, such as a mobile app that recalculates routes in real time, because it runs an order of magnitude faster (Table~\ref{tab:performance}, Time column) while producing tours that are only marginally longer. MMAS is a middle option: more reliable than ACS (Table~\ref{tab:wilcoxon}, p = 0.011), but slower. GA with basic OX crossover is not competitive at this problem size, as Fig.~\ref{fig:scalability} confirmed across multiple problem sizes, though hybridising it with local search operators \cite{ruan2024} or edge-assembly crossover \cite{deng2021} would likely improve its performance.
+\textbf{Algorithm selection trade-offs.} SA with 2-opt is the best choice when a few seconds of computation is acceptable, such as offline trip planning tools or pre-computed itinerary brochures. ACS suits interactive applications better---a mobile app recalculating routes in real time---because it runs an order of magnitude faster while producing tours only marginally longer (Table~\ref{tab:performance}). MMAS falls between the two: more reliable than ACS ($p = 0.011$, Table~\ref{tab:wilcoxon}), but slower. GA with basic OX crossover is not competitive at this problem size (Fig.~\ref{fig:scalability}), though hybridising it with local search \cite{ruan2024} or edge-assembly crossover \cite{deng2021} would likely help.
 
 \textbf{Practical implications.} The optimal \SI{283.76}{km} tour reported in Table~\ref{tab:performance} translates to roughly 7 hours of driving at Yogyakarta's typical mixed-road speed of \SI{40}{km/h}. Combined with 30--60 minutes spent at each attraction, visiting all 25 sites listed in Table~\ref{tab:attractions} would span 3--4 days. The geographic clustering visible in the optimal route (Fig.~\ref{fig:routes}a) suggests a natural breakdown into daily itineraries: (1)~the urban core (Kraton, Malioboro, Taman Sari, and surrounding sites), (2)~the eastern temple complex (Prambanan, Ratu Boko, Tebing Breksi) combined with the northern highland (Ullen Sentalu), (3)~the southern coast (Parangtritis, Indrayanti, Goa Pindul, Hutan Pinus), and (4)~a western excursion to Borobudur. Tour operators could use these clusters as ready-made day-trip modules.
 
-\textbf{Comparison with related work.} The 18\% average road-to-Euclidean deviation shown in Fig.~\ref{fig:euclidean_road} is consistent with findings by Boyaci et al. \cite{boyaci2021} for European vehicle routing and by Tatit et al. \cite{tatit2024} for spatial query accuracy, confirming that the bias is not unique to Yogyakarta. Unlike Sun et al. \cite{sun2022} and Nasution et al. \cite{nasution2024}, who used simplified distance metrics, the present study shows that real road distances can alter both absolute tour lengths and the relative ranking of near-optimal solutions. The parameter sensitivity results in Fig.~\ref{fig:sensitivity} are also consistent with the general tuning guidance of Kaushik and Nadeem \cite{kaushik2024}, who stressed that ACO parameters interact and should not be tuned in isolation.
+\textbf{Comparison with related work.} The 18\% road-to-Euclidean deviation matches findings by Boyaci et al. \cite{boyaci2021} for European vehicle routing and Tatit et al. \cite{tatit2024} for spatial query accuracy, indicating that this bias is not specific to Yogyakarta. Unlike Sun et al. \cite{sun2022} and Nasution et al. \cite{nasution2024}, who used simplified distance metrics, our results show that real road distances alter both absolute tour lengths and the relative ranking of near-optimal solutions. The parameter sensitivity results also align with the tuning guidance of Kaushik and Nadeem \cite{kaushik2024}, who noted that ACO parameters interact and should not be tuned in isolation.
 
-\textbf{Limitations.} This study optimises total distance only. In practice, travellers also care about travel time, entrance fees, opening hours, and personal preferences; multi-objective formulations \cite{ruizmeza2022,sun2022} would capture these factors more faithfully. The road distances used here are static and do not reflect traffic congestion or time-of-day variations. The analysis is limited to a single destination with 25 attractions; testing on larger instances or other Indonesian cities would strengthen the generalisability of the findings. Finally, orienteering formulations with time windows \cite{sylejmani2024,fathurrohman2025} and state-of-the-art exact or near-exact solvers such as LKH \cite{zheng2023} were not included in the comparison and represent natural extensions.
+\textbf{Limitations.} This study optimises total distance only. Travellers also care about travel time, entrance fees, opening hours, and personal preferences; multi-objective formulations \cite{ruizmeza2022,sun2022} would address these. The road distances are static and do not account for traffic congestion or time-of-day variations. The analysis covers a single destination with 25 attractions; testing on larger instances or other Indonesian cities would test generalisability. Orienteering formulations with time windows \cite{sylejmani2024,fathurrohman2025} and near-exact solvers such as LKH \cite{zheng2023} were not included and are natural extensions.
 
 
 %% ============================================================
@@ -371,7 +371,7 @@ This study compared four metaheuristic algorithms---MMAS, ACS, GA, and SA---for 
 
 Parameter sensitivity analysis revealed that MMAS performance varies by up to \SI{6.4}{km} depending on parameter settings, with a strong interaction between the pheromone weight and evaporation rate. Scalability tests showed that GA's quality gap widens with problem size, while the other three algorithms remain robust up to 25 attractions.
 
-Future work should extend this framework to multi-objective formulations that account for travel time, visitor preferences, and time-window constraints, and should incorporate dynamic traffic conditions. Validating the approach on other Indonesian tourism destinations would further establish its practical utility.
+Future work should extend this framework to multi-objective formulations that include travel time, visitor preferences, and time-window constraints, and should incorporate dynamic traffic data. Testing the approach on other Indonesian tourism destinations would help assess generalisability.
 
 
 %% ============================================================

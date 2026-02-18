@@ -128,7 +128,7 @@ def fig1_attraction_map(pois_df):
     center_lon = pois_df["longitude"].mean()
 
     # CartoDB Positron — cleaner base tile
-    m = folium.Map(location=[center_lat, center_lon], zoom_start=11,
+    m = folium.Map(location=[center_lat, center_lon], zoom_start=12,
                    tiles="CartoDB Positron")
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/"
@@ -163,6 +163,11 @@ def fig1_attraction_map(pois_df):
             icon=folium.Icon(color="white", icon_color=icon_color,
                              icon=icon_name, prefix="fa"),
         ).add_to(m)
+
+    # Auto-zoom to fit all markers tightly
+    bounds = [[pois_df["latitude"].min(), pois_df["longitude"].min()],
+              [pois_df["latitude"].max(), pois_df["longitude"].max()]]
+    m.fit_bounds(bounds, padding=(20, 20))
 
     # Title bar with subtitle
     title_html = """
@@ -238,13 +243,13 @@ def _fig1_static(pois_df):
         if len(sub) == 0:
             continue
         ax.scatter(sub["longitude"], sub["latitude"],
-                   c=style["c"], marker=style["marker"], s=90,
+                   c=style["c"], marker=style["marker"], s=120,
                    zorder=5, edgecolors="black", linewidths=0.6, label=grp,
                    path_effects=[pe.withStroke(linewidth=2, foreground="white")])
 
     for _, row in pois_df.iterrows():
         ax.annotate(f" {row['id']}", (row["longitude"], row["latitude"]),
-                    fontsize=7, fontweight="bold", xytext=(4, 4),
+                    fontsize=8, fontweight="bold", xytext=(4, 4),
                     textcoords="offset points",
                     bbox=dict(boxstyle="round,pad=0.15", fc="white", alpha=0.8, lw=0.3),
                     path_effects=[pe.withStroke(linewidth=1.5, foreground="white")])
@@ -258,6 +263,12 @@ def _fig1_static(pois_df):
               handletextpad=0.3, columnspacing=0.8)
     ax.tick_params(axis="both", which="both", direction="in", top=True, right=True)
     ax.set_aspect("equal", adjustable="datalim")
+
+    # Tight axis padding: 0.02 degrees on each side
+    lon_min, lon_max = pois_df["longitude"].min(), pois_df["longitude"].max()
+    lat_min, lat_max = pois_df["latitude"].min(), pois_df["latitude"].max()
+    ax.set_xlim(lon_min - 0.02, lon_max + 0.02)
+    ax.set_ylim(lat_min - 0.02, lat_max + 0.02)
 
     # Scale bar (approximate 10 km at Yogyakarta latitude ~-7.8)
     xlim = ax.get_xlim()
@@ -297,7 +308,7 @@ def fig2_best_route_map(G, tour, pois_df, names, algorithm_name="MMAS",
     center_lon = pois_df["longitude"].mean()
 
     # CartoDB Positron base
-    m = folium.Map(location=[center_lat, center_lon], zoom_start=11,
+    m = folium.Map(location=[center_lat, center_lon], zoom_start=12,
                    tiles="CartoDB Positron")
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/"
@@ -355,6 +366,11 @@ def fig2_best_route_map(G, tour, pois_df, names, algorithm_name="MMAS",
             tooltip=f"Stop {step+1}: {row['name']}",
             icon=folium.DivIcon(html=icon_html, icon_size=(26, 26), icon_anchor=(13, 13)),
         ).add_to(m)
+
+    # Auto-zoom to fit all route points tightly
+    bounds = [[pois_df["latitude"].min(), pois_df["longitude"].min()],
+              [pois_df["latitude"].max(), pois_df["longitude"].max()]]
+    m.fit_bounds(bounds, padding=(20, 20))
 
     # Title with distance
     dist_text = f" \u2014 {total_distance/1000:.1f} km" if total_distance else ""
