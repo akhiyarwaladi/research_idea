@@ -1,4 +1,4 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[journal]{IEEEtran}
 
 %% --- Packages ---
 \usepackage[utf8]{inputenc}
@@ -12,7 +12,16 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{cite}
-\usepackage[caption=false]{subfig}
+\usepackage{balance}
+
+% Allow more floats per page
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.7}
+\setcounter{totalnumber}{8}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
 
 %% --- Figure path ---
 \graphicspath{{figures/}{../../results/figures/}}
@@ -45,7 +54,7 @@ tourism route optimization, Travelling Salesman Problem, Ant Colony Optimization
 \label{sec:introduction}
 %% ============================================================
 
-Yogyakarta Special Region (Daerah Istimewa Yogyakarta, DIY) receives more than 4.5 million visitors annually, offering attractions from the UNESCO-listed Borobudur and Prambanan temples to coastal and volcanic landscapes \cite{bps2023}. Visitors wanting to cover many sites in limited time face a route-planning problem that maps onto the Travelling Salesman Problem (TSP), which is NP-hard and grows factorially with the number of locations \cite{toaza2023,rajwar2023}.
+\IEEEPARstart{Y}{ogyakarta} Special Region (Daerah Istimewa Yogyakarta, DIY) receives more than 4.5 million visitors annually, offering attractions from the UNESCO-listed Borobudur and Prambanan temples to coastal and volcanic landscapes \cite{bps2023}. Visitors wanting to cover many sites in limited time face a route-planning problem that maps onto the Travelling Salesman Problem (TSP), which is NP-hard and grows factorially with the number of locations \cite{toaza2023,rajwar2023}.
 
 Metaheuristic algorithms provide approximate solutions within practical time budgets. Ant Colony Optimization (ACO) variants exploit pheromone-based reinforcement \cite{dorigo1996,stutzle2000}, Genetic Algorithms (GA) use selection, crossover, and mutation \cite{deng2021}, and Simulated Annealing (SA) escapes local optima through a cooling schedule \cite{kirkpatrick1983}. Their relative performance depends on problem size, distance metric, and parameter settings \cite{toaza2023,rajwar2023}.
 
@@ -88,51 +97,50 @@ where $d(i,j)$ is the shortest road distance between attractions $i$ and $j$.
 
 Twenty-five attractions in DIY were selected across six categories. Table~\ref{tab:attractions} lists each attraction with its geographic coordinates. The road network was downloaded via OSMnx \cite{boeing2025} using the query ``Daerah Istimewa Yogyakarta, Indonesia'' with \texttt{network\_type=drive}, yielding 153,334 nodes and 200,104 edges after undirected conversion. Each attraction was snapped to its nearest node, and the $25 \times 25$ distance matrix was computed using Dijkstra's algorithm. Fig.~\ref{fig:attraction_map} illustrates the spatial distribution of these 25 attractions across the study area; the spread from urban Yogyakarta city to remote coastal and highland sites is clearly visible in the map.
 
-\begin{table*}[!t]
+\begin{table}[!htbp]
 \centering
 \caption{Tourist attractions in Yogyakarta Special Region ($n = 25$).}
 \label{tab:attractions}
 \footnotesize
-\begin{tabular}{@{}clrr@{\hspace{12pt}}clrr@{}}
+\begin{tabular}{@{}clrr@{}}
 \toprule
-ID & Name & Lat. & Long. & ID & Name & Lat. & Long. \\
+ID & Name & Lat. & Long. \\
 \midrule
-1  & Kraton Yogyakarta          & $-7.805$ & $110.364$ &
+1  & Kraton Yogyakarta          & $-7.805$ & $110.364$ \\
+2  & Taman Sari Water Castle    & $-7.810$ & $110.359$ \\
+3  & Benteng Vredeburg Museum   & $-7.800$ & $110.366$ \\
+4  & Tugu Yogyakarta            & $-7.783$ & $110.367$ \\
+5  & Malioboro Street           & $-7.793$ & $110.366$ \\
+6  & Pasar Beringharjo          & $-7.798$ & $110.366$ \\
+7  & Museum Sonobudoyo          & $-7.802$ & $110.364$ \\
+8  & Alun-Alun Kidul            & $-7.812$ & $110.364$ \\
+9  & Alun-Alun Utara            & $-7.803$ & $110.364$ \\
+10 & Taman Pintar Science Park  & $-7.801$ & $110.367$ \\
+11 & Gembira Loka Zoo           & $-7.806$ & $110.395$ \\
+12 & Museum Affandi             & $-7.783$ & $110.397$ \\
+13 & Kotagede Heritage Area     & $-7.827$ & $110.398$ \\
 14 & Monumen Jogja Kembali      & $-7.750$ & $110.377$ \\
-2  & Taman Sari Water Castle    & $-7.810$ & $110.359$ &
 15 & Purawisata                 & $-7.801$ & $110.374$ \\
-3  & Benteng Vredeburg Museum   & $-7.800$ & $110.366$ &
 16 & Candi Prambanan            & $-7.752$ & $110.491$ \\
-4  & Tugu Yogyakarta            & $-7.783$ & $110.367$ &
 17 & Candi Ratu Boko            & $-7.770$ & $110.489$ \\
-5  & Malioboro Street           & $-7.793$ & $110.366$ &
 18 & Tebing Breksi              & $-7.762$ & $110.504$ \\
-6  & Pasar Beringharjo          & $-7.798$ & $110.366$ &
 19 & Museum Ullen Sentalu       & $-7.604$ & $110.426$ \\
-7  & Museum Sonobudoyo          & $-7.802$ & $110.364$ &
 20 & Candi Borobudur            & $-7.608$ & $110.204$ \\
-8  & Alun-Alun Kidul            & $-7.812$ & $110.364$ &
 21 & Pantai Parangtritis        & $-8.025$ & $110.326$ \\
-9  & Alun-Alun Utara            & $-7.803$ & $110.364$ &
 22 & Hutan Pinus Mangunan       & $-7.931$ & $110.431$ \\
-10 & Taman Pintar Science Park  & $-7.801$ & $110.367$ &
 23 & Goa Pindul                 & $-7.953$ & $110.650$ \\
-11 & Kebun Binatang Gembira Loka & $-7.806$ & $110.395$ &
 24 & Pantai Indrayanti          & $-8.150$ & $110.613$ \\
-12 & Museum Affandi             & $-7.783$ & $110.397$ &
 25 & HeHa Sky View              & $-7.855$ & $110.454$ \\
-13 & Kotagede Heritage Area     & $-7.827$ & $110.398$ &
-   &                            &          &           \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{fig1_attraction_map.png}
+\includegraphics[width=\columnwidth]{fig1_attraction_map.png}
 \caption{Spatial distribution of 25 tourist attractions in Yogyakarta Special Region.}
 \label{fig:attraction_map}
-\end{figure*}
+\end{figure}
 
 \subsection{Algorithm Implementations}
 
@@ -198,57 +206,54 @@ Solution consistency is assessed by the Coefficient of Variation (CV), defined a
 
 Table~\ref{tab:performance} summarises all 30 independent runs per algorithm. SA and MMAS both discovered the same best-known tour of \SI{283.76}{km}, but SA was far more consistent, with a mean only \SI{0.06}{km} above the best and a standard deviation of just \SI{0.08}{km}. SA's RPD of 0.02\% and CV of 0.03\% stand in sharp contrast to GA's 6.47\% RPD and 2.25\% CV, reflecting the difference between a tightly focused local search and a population-based method that struggles with permutation structure. ACS offers a practical middle ground: its tours averaged about \SI{1.7}{km} longer than SA's, but it ran 10.7 times faster (\SI{0.327}{s} versus \SI{3.496}{s}). GA performed worst overall, with a mean tour length that exceeded even the deterministic NN baseline, confirming that basic OX crossover alone cannot solve this 25-node problem effectively.
 
-\begin{table*}[!t]
+\begin{table}[!htbp]
 \centering
-\caption{Algorithm performance comparison over 30 independent runs. Best values in bold; NN is deterministic (single run). RPD is computed from the best-known distance $D^{*} = \SI{283.76}{km}$.}
+\caption{Algorithm performance over 30 runs. Best values in bold; NN is deterministic. RPD from $D^{*} = \SI{283.76}{km}$.}
 \label{tab:performance}
 \footnotesize
-\begin{tabular}{@{}l
-  S[table-format=3.2]
-  S[table-format=3.2]
-  S[table-format=3.2]
-  S[table-format=1.2]
-  S[table-format=1.2]
-  S[table-format=1.2]
-  S[table-format=1.3]@{}}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
-{Algorithm} & {Best (km)} & {Mean (km)} & {Worst (km)} & {Std (km)} & {RPD (\%)} & {CV (\%)} & {Time (s)} \\
+ & Best & Mean & Std & RPD & Time \\
+ & (km) & (km) & (km) & (\%) & (s) \\
 \midrule
-MMAS & 283.76 & 284.35 & 286.71 & 0.85 & 0.21 & 0.30 & 1.704 \\
-ACS  & 283.94 & 285.49 & 288.48 & 1.80 & 0.61 & 0.63 & \bfseries 0.327 \\
-GA   & 291.31 & 302.13 & 318.03 & 6.79 & 6.47 & 2.25 & 0.676 \\
-\textbf{SA} & \bfseries 283.76 & \bfseries 283.82 & \bfseries 283.97 & \bfseries 0.08 & \bfseries 0.02 & \bfseries 0.03 & 3.496 \\
-NN   & {297.10} & {297.10} & {297.10} & {0.00} & {4.70} & {0.00} & {0.001} \\
+MMAS & 283.76 & 284.35 & 0.85 & 0.21 & 1.704 \\
+ACS  & 283.94 & 285.49 & 1.80 & 0.61 & \textbf{0.327} \\
+GA   & 291.31 & 302.13 & 6.79 & 6.47 & 0.676 \\
+\textbf{SA} & \textbf{283.76} & \textbf{283.82} & \textbf{0.08} & \textbf{0.02} & 3.496 \\
+NN   & 297.10 & 297.10 & 0.00 & 4.70 & 0.001 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 The run-level distributions in Fig.~\ref{fig:boxplot} reveal how each algorithm explores the solution space. SA found the global optimum in 19 of 30 runs; the remaining 11 settled on one of three near-optimal tours within \SI{0.21}{km} of the best, showing that the 2-opt neighbourhood funnels solutions toward a small family of structurally similar tours. MMAS hit the optimum only once, but 19 runs still fell within 0.06\% of it, forming a tight cluster. ACS shows a distinct bimodal pattern: about half the runs reached its best tour, while the other half got trapped on longer routes because the high exploitation probability (0.9) can lock the colony onto early pheromone trails. GA produced the widest spread (\SI{26.7}{km} between best and worst), with no concentration around any single tour structure.
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{fig4_boxplot.png}
+\includegraphics[width=\columnwidth]{fig4_boxplot.png}
 \caption{Distribution of best distances across 30 runs. Box plots show median, interquartile range, and outliers; violin overlays show kernel density.}
 \label{fig:boxplot}
-\end{figure*}
+\end{figure}
 
 Table~\ref{tab:wilcoxon} reports the Wilcoxon signed-rank test results for all six pairwise comparisons. Every pair is statistically significant ($p < 0.05$), establishing the ranking SA $>$ MMAS $>$ ACS $>$ GA. Even the closest pair, MMAS versus ACS, yielded $p = 0.011$, while the remaining five returned $p < 0.0001$. For every pair involving GA, all 30 matched observations favoured the competing algorithm ($W = 0$).
 
-\begin{table*}[!t]
+\begin{table}[!htbp]
 \centering
-\caption{Wilcoxon signed-rank test results (significance level 0.05). All six pairwise comparisons are statistically significant.}
+\caption{Wilcoxon signed-rank test results (significance level 0.05). All six pairwise comparisons are significant.}
 \label{tab:wilcoxon}
 \footnotesize
-\begin{tabular}{@{}l S[table-format=2.1] l@{\hspace{30pt}}l S[table-format=2.1] l@{}}
+\begin{tabular}{@{}lrl@{}}
 \toprule
-{Pair} & {$W$} & {$p$-value} & {Pair} & {$W$} & {$p$-value} \\
+Pair & $W$ & $p$-value \\
 \midrule
-MMAS vs ACS & 68.0 & $0.011$     & ACS vs GA  & 0.0 & $< 0.0001$ \\
-MMAS vs GA  & 0.0  & $< 0.0001$ & ACS vs SA  & 9.0 & $< 0.0001$ \\
-MMAS vs SA  & 31.0 & $< 0.0001$ & GA vs SA   & 0.0 & $< 0.0001$ \\
+MMAS vs ACS & 68.0 & $0.011$ \\
+MMAS vs GA  & 0.0  & $< 0.0001$ \\
+MMAS vs SA  & 31.0 & $< 0.0001$ \\
+ACS vs GA   & 0.0  & $< 0.0001$ \\
+ACS vs SA   & 9.0  & $< 0.0001$ \\
+GA vs SA    & 0.0  & $< 0.0001$ \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Convergence Behaviour}
 
@@ -262,33 +267,25 @@ ACS shows the fastest initial descent among the ACO variants, cutting over \SI{1
 
 GA converged the most slowly. Its initial solutions were substantially longer because it starts from purely random permutations without a nearest-neighbour seed. GA was still improving at iteration~500, suggesting the budget was insufficient and that hybridisation with local search operators could narrow the gap.
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{fig3_convergence.png}
+\includegraphics[width=\columnwidth]{fig3_convergence.png}
 \caption{Convergence curves showing mean best-so-far distance over iterations (averaged across 30 runs). SA converges fastest to the lowest value; GA is still improving at iteration~500.}
 \label{fig:convergence}
-\end{figure*}
+\end{figure}
 
 \subsection{Optimised Routes}
 
 Fig.~\ref{fig:routes} compares the best routes found by each algorithm. The optimal tour (\SI{283.76}{km}, found by both SA and MMAS) traces a loop that avoids crossing legs. Starting from the urban core (Kraton, Taman Sari, Alun-Alun Kidul), the route heads southeast through Purawisata and Gembira Loka Zoo to Kotagede, then swings south to the coast (Parangtritis, Indrayanti, Goa Pindul). From there it climbs northeast through the hills (Hutan Pinus Mangunan, HeHa Sky View) to the eastern temples (Ratu Boko, Tebing Breksi, Prambanan), north to Ullen Sentalu, west to Borobudur, and back through northern Yogyakarta (Monumen Jogja Kembali, Museum Affandi, Tugu, Malioboro) to close the loop. This geographic clustering minimises backtracking across the region's distinct tourism zones.
 
-The ACS route (Fig.~\ref{fig:routes}c) followed a nearly identical sequence, differing by only one swap in the urban core and adding less than \SI{0.2}{km}. GA's best tour (Fig.~\ref{fig:routes}d) contained visible detours where the route jumped between non-adjacent zones instead of completing one cluster before moving to the next. This is a typical weakness of OX crossover, which preserves relative ordering but does not directly optimise edge connections.
+The ACS route followed a nearly identical sequence, differing by only one swap in the urban core and adding less than \SI{0.2}{km}. GA's best tour contained visible detours where the route jumped between non-adjacent zones instead of completing one cluster before moving to the next. This is a typical weakness of OX crossover, which preserves relative ordering but does not directly optimise edge connections.
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
 \centering
-\subfloat[SA: \SI{283.76}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_SA.png}}
-\hfill
-\subfloat[MMAS: \SI{283.76}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_MMAS.png}}
-
-\vspace{4pt}
-
-\subfloat[ACS: \SI{283.94}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_ACS.png}}
-\hfill
-\subfloat[GA: \SI{291.31}{km}]{\includegraphics[width=0.48\textwidth]{fig2_best_route_GA.png}}
-\caption{Best routes found by each algorithm on the road network. Green marker: start; red: end; blue: intermediate stops. SA and MMAS share the same optimal tour structure; GA shows visible detours between geographic clusters.}
+\includegraphics[width=\columnwidth]{fig6_route_comparison.png}
+\caption{Best routes found by each algorithm on the road network. SA and MMAS share the same optimal tour structure (\SI{283.76}{km}); ACS differs by one swap (\SI{283.94}{km}); GA shows visible detours (\SI{291.31}{km}).}
 \label{fig:routes}
-\end{figure*}
+\end{figure}
 
 \subsection{Parameter Sensitivity}
 
@@ -298,12 +295,12 @@ The interaction between pheromone weight and evaporation rate dominated. When ph
 
 The heuristic weight had a smaller effect. Changing it from 2 to 5 within any panel rarely shifted the mean distance by more than \SI{1}{km}. One exception occurred at moderate pheromone weight with high heuristic weight and mid-range evaporation, where all 10 runs converged to the same tour with zero variance, a sign that a strong distance heuristic can force complete convergence at the cost of solution diversity.
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{fig5_parameter_sensitivity.png}
-\caption{MMAS parameter sensitivity heatmaps. Each cell shows the mean distance (km) over 10 runs for a given heuristic weight and evaporation rate combination at three levels of pheromone weight. The best configuration (pheromone weight 2.0, heuristic weight 2, evaporation rate 0.02) matches SA's mean of \SI{283.82}{km}.}
+\includegraphics[width=\columnwidth]{fig5_parameter_sensitivity.png}
+\caption{MMAS parameter sensitivity heatmaps. Each cell shows the mean distance (km) over 10 runs. The best configuration (pheromone weight 2.0, heuristic weight 2, evaporation rate 0.02) matches SA's mean of \SI{283.82}{km}.}
 \label{fig:sensitivity}
-\end{figure*}
+\end{figure}
 
 \subsection{Scalability}
 
@@ -313,12 +310,12 @@ The algorithms separated at 15 attractions. MMAS, ACS, and SA still found the op
 
 The bottom panel of Fig.~\ref{fig:scalability} shows runtime. MMAS and ACS grew roughly quadratically with problem size, consistent with their pheromone update mechanism. GA scaled linearly. SA's runtime stayed nearly constant at about \SI{3.5}{s} regardless of problem size, since the cooling schedule, not the number of cities, governs its computation.
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{fig8_scalability.png}
-\caption{Scalability analysis for 10, 12, 15, 20, and 25 attractions. Top: mean distance; bottom: mean computation time. GA diverges from the other algorithms as problem size increases; SA runtime remains constant.}
+\includegraphics[width=\columnwidth]{fig8_scalability.png}
+\caption{Scalability analysis for 10, 12, 15, 20, and 25 attractions. Top: mean distance; bottom: mean computation time. GA diverges as problem size increases; SA runtime remains constant.}
 \label{fig:scalability}
-\end{figure*}
+\end{figure}
 
 \subsection{Euclidean Versus Road Distance}
 
@@ -331,18 +328,18 @@ where a ratio of 1 would mean a perfectly straight road.
 
 Fig.~\ref{fig:euclidean_road} compares the two distance measures across all 300 attraction pairs. The scatter plot shows a strong linear correlation (R-squared = 0.97), but with a consistent positive bias: road distances averaged 18\% longer (mean ratio 1.18, standard deviation 0.12). The ratio was lowest (around 1.05) for pairs connected by direct highway segments, such as the Yogyakarta--Prambanan corridor, and highest (up to 1.72) for pairs separated by rivers, mountain slopes, or dense urban fabric. Because the bias is consistent, the errors compound across a multi-stop tour. For the 25-attraction problem, relying on Euclidean distances would underestimate total tour length by roughly \SI{40}{--}\SI{50}{km}, enough to make a planned day trip infeasible.
 
-\begin{figure*}[!t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{fig7_euclidean_vs_road.png}
+\includegraphics[width=\columnwidth]{fig7_euclidean_vs_road.png}
 \caption{Euclidean versus road distance comparison. Left: scatter plot with linear regression (R-squared = 0.97); right: histogram of detour ratios (mean 1.18, range 1.05--1.72).}
 \label{fig:euclidean_road}
-\end{figure*}
+\end{figure}
 
 \subsection{Discussion}
 
 \textbf{Algorithm selection trade-offs.} SA with 2-opt is the best choice when a few seconds of computation is acceptable, such as offline trip planning tools or pre-computed itinerary brochures. ACS suits interactive applications better, for example a mobile app recalculating routes in real time, because it runs an order of magnitude faster while producing tours only marginally longer (Table~\ref{tab:performance}). MMAS falls between the two: more reliable than ACS ($p = 0.011$, Table~\ref{tab:wilcoxon}), but slower. GA with basic OX crossover is not competitive at this problem size (Fig.~\ref{fig:scalability}), though hybridising it with local search \cite{ruan2024} or edge-assembly crossover \cite{deng2021} would likely help.
 
-\textbf{Practical implications.} The optimal \SI{283.76}{km} tour reported in Table~\ref{tab:performance} translates to roughly 7 hours of driving at Yogyakarta's typical mixed-road speed of \SI{40}{km/h}. Combined with 30--60 minutes spent at each attraction, visiting all 25 sites listed in Table~\ref{tab:attractions} would span 3--4 days. The geographic clustering visible in the optimal route (Fig.~\ref{fig:routes}a) suggests a natural breakdown into daily itineraries: (1)~the urban core (Kraton, Malioboro, Taman Sari, and surrounding sites), (2)~the eastern temple complex (Prambanan, Ratu Boko, Tebing Breksi) combined with the northern highland (Ullen Sentalu), (3)~the southern coast (Parangtritis, Indrayanti, Goa Pindul, Hutan Pinus), and (4)~a western excursion to Borobudur. Tour operators could use these clusters as ready-made day-trip modules.
+\textbf{Practical implications.} The optimal \SI{283.76}{km} tour reported in Table~\ref{tab:performance} translates to roughly 7 hours of driving at Yogyakarta's typical mixed-road speed of \SI{40}{km/h}. Combined with 30--60 minutes spent at each attraction, visiting all 25 sites listed in Table~\ref{tab:attractions} would span 3--4 days. The geographic clustering visible in the optimal route (Fig.~\ref{fig:routes}) suggests a natural breakdown into daily itineraries: (1)~the urban core (Kraton, Malioboro, Taman Sari, and surrounding sites), (2)~the eastern temple complex (Prambanan, Ratu Boko, Tebing Breksi) combined with the northern highland (Ullen Sentalu), (3)~the southern coast (Parangtritis, Indrayanti, Goa Pindul, Hutan Pinus), and (4)~a western excursion to Borobudur. Tour operators could use these clusters as ready-made day-trip modules.
 
 \textbf{Comparison with related work.} The 18\% road-to-Euclidean deviation matches findings by Boyaci et al. \cite{boyaci2021} for European vehicle routing and Tatit et al. \cite{tatit2024} for spatial query accuracy, indicating that this bias is not specific to Yogyakarta. Unlike Sun et al. \cite{sun2022} and Nasution et al. \cite{nasution2024}, who used simplified distance metrics, our results show that real road distances alter both absolute tour lengths and the relative ranking of near-optimal solutions. The parameter sensitivity results also align with the tuning guidance of Kaushik and Nadeem \cite{kaushik2024}, who noted that ACO parameters interact and should not be tuned in isolation.
 
@@ -370,6 +367,7 @@ The authors declare no known competing financial interests or personal relations
 \section*{Data Availability}
 The source code, distance matrices, and experimental results are available at [repository URL].
 
+\balance
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 
