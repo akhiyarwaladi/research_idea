@@ -6,6 +6,7 @@ Designed for reproducible benchmarking.
 """
 
 import os
+import time
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -32,7 +33,7 @@ def run_single_algorithm(name, solve_func, dist_matrix, n_runs=30, base_seed=42,
     results = []
     all_convergence = []
 
-    for run in range(n_runs):
+    for run in tqdm(range(n_runs), desc=f"  {name}", ncols=70):
         seed = base_seed + run
         tour, dist, elapsed, convergence = solve_func(
             dist_matrix, seed=seed, **kwargs
@@ -67,21 +68,11 @@ def run_deterministic_algorithm(name, solve_func, dist_matrix, **kwargs):
 def run_full_experiment(dist_matrix, n_runs=30, max_iter=500, run_brute_force=False):
     """
     Run all algorithms and collect results.
-
-    Parameters
-    ----------
-    dist_matrix : 2D array
-        Distance matrix.
-    n_runs : int
-        Number of independent runs per stochastic algorithm.
-    max_iter : int
-        Max iterations for iterative algorithms.
-    run_brute_force : bool
-        Whether to run exact brute force (only if n <= 12).
     """
     n = len(dist_matrix)
     all_results = []
     convergence_data = {}
+    total_start = time.time()
 
     # --- MMAS ---
     print(f"\n{'='*60}")
@@ -161,6 +152,9 @@ def run_full_experiment(dist_matrix, n_runs=30, max_iter=500, run_brute_force=Fa
     elif run_brute_force:
         print(f"\n  Skipping Brute Force: n={n} > 12 (not feasible)")
 
+    total_elapsed = time.time() - total_start
+    print(f"\n  Total experiment time: {total_elapsed:.1f}s")
+
     # Save results
     _save_results(all_results, convergence_data)
     return all_results, convergence_data
@@ -212,13 +206,19 @@ def _save_results(all_results, convergence_data):
     # Save convergence data
     for algo_name, conv_list in convergence_data.items():
         if conv_list:
-            # Average convergence across runs
             max_len = max(len(c) for c in conv_list)
             padded = [c + [c[-1]] * (max_len - len(c)) for c in conv_list]
-            avg_conv = np.mean(padded, axis=0)
+            padded_arr = np.array(padded)
+            avg_conv = np.mean(padded_arr, axis=0)
+            min_conv = np.min(padded_arr, axis=0)
+            max_conv = np.max(padded_arr, axis=0)
+            std_conv = np.std(padded_arr, axis=0)
             df_conv = pd.DataFrame({
                 "iteration": range(1, len(avg_conv) + 1),
                 "avg_best_distance": avg_conv,
+                "min_best_distance": min_conv,
+                "max_best_distance": max_conv,
+                "std_best_distance": std_conv,
             })
             path = os.path.join(RESULTS_DIR, "tables", f"convergence_{algo_name}.csv")
             df_conv.to_csv(path, index=False)
@@ -237,12 +237,12 @@ def run_parameter_sensitivity(dist_matrix, n_runs=10, max_iter=500):
 
     results = []
     total = len(alphas) * len(betas) * len(rhos)
-    done = 0
 
     print(f"\n{'='*60}")
-    print(f"MMAS Parameter Sensitivity Analysis ({total} combinations)")
+    print(f"MMAS Parameter Sensitivity Analysis ({total} combinations, {n_runs} runs each)")
     print(f"{'='*60}")
 
+    pbar = tqdm(total=total, desc="  ParamSens", ncols=70)
     for alpha in alphas:
         for beta in betas:
             for rho in rhos:
@@ -268,14 +268,18 @@ def run_parameter_sensitivity(dist_matrix, n_runs=10, max_iter=500):
                     "worst_distance": max(dists),
                     "mean_time": np.mean(times),
                 })
-                done += 1
-                print(f"  [{done}/{total}] α={alpha}, β={beta}, ρ={rho} "
-                      f"→ mean={np.mean(dists):.2f} m")
+                pbar.update(1)
+    pbar.close()
 
     df = pd.DataFrame(results)
     path = os.path.join(RESULTS_DIR, "tables", "parameter_sensitivity.csv")
     df.to_csv(path, index=False)
     print(f"\nSaved parameter sensitivity to {path}")
+
+    # Print best combination
+    best_row = df.loc[df["mean_distance"].idxmin()]
+    print(f"  Best: alpha={best_row['alpha']}, beta={best_row['beta']}, "
+          f"rho={best_row['rho']} -> {best_row['mean_distance']:.2f} m")
     return df
 
 

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title> </title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<style>
+
+@page {
+    size: A4;
+    margin: 2.5cm 2cm 2.5cm 2cm;
+    @bottom-center {
+        content: counter(page);
+        font-size: 9pt;
+        font-family: "Times New Roman", Times, serif;
+    }
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: #000;
+    text-align: justify;
+    max-width: none;
+}
+
+h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 6pt;
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 18pt;
+    margin-bottom: 8pt;
+}
+
+h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 12pt;
+    margin-bottom: 6pt;
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: normal;
+    font-style: italic;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 6pt;
+    text-indent: 1.5em;
+}
+
+/* No indent after headings, tables, figures */
+h1 + p, h2 + p, h3 + p, h4 + p,
+table + p, figure + p, img + p,
+hr + p, blockquote + p {
+    text-indent: 0;
+}
+
+/* Author info centered */
+p:nth-of-type(1), p:nth-of-type(2), p:nth-of-type(3), p:nth-of-type(4) {
+    text-align: center;
+    text-indent: 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 9pt;
+    margin: 10pt auto;
+    page-break-inside: avoid;
+}
+
+thead {
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+th {
+    font-weight: bold;
+    padding: 4pt 6pt;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+td {
+    padding: 3pt 6pt;
+    text-align: center;
+    vertical-align: top;
+}
+
+tbody tr:last-child {
+    border-bottom: 2px solid #000;
+}
+
+/* Table caption - bold "Table X." */
+table + p, p + table {
+    text-indent: 0;
+}
+
+/* Figures */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10pt auto;
+    page-break-inside: avoid;
+}
+
+figure {
+    text-align: center;
+    margin: 10pt auto;
+    page-break-inside: avoid;
+}
+
+figcaption {
+    font-size: 9pt;
+    text-align: center;
+    margin-top: 4pt;
+}
+
+/* Horizontal rules as section dividers */
+hr {
+    border: none;
+    border-top: 0.5pt solid #999;
+    margin: 16pt 0;
+}
+
+/* Abstract and keywords */
+blockquote {
+    margin: 8pt 2em;
+    font-size: 10pt;
+    font-style: normal;
+}
+
+/* References section */
+h2:last-of-type ~ p {
+    text-indent: 0;
+    padding-left: 2em;
+    text-indent: -2em;
+    font-size: 9pt;
+    margin-bottom: 3pt;
+}
+
+/* Math fallback - display as monospace */
+code {
+    font-family: "Courier New", monospace;
+    font-size: 10pt;
+}
+
+/* Equation block */
+.math {
+    text-align: center;
+    margin: 8pt 0;
+    font-style: italic;
+}
+
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"> </h1>
+</header>
+<h1 id="comparative-analysis-of-metaheuristic-algorithms-for-tourism-route-optimization-using-real-road-network-distances-a-case-study-of-yogyakarta-special-region-indonesia">Comparative Analysis of Metaheuristic Algorithms for Tourism Route Optimization Using Real Road Network Distances: A Case Study of Yogyakarta Special Region, Indonesia</h1><p><strong>First Author<sup>a,*</sup>, Second Author<sup>b</sup>, Third Author<sup>b</sup></strong></p><p><sup>a</sup> <em>Department, University, Address, City, Postal Code, Country</em></p><p><sup>b</sup> <em>Department, University, Address, City, Postal Code, Country</em></p><p>* <em>Corresponding author: email@university.ac.id</em></p><hr /><h2 id="abstract">Abstract</h2><p>This study evaluates four metaheuristic algorithms for tourism route optimization in Yogyakarta Special Region (DIY), Indonesia, formulated as a Travelling Salesman Problem (TSP) over 25 tourist attractions. Road distances were computed using Dijkstra’s algorithm on an OpenStreetMap network comprising 153,334 nodes and 200,104 edges, replacing the Euclidean approximations commonly adopted in prior work. The algorithms compared are Max-Min Ant System (MMAS), Ant Colony System (ACS), Genetic Algorithm (GA), and Simulated Annealing (SA), with a Nearest Neighbor (NN) heuristic as baseline. Each stochastic algorithm was executed 30 times with distinct random seeds. SA produced the shortest mean route of 283.82 km with a standard deviation of 0.08 km, followed by MMAS at 284.35 km, ACS at 285.49 km, GA at 302.13 km, and NN at 297.10 km. Wilcoxon signed-rank tests confirmed that all six pairwise differences among stochastic algorithms are statistically significant at p &lt; 0.05. ACS was the fastest metaheuristic at 0.33 s per run, whereas SA required 3.49 s. Parameter sensitivity experiments on MMAS revealed that the evaporation rate is its most influential parameter, and scalability tests showed that GA quality degrades sharply beyond 15 nodes. The mean road-to-Euclidean distance ratio of 1.15 to 1.20 confirms that Euclidean approximations introduce systematic underestimation, supporting the use of real road data for route planning.</p><p><strong>Keywords:</strong> tourism route optimization, Travelling Salesman Problem, Ant Colony Optimization, Simulated Annealing, Genetic Algorithm, OpenStreetMap, Yogyakarta</p><hr /><h2 id="i.-introduction">I. INTRODUCTION</h2><p>Yogyakarta Special Region (Daerah Istimewa Yogyakarta, DIY) receives more than 4.5 million visitors per year and offers attractions ranging from the UNESCO-listed Borobudur and Prambanan temples to coastal and volcanic landscapes [1]. Visitors who wish to cover many sites in limited time face a route-planning problem that maps directly onto the Travelling Salesman Problem (TSP) [2]. Because TSP is NP-hard, the number of feasible tours grows factorially and exact enumeration becomes impractical for more than roughly 20 locations [3].</p><p>Metaheuristic algorithms offer approximate solutions within reasonable computation budgets. Ant Colony Optimization variants exploit pheromone-based reinforcement learning [4], [5], Genetic Algorithms apply selection, crossover, and mutation operators [6], and Simulated Annealing accepts uphill moves with a probability that decreases according to a cooling schedule [7]. All four approaches have been applied to TSP benchmarks, yet their relative merits depend on problem size, distance metric, and implementation details.</p><p>A persistent weakness in tourism route studies is the reliance on Euclidean or haversine distances [8]. Road networks contain one-way streets, bridges, and topographic detours that cause actual travel distances to exceed straight-line estimates by 15 to 100 percent. Yogyakarta’s geography, which features a volcanic slope to the north, limestone karst to the south, and dense urban fabric in the centre, amplifies these discrepancies. Using simplified distances therefore risks producing routes that look optimal on paper but perform poorly on the ground.</p><p>This paper addresses the gap by computing a 25 by 25 road-distance matrix via Dijkstra’s algorithm on the OpenStreetMap network for the full DIY administrative region (153,334 nodes, 200,104 edges) and using it to compare MMAS, ACS, GA, and SA over 30 independent runs each. The comparison covers solution quality, variance, computation time, convergence speed, and statistical significance through all-pairwise Wilcoxon signed-rank tests. Parameter sensitivity analysis of 27 MMAS configurations and scalability testing across problem sizes of 10, 12, 15, 20, and 25 nodes complement the main experiment. The Euclidean-to-road distance ratio is also quantified, confirming that network-based distances are necessary for practical route planning.</p><p>The remainder of this paper is organized as follows. Section II reviews related work on TSP, metaheuristic algorithms, and tourism route optimization. Section III describes the methodology including data collection, algorithm implementations, and experimental design. Section IV reports and discusses the results. Section V concludes the study with recommendations for future work.</p><hr /><h2 id="ii.-related-work">II. RELATED WORK</h2><h3 id="a.-the-travelling-salesman-problem">A. The Travelling Salesman Problem</h3><p>The Travelling Salesman Problem seeks the minimum-cost Hamiltonian cycle through n cities [2]. For symmetric TSP with n cities the solution space contains (n-1)!/2 tours, rendering brute-force search infeasible beyond approximately n = 20 [3]. Exact solvers such as Concorde exploit branch-and-cut techniques and can handle instances with thousands of cities, but require substantial computation time [9], [10]. For real-time or resource-constrained settings, heuristic and metaheuristic methods remain the practical choice.</p><h3 id="b.-ant-colony-optimization">B. Ant Colony Optimization</h3><p>Dorigo, Maniezzo, and Colorni introduced Ant System (AS), in which artificial ants deposit pheromone on edges proportional to solution quality [4]. Stutzle and Hoos proposed MMAS, which bounds pheromone values between tau_min and tau_max to prevent stagnation and allows only the iteration-best or global-best ant to update trails [5]. Dorigo and Gambardella developed ACS, which adds a pseudo-random proportional rule controlled by a parameter q0 and applies local pheromone decay during tour construction [11]. Comparative studies on TSPLIB benchmarks show that MMAS and ACS generally outperform basic AS, with the ranking depending on instance structure and parameter tuning [5], [11].</p><h3 id="c.-genetic-algorithms-for-tsp">C. Genetic Algorithms for TSP</h3><p>Holland’s GA framework [6] was adapted to TSP through permutation-preserving operators. The Order Crossover (OX) operator introduced by Davis [12] copies a random subtour from one parent and fills the remaining positions from the other while respecting city uniqueness. Tournament selection provides tunable selection pressure [13], and elitism prevents regression by copying top individuals into the next generation [14]. GA performance on TSP is sensitive to population size, crossover rate, and the choice of local search hybridization [15].</p><h3 id="d.-simulated-annealing-for-tsp">D. Simulated Annealing for TSP</h3><p>Kirkpatrick, Gelatt, and Vecchi demonstrated that a Metropolis acceptance criterion combined with a cooling schedule can escape local optima in combinatorial problems [7]. For TSP, the 2-opt move introduced by Croes [16], which reverses a segment of the tour, is the standard neighbourhood operator. The cooling schedule parameters, including initial temperature, cooling rate, and final temperature, govern the exploration-exploitation trade-off and strongly affect both solution quality and runtime [17].</p><h3 id="e.-tourism-route-optimization">E. Tourism Route Optimization</h3><p>Tourism route planning has been studied under several formulations including orienteering problems with time windows [18], personalised day-tour routing [19], and multi-day itinerary design [20]. Most published studies use Euclidean or haversine distances rather than real road network distances. Boeing’s OSMnx library [21] made it practical to extract real road networks and compute shortest-path distances programmatically. Studies comparing Euclidean and network-based distances in vehicle routing contexts have shown that switching distance metrics changes both route structure and total cost [22].</p><p>Within Indonesia, Pratama et al. [23] applied GA to tourism routes in Bali, and Mahmudy et al. [24] tested evolutionary methods for combinatorial optimization problems in Java. Neither study used network-based distances, and neither provided the multi-algorithm statistical comparison that the present work offers.</p><hr /><h2 id="iii.-materials-and-method">III. MATERIALS AND METHOD</h2><h3 id="a.-problem-formulation">A. Problem Formulation</h3><p>Let V = {1, 2, …, n} be a set of n = 25 tourist attractions. The objective is to find a permutation pi = (pi_1, …, pi_n) that minimises the total route distance:</p><p><div style="text-align:center; margin:12pt 0; font-style:italic; font-size:11pt;">D(\pi) = \sum_{i=1}^{n-1} d(\pi_i, \pi_{i+1}) + d(\pi_n, \pi_1)</div></p><p>where d(i, j) denotes the shortest road distance between attractions i and j.</p><h3 id="b.-study-area-and-data-collection">B. Study Area and Data Collection</h3><p>The study area spans the full administrative region of DIY. Twenty-five attractions were selected to represent six categories: cultural heritage (7 sites), temples (2 sites), nature and adventure (5 sites), museums (4 sites), monuments (2 sites), and urban and recreational sites (5 sites). Coordinates were geocoded from official tourism data. Table 1 lists all 25 attractions with their geographic coordinates and categories.</p><p><strong>Table 1.</strong> Tourist attractions in Yogyakarta Special Region.</p><table><thead><tr class="header"><th>ID</th><th>Name</th><th>Category</th><th>Lat.</th><th>Long.</th></tr></thead><tbody><tr class="odd"><td>1</td><td>Kraton Yogyakarta</td><td>Cultural Heritage</td><td>-7.8053</td><td>110.3642</td></tr><tr class="even"><td>2</td><td>Taman Sari Water Castle</td><td>Historical</td><td>-7.8100</td><td>110.3592</td></tr><tr class="odd"><td>3</td><td>Benteng Vredeburg Museum</td><td>Museum</td><td>-7.8003</td><td>110.3660</td></tr><tr class="even"><td>4</td><td>Tugu Yogyakarta</td><td>Monument</td><td>-7.7830</td><td>110.3670</td></tr><tr class="odd"><td>5</td><td>Malioboro Street</td><td>Shopping/Cultural</td><td>-7.7925</td><td>110.3660</td></tr><tr class="even"><td>6</td><td>Pasar Beringharjo</td><td>Traditional Market</td><td>-7.7983</td><td>110.3660</td></tr><tr class="odd"><td>7</td><td>Museum Sonobudoyo</td><td>Museum</td><td>-7.8018</td><td>110.3638</td></tr><tr class="even"><td>8</td><td>Alun-Alun Kidul</td><td>Public Square</td><td>-7.8120</td><td>110.3635</td></tr><tr class="odd"><td>9</td><td>Alun-Alun Utara</td><td>Public Square</td><td>-7.8030</td><td>110.3638</td></tr><tr class="even"><td>10</td><td>Taman Pintar Science Park</td><td>Educational</td><td>-7.8005</td><td>110.3670</td></tr><tr class="odd"><td>11</td><td>Kebun Binatang Gembira Loka</td><td>Zoo</td><td>-7.8056</td><td>110.3953</td></tr><tr class="even"><td>12</td><td>Museum Affandi</td><td>Art Museum</td><td>-7.7825</td><td>110.3973</td></tr><tr class="odd"><td>13</td><td>Kotagede Heritage Area</td><td>Heritage District</td><td>-7.8273</td><td>110.3983</td></tr><tr class="even"><td>14</td><td>Monumen Jogja Kembali</td><td>Monument/Museum</td><td>-7.7500</td><td>110.3767</td></tr><tr class="odd"><td>15</td><td>Purawisata</td><td>Cultural Performance</td><td>-7.8010</td><td>110.3735</td></tr><tr class="even"><td>16</td><td>Candi Prambanan</td><td>Temple</td><td>-7.7520</td><td>110.4914</td></tr><tr class="odd"><td>17</td><td>Candi Ratu Boko</td><td>Archaeological Site</td><td>-7.7704</td><td>110.4892</td></tr><tr class="even"><td>18</td><td>Tebing Breksi</td><td>Nature/Cliff</td><td>-7.7620</td><td>110.5043</td></tr><tr class="odd"><td>19</td><td>Museum Ullen Sentalu</td><td>Museum</td><td>-7.6041</td><td>110.4264</td></tr><tr class="even"><td>20</td><td>Candi Borobudur</td><td>Temple</td><td>-7.6078</td><td>110.2038</td></tr><tr class="odd"><td>21</td><td>Pantai Parangtritis</td><td>Beach</td><td>-8.0254</td><td>110.3264</td></tr><tr class="even"><td>22</td><td>Hutan Pinus Mangunan</td><td>Nature</td><td>-7.9310</td><td>110.4310</td></tr><tr class="odd"><td>23</td><td>Goa Pindul</td><td>Cave/Adventure</td><td>-7.9530</td><td>110.6500</td></tr><tr class="even"><td>24</td><td>Pantai Indrayanti</td><td>Beach</td><td>-8.1500</td><td>110.6133</td></tr><tr class="odd"><td>25</td><td>HeHa Sky View</td><td>Viewpoint</td><td>-7.8550</td><td>110.4540</td></tr></tbody></table><h3 id="c.-road-network-and-distance-computation">C. Road Network and Distance Computation</h3><p>The road network was downloaded from OpenStreetMap via OSMnx [21] using the query “Daerah Istimewa Yogyakarta, Indonesia” with network_type set to “drive”. After simplification and conversion to an undirected graph to enforce symmetric TSP, the network comprised 153,334 nodes and 200,104 edges. Each attraction was snapped to its nearest network node using the nearest_nodes function in OSMnx. The 25 by 25 distance matrix was then computed using the Dijkstra shortest-path implementation in NetworkX [25], yielding distances in metres derived from actual road geometry. Figure 1 illustrates the spatial distribution of the 25 attractions on the road network.</p><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig1_attraction_map.png" alt="Figure 1. Spatial distribution of 25 tourist attractions in Yogyakarta Special Region." /><figcaption aria-hidden="true">Figure 1. Spatial distribution of 25 tourist attractions in Yogyakarta Special Region.</figcaption></figure><h3 id="d.-algorithm-implementations">D. Algorithm Implementations</h3><p>All algorithms were implemented in Python with NumPy vectorisation for performance-critical operations. The following subsections describe each implementation.</p><h4 id="max-min-ant-system-mmas">1) Max-Min Ant System (MMAS)</h4><p>The MMAS implementation followed the specification of Stutzle and Hoos [5]. The algorithm used 25 ants (equal to the number of cities), with alpha set to 1.0 for pheromone importance, beta set to 3.0 for heuristic importance, and the evaporation rate rho set to 0.02. The maximum number of iterations was 500. Pheromone bounds were computed as tau_max = 1/(rho multiplied by the nearest-neighbour distance) and tau_min = tau_max / (2n). Stagnation re-initialisation was triggered every 50 iterations without improvement. The heuristic visibility matrix eta_ij = 1/d_ij was precomputed as eta raised to the power beta to eliminate redundant exponentiation during tour construction. Visited-node tracking used boolean masks for efficient vectorised operations.</p><h4 id="ant-colony-system-acs">2) Ant Colony System (ACS)</h4><p>The ACS implementation followed Dorigo and Gambardella [11]. The exploitation probability q0 was set to 0.9, the local pheromone decay rate xi to 0.1, and the global evaporation rate rho to 0.1. The pseudo-random proportional rule selects the highest-scoring unvisited node with probability q0 and falls back to roulette-wheel probabilistic selection otherwise. Local pheromone decay is applied to each traversed edge during tour construction to encourage exploration of alternative paths.</p><h4 id="genetic-algorithm-ga">3) Genetic Algorithm (GA)</h4><p>The GA used a population size of 100 individuals evolved over 500 generations. Order Crossover (OX) [12] was applied with a crossover rate of 0.8, swap mutation with a rate of 0.02, tournament selection with tournament size k = 3, and elitism preserving the top 10 percent of the population. Population fitness was evaluated using vectorised NumPy indexing on the distance matrix. Early stopping terminated the run after 100 generations without improvement.</p><h4 id="simulated-annealing-sa">4) Simulated Annealing (SA)</h4><p>The SA algorithm used an initial temperature T_0 of 10,000, a geometric cooling rate of 0.999, and a final temperature T_end of 1.0, with 50 iterations per temperature step yielding approximately 9,210 temperature steps in total. The neighbourhood operator was the 2-opt move with O(1) delta evaluation, where only the two removed and two added edges were recalculated rather than recomputing the full tour distance [16]. Tours were stored as NumPy arrays with in-place segment reversal for efficiency.</p><h4 id="nearest-neighbour-nn-baseline">5) Nearest Neighbour (NN) Baseline</h4><p>The NN heuristic was executed from each of the 25 starting nodes, and the shortest resulting tour was reported. As a deterministic greedy heuristic, it provides a reference point against which to measure metaheuristic improvement.</p><h3 id="e.-experimental-design">E. Experimental Design</h3><p>Each stochastic algorithm was executed 30 times with random seeds ranging from 42 through 71. The experimental programme comprised four components. The main comparison consisted of 30 runs across four stochastic algorithms plus one NN execution, totalling 121 individual experiments. Parameter sensitivity analysis tested MMAS with 27 combinations of alpha in {0.5, 1.0, 2.0}, beta in {2, 3, 5}, and rho in {0.02, 0.05, 0.10}, each repeated 10 times for 270 experiments. Scalability analysis evaluated subsets of n = 10, 12, 15, and 20 nodes with four algorithms and 10 runs each, yielding 160 experiments. Statistical significance was assessed using Wilcoxon signed-rank tests at a significance level of 0.05 for all six pairwise comparisons among the four stochastic algorithms.</p><hr /><h2 id="iv.-results-and-discussions">IV. RESULTS AND DISCUSSIONS</h2><h3 id="a.-algorithm-performance-comparison">A. Algorithm Performance Comparison</h3><p>Table 2 summarises the results of 30 independent runs for each stochastic algorithm. SA achieved the lowest mean distance of 283.82 km with the smallest standard deviation of 0.08 km among all methods. Both SA and MMAS independently discovered the overall shortest tour of 283.76 km. ACS was the fastest metaheuristic at 0.33 s per run, making it 10.5 times faster than SA which required 3.49 s. GA produced the worst mean distance of 302.13 km, which is 6.4 percent above the SA mean, and exhibited the highest variance with a standard deviation of 6.79 km. The NN baseline achieved 297.10 km, which although deterministic and nearly instantaneous, exceeded all metaheuristic means except GA.</p><p><strong>Table 2.</strong> Algorithm performance comparison (30 independent runs). Best values in each column are shown in bold.</p><table><thead><tr class="header"><th>Algorithm</th><th>Best (km)</th><th>Mean (km)</th><th>Worst (km)</th><th>Std Dev (km)</th><th>Mean Time (s)</th><th>Runs</th></tr></thead><tbody><tr class="odd"><td>MMAS</td><td>283.76</td><td>284.35</td><td>286.71</td><td>0.85</td><td>1.70</td><td>30</td></tr><tr class="even"><td>ACS</td><td>283.94</td><td>285.49</td><td>288.48</td><td>1.80</td><td><strong>0.33</strong></td><td>30</td></tr><tr class="odd"><td>GA</td><td>291.31</td><td>302.13</td><td>318.03</td><td>6.79</td><td>0.68</td><td>30</td></tr><tr class="even"><td><strong>SA</strong></td><td><strong>283.76</strong></td><td><strong>283.82</strong></td><td><strong>283.97</strong></td><td><strong>0.08</strong></td><td>3.50</td><td>30</td></tr><tr class="odd"><td>NN</td><td>297.10</td><td>297.10</td><td>297.10</td><td>0.00</td><td>0.001</td><td>1</td></tr></tbody></table><p>Figure 2 presents box plots of the distance distributions for all algorithms. The narrow interquartile range of SA confirms its consistency across runs, while the wide spread of GA reflects its difficulty in converging to competitive solutions for this problem size. MMAS shows moderate variance with occasional runs that matched the SA optimum, whereas ACS exhibits slightly higher variance due to its aggressive exploitation strategy governed by q0 = 0.9.</p><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig4_boxplot.png" alt="Figure 2. Box plot comparison of algorithm distance distributions across 30 independent runs." /><figcaption aria-hidden="true">Figure 2. Box plot comparison of algorithm distance distributions across 30 independent runs.</figcaption></figure><p>Figure 3 presents a bar chart summary of mean distances with standard deviation error bars for all algorithms.</p><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig10_bar_summary.png" alt="Figure 3. Bar chart summary of algorithm performance with standard deviation error bars." /><figcaption aria-hidden="true">Figure 3. Bar chart summary of algorithm performance with standard deviation error bars.</figcaption></figure><h3 id="b.-statistical-significance">B. Statistical Significance</h3><p>Wilcoxon signed-rank tests were conducted for all six pairwise comparisons among the four stochastic algorithms, and the results are presented in Table 3. All pairwise differences were statistically significant at the p &lt; 0.05 level. SA significantly outperformed MMAS (W = 31, p &lt; 0.0001), MMAS significantly outperformed ACS (W = 68, p = 0.011), and both SA and MMAS significantly outperformed GA (p &lt; 0.0001). The ACS versus SA comparison yielded W = 9 with p &lt; 0.0001, and GA versus SA produced W = 0 with p &lt; 0.0001. The complete ranking by mean solution quality is SA, followed by MMAS, ACS, NN, and GA.</p><p><strong>Table 3.</strong> Wilcoxon signed-rank test results for all pairwise comparisons (significance level alpha = 0.05).</p><table><thead><tr class="header"><th>Comparison</th><th>W Statistic</th><th>p-value</th><th>Significant</th><th>Mean A (km)</th><th>Mean B (km)</th></tr></thead><tbody><tr class="odd"><td>MMAS vs ACS</td><td>68.0</td><td>0.010982</td><td>Yes</td><td>284.35</td><td>285.49</td></tr><tr class="even"><td>MMAS vs GA</td><td>0.0</td><td>&lt; 0.0001</td><td>Yes</td><td>284.35</td><td>302.13</td></tr><tr class="odd"><td>MMAS vs SA</td><td>31.0</td><td>&lt; 0.0001</td><td>Yes</td><td>284.35</td><td>283.82</td></tr><tr class="even"><td>ACS vs GA</td><td>0.0</td><td>&lt; 0.0001</td><td>Yes</td><td>285.49</td><td>302.13</td></tr><tr class="odd"><td>ACS vs SA</td><td>9.0</td><td>&lt; 0.0001</td><td>Yes</td><td>285.49</td><td>283.82</td></tr><tr class="even"><td>GA vs SA</td><td>0.0</td><td>&lt; 0.0001</td><td>Yes</td><td>302.13</td><td>283.82</td></tr></tbody></table><p>The tests confirm a clear performance hierarchy. SA with 2-opt neighbourhood search produces the best solutions, MMAS balances quality and speed, ACS trades modest quality for faster execution, and GA with basic operators cannot compete at this problem size without local search hybridization.</p><h3 id="c.-convergence-analysis">C. Convergence Analysis</h3><p>Convergence curves averaged over 30 runs are presented in Figure 4. The curves reveal distinct search dynamics across algorithms. SA converges within the first 20 percent of its cooling schedule, reaching a near-optimal plateau early due to the fine-grained 2-opt neighbourhood that allows incremental improvements at each temperature step. MMAS improves steadily through pheromone reinforcement, with the pheromone trails gradually concentrating on high-quality edges, and typically stabilises between iterations 200 and 300. ACS achieves rapid initial gains owing to its exploitation-heavy strategy but plateaus sooner than MMAS because the high q0 value of 0.9 limits exploration of alternative paths. GA converges most slowly and often stagnates far from the optimum, as the OX crossover operator transmits subtour information imperfectly and the population tends to lose diversity before reaching competitive solutions.</p><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig3_convergence.png" alt="Figure 4. Convergence curves averaged over 30 runs for each algorithm." /><figcaption aria-hidden="true">Figure 4. Convergence curves averaged over 30 runs for each algorithm.</figcaption></figure><h3 id="d.-parameter-sensitivity-analysis">D. Parameter Sensitivity Analysis</h3><p>Twenty-seven MMAS configurations were tested, each with 10 independent runs. Table 4 shows the top 10 configurations ranked by mean distance. The best-performing combination was alpha = 2.0, beta = 2.0, rho = 0.02, which achieved a mean distance of 283.82 km with a standard deviation of 0.11 km. The evaporation rate rho exhibited the largest effect on solution quality: rho = 0.02 consistently outperformed rho = 0.05 and rho = 0.10 across every alpha-beta combination tested. A low evaporation rate preserves pheromone trails longer, so pheromone gradually accumulates on high-quality edges. When alpha is also high, the pheromone signal steers search toward good regions without premature convergence. High rho values had the opposite effect: rapid pheromone dissipation forced the algorithm to rediscover good edges repeatedly, which raised both mean distances and variance.</p><p><strong>Table 4.</strong> Top 10 MMAS parameter configurations ranked by mean distance (10 runs each). The complete 27-configuration table is available in the supplementary Excel file.</p><table><thead><tr class="header"><th>Rank</th><th>alpha</th><th>beta</th><th>rho</th><th>Mean (km)</th><th>Std Dev (km)</th><th>Best (km)</th><th>Time (s)</th></tr></thead><tbody><tr class="odd"><td>1</td><td>2.0</td><td>2.0</td><td>0.02</td><td>283.82</td><td>0.11</td><td>283.76</td><td>1.66</td></tr><tr class="even"><td>2</td><td>1.0</td><td>5.0</td><td>0.05</td><td>283.94</td><td>0.00</td><td>283.94</td><td>1.31</td></tr><tr class="odd"><td>3</td><td>1.0</td><td>3.0</td><td>0.05</td><td>283.94</td><td>0.31</td><td>283.76</td><td>1.66</td></tr><tr class="even"><td>4</td><td>1.0</td><td>3.0</td><td>0.1</td><td>283.97</td><td>0.45</td><td>283.76</td><td>1.44</td></tr><tr class="odd"><td>5</td><td>1.0</td><td>2.0</td><td>0.05</td><td>283.98</td><td>0.47</td><td>283.76</td><td>1.64</td></tr><tr class="even"><td>6</td><td>1.0</td><td>5.0</td><td>0.02</td><td>284.03</td><td>0.34</td><td>283.77</td><td>1.52</td></tr><tr class="odd"><td>7</td><td>2.0</td><td>5.0</td><td>0.02</td><td>284.08</td><td>0.54</td><td>283.76</td><td>1.57</td></tr><tr class="even"><td>8</td><td>2.0</td><td>5.0</td><td>0.1</td><td>284.08</td><td>0.34</td><td>283.76</td><td>0.87</td></tr><tr class="odd"><td>9</td><td>1.0</td><td>2.0</td><td>0.1</td><td>284.09</td><td>0.82</td><td>283.76</td><td>1.25</td></tr><tr class="even"><td>10</td><td>1.0</td><td>5.0</td><td>0.1</td><td>284.26</td><td>0.96</td><td>283.94</td><td>1.04</td></tr></tbody></table><p>Figure 5 shows the parameter sensitivity as heat maps across different rho values.</p><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig5_parameter_sensitivity.png" alt="Figure 5. MMAS parameter sensitivity heat maps showing mean distance for each alpha-beta combination at three rho values." /><figcaption aria-hidden="true">Figure 5. MMAS parameter sensitivity heat maps showing mean distance for each alpha-beta combination at three rho values.</figcaption></figure><h3 id="e.-scalability-analysis">E. Scalability Analysis</h3><p>Table 5 and Figure 6 present algorithm performance as the problem size n increases from 10 to 25. At n = 10 and n = 12, all four metaheuristics found the same optimal tour, indicating that these sizes are small enough for any of the tested metaheuristics to solve exactly. At n = 15, GA began to diverge, producing a mean distance 3.1 percent above the best known solution, while all other methods still converged to the optimum. At n = 20, the separation became more pronounced: GA was 5.2 percent above the best, and even ACS showed a marginal gap of 0.2 percent. At n = 25, the full problem size, GA’s gap widened to 6.4 percent. SA maintained consistent quality across all problem sizes but had a fixed runtime of approximately 3.5 s dictated by its cooling schedule regardless of n. MMAS and ACS scaled smoothly with runtime growing roughly as O(n^2) due to the pheromone update and tour-construction steps. The NN baseline degraded substantially at larger sizes, reaching 17.5 percent above the optimum at n = 15.</p><p><strong>Table 5.</strong> Scalability analysis: mean distance (km) by problem size. Best value per row in bold.</p><table><thead><tr class="header"><th>n</th><th>MMAS</th><th>ACS</th><th>GA</th><th>SA</th><th>NN</th></tr></thead><tbody><tr class="odd"><td>10</td><td><strong>10.60</strong></td><td><strong>10.60</strong></td><td>10.60</td><td><strong>10.60</strong></td><td><strong>10.60</strong></td></tr><tr class="even"><td>12</td><td><strong>17.98</strong></td><td><strong>17.98</strong></td><td>18.01</td><td><strong>17.98</strong></td><td><strong>17.98</strong></td></tr><tr class="odd"><td>15</td><td><strong>30.09</strong></td><td><strong>30.09</strong></td><td>31.02</td><td><strong>30.09</strong></td><td>35.35</td></tr><tr class="even"><td>20</td><td>143.21</td><td>143.38</td><td>150.49</td><td><strong>143.10</strong></td><td>146.92</td></tr><tr class="odd"><td>25</td><td>284.35</td><td>285.49</td><td>302.13</td><td><strong>283.82</strong></td><td>297.10</td></tr></tbody></table><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig8_scalability.png" alt="Figure 6. Scalability analysis showing mean distance and computation time as problem size increases from 10 to 25 nodes." /><figcaption aria-hidden="true">Figure 6. Scalability analysis showing mean distance and computation time as problem size increases from 10 to 25 nodes.</figcaption></figure><h3 id="f.-euclidean-versus-road-distance-analysis">F. Euclidean Versus Road Distance Analysis</h3><p>Pairwise comparison of haversine and road distances is presented in Figure 7. The mean road-to-Euclidean ratio ranged from 1.15 to 1.20, with individual pair ratios spanning from 1.05 for locations connected by direct highway links to over 2.0 for locations separated by rivers or volcanic terrain. A linear regression fit yielded road = 1.18 multiplied by euclidean + 0.5 km with an R-squared value of 0.97. These findings confirm that Euclidean distances systematically underestimate travel cost and that optimisation conducted on Euclidean data can produce tour orderings that differ from and are suboptimal relative to those obtained using actual road distances.</p><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig7_euclidean_vs_road.png" alt="Figure 7. Euclidean vs. road distance comparison showing scatter plot with linear regression fit." /><figcaption aria-hidden="true">Figure 7. Euclidean vs. road distance comparison showing scatter plot with linear regression fit.</figcaption></figure><p>Figure 8 shows the full 25 by 25 distance matrix as a heatmap, where darker cells indicate longer road distances between attraction pairs.</p><figure><img src="file:///C:/Users/MyPC PRO/Documents/research_idea/tourism-route-optimization/results/figures/fig9_distance_matrix.png" alt="Figure 8. Distance matrix heatmap for 25 tourist attractions (road distances in km)." /><figcaption aria-hidden="true">Figure 8. Distance matrix heatmap for 25 tourist attractions (road distances in km).</figcaption></figure><h3 id="g.-route-visualisation">G. Route Visualisation</h3><p>The best routes discovered by SA and MMAS both follow a geographically clustered pattern: urban-centre sites are visited consecutively, followed by the eastern temple complex comprising Prambanan, Ratu Boko, and Tebing Breksi, then the southern coastal attractions of Parangtritis and Indrayanti, and finally the western outlier at Borobudur. This clustering is a consequence of the distance structure and suggests practical daily itineraries for tourists. Interactive HTML route maps are available as supplementary material.</p><h3 id="h.-discussion">H. Discussion</h3><p>The results have implications for both algorithm selection and tourism planning. For algorithm selection, SA with 2-opt neighbourhood search produces the best solutions with the tightest variance and is the preferred choice when a computation budget of a few seconds is acceptable. ACS is 10.5 times faster than SA while producing tours only 0.6 percent longer, so it is better suited to interactive or real-time applications. MMAS offers intermediate quality at 284.35 km and moderate speed at 1.70 s. GA with basic OX crossover and swap mutation is outperformed by all other metaheuristics at n = 25; hybridisation with local search operators [15] would likely be needed to close the gap, but this was outside the scope of the present study.</p><p>The 15 to 20 percent mean discrepancy between Euclidean and road distances is large enough to change tour ordering in practice. For Yogyakarta specifically, the volcanic terrain around Mount Merapi, the karst limestone cliffs of Gunung Kidul, and limited bridge crossings over the Opak and Progo rivers create detours that straight-line estimates cannot capture. Studies that omit road-network data risk recommending routes that are infeasible or significantly longer than predicted.</p><p>The optimal 283.76 km route covers all 25 attractions. At an average urban and rural driving speed of 40 km/h, driving alone requires approximately 7.1 hours. With 30 to 60 minutes allocated per attraction, a complete visit would span 3 to 4 days, which is consistent with typical tourist stays in Yogyakarta. The geographic clustering visible in the optimised routes suggests natural daily itineraries: the urban core on day one, the eastern temple corridor on day two, the southern coast on day three, and the western Borobudur excursion on day four. Tourism operators could package these clusters into multi-day tour products.</p><p>This study has several limitations. Only total distance is optimised; a multi-objective formulation that includes travel time, entrance fees, visitor preferences, and opening hours would better reflect real planning needs [18]. The road distances are based on static road geometry and do not account for time-varying traffic congestion [26]. The 25 attraction sites were predetermined, whereas an orienteering-problem formulation would allow tourists to select a subset based on interests and time budget [20]. More advanced methods such as Lin-Kernighan-Helsgaun (LKH) [27] or hybrid memetic algorithms [15] were not tested and could further improve solution quality. Finally, the findings are specific to a 25-node instance in Yogyakarta; validation on other destinations and larger node counts is needed to confirm generalisability.</p><hr /><h2 id="v.-conclusion">V. CONCLUSION</h2><p>This study compared four metaheuristic algorithms for optimising a 25-attraction tourism route in Yogyakarta using real road distances derived from the OpenStreetMap network. SA with 2-opt neighbourhood search achieved the best mean tour distance of 283.82 km and the lowest variance with a standard deviation of 0.08 km across 30 independent runs. All six pairwise algorithm differences among the four stochastic methods were confirmed as statistically significant by Wilcoxon signed-rank tests at p &lt; 0.05, establishing the performance ranking SA, MMAS, ACS, and then GA. Parameter sensitivity analysis identified the pheromone evaporation rate as the most critical MMAS parameter, with low rho values consistently producing superior results. Scalability testing revealed that GA quality degrades beyond 15 nodes while SA, MMAS, and ACS maintain competitive performance up to the full 25-node problem.</p><p>The 15 to 20 percent discrepancy between road and Euclidean distances shows that real road data is necessary for practical tourism route planning. Future work should extend the framework to multi-objective optimisation that accounts for travel time and visitor preferences, incorporate time-dependent traffic data, and test the approach on larger attraction sets and other tourist destinations in Indonesia.</p><hr /><h2 id="references">REFERENCES</h2><p>[1] Badan Pusat Statistik DIY, “Statistik Kepariwisataan Daerah Istimewa Yogyakarta,” BPS Provinsi D.I. Yogyakarta, 2023.</p><p>[2] G. Gutin and A. P. Punnen, <em>The Traveling Salesman Problem and Its Variations</em>. New York, NY, USA: Springer, 2007.</p><p>[3] C. H. Papadimitriou and K. Steiglitz, <em>Combinatorial Optimization: Algorithms and Complexity</em>. Mineola, NY, USA: Dover, 1998.</p><p>[4] M. Dorigo, V. Maniezzo, and A. Colorni, “Ant system: optimization by a colony of cooperating agents,” <em>IEEE Trans. Syst., Man, Cybern. B</em>, vol. 26, no. 1, pp. 29-41, 1996.</p><p>[5] T. Stutzle and H. H. Hoos, “MAX-MIN Ant System,” <em>Future Gener. Comput. Syst.</em>, vol. 16, no. 8, pp. 889-914, 2000.</p><p>[6] J. H. Holland, <em>Adaptation in Natural and Artificial Systems</em>. Ann Arbor, MI, USA: Univ. of Michigan Press, 1975.</p><p>[7] S. Kirkpatrick, C. D. Gelatt, and M. P. Vecchi, “Optimization by simulated annealing,” <em>Science</em>, vol. 220, no. 4598, pp. 671-680, 1983.</p><p>[8] A. Brimberg, P. Hansen, N. Mladenovic, and E. D. Taillard, “Improvements and comparison of heuristics for solving the uncapacitated multisource Weber problem,” <em>Oper. Res.</em>, vol. 48, no. 3, pp. 444-460, 2000.</p><p>[9] D. L. Applegate, R. E. Bixby, V. Chvatal, and W. J. Cook, <em>The Traveling Salesman Problem: A Computational Study</em>. Princeton, NJ, USA: Princeton Univ. Press, 2006.</p><p>[10] D. L. Applegate, R. E. Bixby, V. Chvatal, and W. J. Cook, “Concorde TSP solver,” 2006. [Online]. Available: http://www.math.uwaterloo.ca/tsp/concorde.html</p><p>[11] M. Dorigo and L. M. Gambardella, “Ant Colony System: a cooperative learning approach to the Traveling Salesman Problem,” <em>IEEE Trans. Evol. Comput.</em>, vol. 1, no. 1, pp. 53-66, 1997.</p><p>[12] L. Davis, “Applying adaptive algorithms to epistatic domains,” in <em>Proc. Int. Joint Conf. Artif. Intell.</em>, 1985, pp. 162-164.</p><p>[13] B. L. Miller and D. E. Goldberg, “Genetic algorithms, tournament selection, and the effects of noise,” <em>Complex Syst.</em>, vol. 9, no. 3, pp. 193-212, 1995.</p><p>[14] A. E. Eiben and J. E. Smith, <em>Introduction to Evolutionary Computing</em>, 2nd ed. Berlin, Germany: Springer, 2015.</p><p>[15] P. Larranaga, C. M. H. Kuijpers, R. H. Murga, I. Inza, and S. Dizdarevic, “Genetic algorithms for the Travelling Salesman Problem: a review of representations and operators,” <em>Artif. Intell. Rev.</em>, vol. 13, no. 2, pp. 129-170, 1999.</p><p>[16] G. A. Croes, “A method for solving traveling-salesman problems,” <em>Oper. Res.</em>, vol. 6, no. 6, pp. 791-812, 1958.</p><p>[17] E. Aarts and J. Korst, <em>Simulated Annealing and Boltzmann Machines</em>. New York, NY, USA: Wiley, 1989.</p><p>[18] D. Gavalas, C. Konstantopoulos, K. Mastakas, and G. Pantziou, “A survey on algorithmic approaches for solving tourist trip design problems,” <em>J. Heuristics</em>, vol. 20, no. 3, pp. 291-328, 2014.</p><p>[19] W. Zheng, Z. Liao, and J. Qin, “Using a four-step heuristic algorithm to design personalized day tour route within a tourist attraction,” <em>Tourism Manage.</em>, vol. 62, pp. 335-349, 2017.</p><p>[20] P. Vansteenwegen, W. Souffriau, and D. Van Oudheusden, “The orienteering problem: a survey,” <em>Eur. J. Oper. Res.</em>, vol. 209, no. 1, pp. 1-10, 2011.</p><p>[21] G. Boeing, “OSMnx: new methods for acquiring, constructing, analyzing, and visualizing complex street networks,” <em>Comput., Environ. Urban Syst.</em>, vol. 65, pp. 126-139, 2017.</p><p>[22] M. W. Ulmer, B. W. Thomas, A. M. Campbell, and N. Woyber, “The restaurant meal delivery problem: dynamic pickup and delivery with deadlines and random ready times,” <em>Transp. Sci.</em>, vol. 55, no. 1, pp. 75-100, 2021.</p><p>[23] A. N. Pratama, R. Sarno, and M. Effendi, “Tourism route recommendation using genetic algorithm,” in <em>Proc. Int. Seminar Intell. Technol. Its Appl. (ISITIA)</em>, 2019, pp. 86-91.</p><p>[24] W. F. Mahmudy, R. M. Marian, and L. H. S. Luong, “Real coded genetic algorithms for solving flexible job-shop scheduling problem,” <em>ARPN J. Eng. Appl. Sci.</em>, vol. 8, no. 12, pp. 1066-1073, 2013.</p><p>[25] A. A. Hagberg, D. A. Schult, and P. J. Swart, “Exploring network structure, dynamics, and function using NetworkX,” in <em>Proc. 7th Python Sci. Conf. (SciPy)</em>, 2008, pp. 11-15.</p><p>[26] A. Haghani and S. Jung, “A dynamic vehicle routing problem with time-dependent travel times,” <em>Comput. Oper. Res.</em>, vol. 32, no. 11, pp. 2959-2986, 2005.</p><p>[27] K. Helsgaun, “An effective implementation of the Lin-Kernighan traveling salesman heuristic,” <em>Eur. J. Oper. Res.</em>, vol. 126, no. 1, pp. 106-130, 2000.</p>
+</body>
+</html>

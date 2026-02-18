@@ -23,18 +23,10 @@ class ACS_TSP:
         q0=0.9,
         xi=0.1,
         max_iter=500,
+        stagnation_limit=100,
         seed=None,
     ):
-        """
-        Parameters
-        ----------
-        q0 : float
-            Exploitation probability (pseudo-random proportional rule).
-            Higher q0 = more greedy exploitation.
-        xi : float
-            Local pheromone decay rate.
-        """
-        self.D = np.array(dist_matrix, dtype=float)
+        self.D = np.array(dist_matrix, dtype=np.float64)
         self.n = len(self.D)
         self.n_ants = n_ants if n_ants else self.n
         self.alpha = alpha
@@ -43,11 +35,15 @@ class ACS_TSP:
         self.q0 = q0
         self.xi = xi
         self.max_iter = max_iter
+        self.stagnation_limit = stagnation_limit
 
         self.rng = np.random.default_rng(seed)
 
         with np.errstate(divide="ignore", invalid="ignore"):
             self.eta = np.where(self.D > 0, 1.0 / self.D, 0.0)
+
+        # Precompute eta^beta (constant throughout the run)
+        self.eta_beta = self.eta ** self.beta
 
         nn_dist = self._nearest_neighbor_distance()
         self.tau0 = 1.0 / (self.n * nn_dist)
@@ -58,89 +54,107 @@ class ACS_TSP:
         self.convergence = []
 
     def _nearest_neighbor_distance(self):
-        visited = {0}
+        visited = np.zeros(self.n, dtype=bool)
         current = 0
+        visited[0] = True
         total = 0.0
         for _ in range(self.n - 1):
             dists = self.D[current].copy()
-            dists[list(visited)] = np.inf
+            dists[visited] = np.inf
             nxt = int(np.argmin(dists))
             total += dists[nxt]
-            visited.add(nxt)
+            visited[nxt] = True
             current = nxt
-        total += self.D[current][0]
+        total += self.D[current, 0]
         return total
 
+    def _tour_distance(self, tour):
+        """Compute total Hamiltonian cycle distance (vectorized)."""
+        idx = np.asarray(tour)
+        return self.D[idx[:-1], idx[1:]].sum() + self.D[idx[-1], idx[0]]
+
     def _construct_tour(self):
-        """ACS tour construction with pseudo-random proportional rule."""
-        start = self.rng.integers(0, self.n)
-        tour = [start]
-        visited = set(tour)
+        """ACS tour construction with pseudo-random proportional rule (vectorized)."""
+        n = self.n
+        visited = np.zeros(n, dtype=bool)
+        start = self.rng.integers(0, n)
+        tour = np.empty(n, dtype=np.intp)
+        tour[0] = start
+        visited[start] = True
+        current = start
 
-        for _ in range(self.n - 1):
-            current = tour[-1]
-            unvisited = [j for j in range(self.n) if j not in visited]
-
+        for step in range(1, n):
             q = self.rng.random()
+
             if q <= self.q0:
-                # Exploitation: pick best
-                scores = [
-                    self.tau[current][j] * (self.eta[current][j] ** self.beta)
-                    for j in unvisited
-                ]
-                next_node = unvisited[int(np.argmax(scores))]
+                # Exploitation: pick best using vectorized scoring
+                scores = self.tau[current] * self.eta_beta[current]
+                scores[visited] = -np.inf
+                next_node = int(np.argmax(scores))
             else:
                 # Exploration: probabilistic
-                tau_vals = np.array([self.tau[current][j] for j in unvisited])
-                eta_vals = np.array([self.eta[current][j] for j in unvisited])
-                probs = (tau_vals ** self.alpha) * (eta_vals ** self.beta)
+                probs = (self.tau[current] ** self.alpha) * self.eta_beta[current]
+                probs[visited] = 0.0
                 prob_sum = probs.sum()
                 if prob_sum == 0:
-                    probs = np.ones(len(unvisited)) / len(unvisited)
+                    candidates = np.flatnonzero(~visited)
+                    next_node = self.rng.choice(candidates)
                 else:
                     probs /= prob_sum
-                next_node = self.rng.choice(unvisited, p=probs)
+                    next_node = self.rng.choice(n, p=probs)
 
             # Local pheromone update
-            self.tau[current][next_node] = (
-                (1 - self.xi) * self.tau[current][next_node] + self.xi * self.tau0
-            )
-            self.tau[next_node][current] = self.tau[current][next_node]
+            new_val = (1 - self.xi) * self.tau[current, next_node] + self.xi * self.tau0
+            self.tau[current, next_node] = new_val
+            self.tau[next_node, current] = new_val
 
-            tour.append(next_node)
-            visited.add(next_node)
+            tour[step] = next_node
+            visited[next_node] = True
+            current = next_node
 
         return tour
 
-    def _tour_distance(self, tour):
-        total = sum(self.D[tour[i]][tour[i + 1]] for i in range(len(tour) - 1))
-        total += self.D[tour[-1]][tour[0]]
-        return total
-
     def _global_pheromone_update(self):
-        """Only global-best ant deposits pheromone."""
+        """Only global-best ant deposits pheromone (vectorized)."""
         deposit = 1.0 / self.best_distance
-        for i in range(len(self.best_tour) - 1):
-            a, b = self.best_tour[i], self.best_tour[i + 1]
-            self.tau[a][b] = (1 - self.rho) * self.tau[a][b] + self.rho * deposit
-            self.tau[b][a] = self.tau[a][b]
-        a, b = self.best_tour[-1], self.best_tour[0]
-        self.tau[a][b] = (1 - self.rho) * self.tau[a][b] + self.rho * deposit
-        self.tau[b][a] = self.tau[a][b]
+        idx = np.asarray(self.best_tour)
+        from_nodes = idx
+        to_nodes = np.roll(idx, -1)
+        self.tau[from_nodes, to_nodes] = (
+            (1 - self.rho) * self.tau[from_nodes, to_nodes] + self.rho * deposit
+        )
+        self.tau[to_nodes, from_nodes] = self.tau[from_nodes, to_nodes]
 
     def solve(self):
         start_time = time.time()
+        no_improve_count = 0
 
         for iteration in range(self.max_iter):
+            prev_best = self.best_distance
+
             for _ in range(self.n_ants):
                 tour = self._construct_tour()
                 dist = self._tour_distance(tour)
                 if dist < self.best_distance:
                     self.best_distance = dist
-                    self.best_tour = list(tour)
+                    self.best_tour = tour.tolist()
 
-            self._global_pheromone_update()
+            # Track stagnation
+            if self.best_distance < prev_best:
+                no_improve_count = 0
+            else:
+                no_improve_count += 1
+
+            if self.best_tour is not None:
+                self._global_pheromone_update()
+
             self.convergence.append(self.best_distance)
+
+            # Early stopping if no improvement
+            if no_improve_count >= self.stagnation_limit:
+                remaining = self.max_iter - iteration - 1
+                self.convergence.extend([self.best_distance] * remaining)
+                break
 
         elapsed = time.time() - start_time
         return self.best_tour, self.best_distance, elapsed, self.convergence

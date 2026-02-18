@@ -1,7 +1,7 @@
 """
 Genetic Algorithm for TSP
 
-Uses Order Crossover (OX), swap mutation, and tournament selection.
+Uses Order Crossover (OX), swap mutation, tournament selection, and elitism.
 """
 
 import numpy as np
@@ -19,15 +19,19 @@ class GA_TSP:
         crossover_rate=0.8,
         mutation_rate=0.02,
         tournament_k=3,
+        elite_ratio=0.1,
+        stagnation_limit=100,
         seed=None,
     ):
-        self.D = np.array(dist_matrix, dtype=float)
+        self.D = np.array(dist_matrix, dtype=np.float64)
         self.n = len(self.D)
         self.pop_size = pop_size
         self.generations = generations
         self.crossover_rate = crossover_rate
         self.mutation_rate = mutation_rate
         self.tournament_k = tournament_k
+        self.elite_count = max(1, int(pop_size * elite_ratio))
+        self.stagnation_limit = stagnation_limit
 
         self.rng = np.random.default_rng(seed)
 
@@ -35,35 +39,49 @@ class GA_TSP:
         self.best_distance = float("inf")
         self.convergence = []
 
-    def _tour_distance(self, tour):
-        total = sum(self.D[tour[i]][tour[i + 1]] for i in range(len(tour) - 1))
-        total += self.D[tour[-1]][tour[0]]
-        return total
+    def _tour_distance_single(self, tour):
+        """Compute tour distance for a single tour (vectorized)."""
+        return self.D[tour[:-1], tour[1:]].sum() + self.D[tour[-1], tour[0]]
+
+    def _population_fitness(self, population):
+        """Compute fitness for entire population at once."""
+        pop = np.asarray(population)
+        # Vectorized: compute all edge costs for all tours
+        from_nodes = pop[:, :-1]
+        to_nodes = pop[:, 1:]
+        edge_costs = self.D[from_nodes, to_nodes].sum(axis=1)
+        # Add return edge
+        edge_costs += self.D[pop[:, -1], pop[:, 0]]
+        return edge_costs
 
     def _init_population(self):
-        """Generate random permutation population."""
-        pop = []
-        for _ in range(self.pop_size):
-            individual = list(range(self.n))
-            self.rng.shuffle(individual)
-            pop.append(individual)
+        """Generate random permutation population as numpy array."""
+        pop = np.empty((self.pop_size, self.n), dtype=np.intp)
+        base = np.arange(self.n)
+        for i in range(self.pop_size):
+            pop[i] = base.copy()
+            self.rng.shuffle(pop[i])
         return pop
 
     def _tournament_selection(self, population, fitnesses):
         """Select individual via tournament selection."""
         indices = self.rng.choice(len(population), size=self.tournament_k, replace=False)
-        best_idx = indices[np.argmin([fitnesses[i] for i in indices])]
-        return list(population[best_idx])
+        best_idx = indices[np.argmin(fitnesses[indices])]
+        return population[best_idx].copy()
 
     def _order_crossover(self, parent1, parent2):
-        """Order Crossover (OX) operator."""
+        """Order Crossover (OX) operator using set for O(1) lookup."""
         n = self.n
-        start, end = sorted(self.rng.choice(n, size=2, replace=False))
+        pts = self.rng.choice(n, size=2, replace=False)
+        start, end = int(pts.min()), int(pts.max())
 
-        child = [-1] * n
-        child[start : end + 1] = parent1[start : end + 1]
+        child = np.full(n, -1, dtype=np.intp)
+        child[start:end + 1] = parent1[start:end + 1]
 
-        fill_values = [g for g in parent2 if g not in child]
+        # Use set for O(1) membership test
+        in_child = set(child[start:end + 1].tolist())
+        fill_values = [g for g in parent2 if g not in in_child]
+
         idx = 0
         for i in range(n):
             if child[i] == -1:
@@ -74,7 +92,8 @@ class GA_TSP:
 
     def _swap_mutation(self, tour):
         """Swap two random positions."""
-        i, j = self.rng.choice(self.n, size=2, replace=False)
+        pts = self.rng.choice(self.n, size=2, replace=False)
+        i, j = int(pts[0]), int(pts[1])
         tour[i], tour[j] = tour[j], tour[i]
         return tour
 
@@ -82,42 +101,52 @@ class GA_TSP:
         start_time = time.time()
 
         population = self._init_population()
-        fitnesses = np.array([self._tour_distance(t) for t in population])
+        fitnesses = self._population_fitness(population)
 
         # Track global best
         best_idx = np.argmin(fitnesses)
-        self.best_tour = list(population[best_idx])
+        self.best_tour = population[best_idx].tolist()
         self.best_distance = fitnesses[best_idx]
+        no_improve_count = 0
 
         for gen in range(self.generations):
-            new_pop = []
+            # Elitism: preserve top individuals
+            elite_indices = np.argsort(fitnesses)[:self.elite_count]
+            new_pop = [population[i].copy() for i in elite_indices]
 
-            for _ in range(self.pop_size):
-                # Selection
+            # Fill rest of population
+            while len(new_pop) < self.pop_size:
                 p1 = self._tournament_selection(population, fitnesses)
                 p2 = self._tournament_selection(population, fitnesses)
 
-                # Crossover
                 if self.rng.random() < self.crossover_rate:
                     child = self._order_crossover(p1, p2)
                 else:
-                    child = list(p1)
+                    child = p1.copy()
 
-                # Mutation
                 if self.rng.random() < self.mutation_rate:
                     child = self._swap_mutation(child)
 
                 new_pop.append(child)
 
-            population = new_pop
-            fitnesses = np.array([self._tour_distance(t) for t in population])
+            population = np.array(new_pop[:self.pop_size])
+            fitnesses = self._population_fitness(population)
 
             gen_best_idx = np.argmin(fitnesses)
             if fitnesses[gen_best_idx] < self.best_distance:
                 self.best_distance = fitnesses[gen_best_idx]
-                self.best_tour = list(population[gen_best_idx])
+                self.best_tour = population[gen_best_idx].tolist()
+                no_improve_count = 0
+            else:
+                no_improve_count += 1
 
             self.convergence.append(self.best_distance)
+
+            # Early stopping
+            if no_improve_count >= self.stagnation_limit:
+                remaining = self.generations - gen - 1
+                self.convergence.extend([self.best_distance] * remaining)
+                break
 
         elapsed = time.time() - start_time
         return self.best_tour, self.best_distance, elapsed, self.convergence

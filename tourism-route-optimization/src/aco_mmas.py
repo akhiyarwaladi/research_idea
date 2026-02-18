@@ -21,33 +21,17 @@ class MMAS_TSP:
         beta=3.0,
         rho=0.02,
         max_iter=500,
+        stagnation_limit=100,
         seed=None,
     ):
-        """
-        Parameters
-        ----------
-        dist_matrix : 2D array-like
-            n x n distance matrix (symmetric, zero diagonal).
-        n_ants : int, optional
-            Number of ants per iteration. Default = n (number of nodes).
-        alpha : float
-            Pheromone importance exponent.
-        beta : float
-            Heuristic (visibility) importance exponent.
-        rho : float
-            Pheromone evaporation rate (0 < rho < 1).
-        max_iter : int
-            Maximum number of iterations.
-        seed : int, optional
-            Random seed for reproducibility.
-        """
-        self.D = np.array(dist_matrix, dtype=float)
+        self.D = np.array(dist_matrix, dtype=np.float64)
         self.n = len(self.D)
         self.n_ants = n_ants if n_ants else self.n
         self.alpha = alpha
         self.beta = beta
         self.rho = rho
         self.max_iter = max_iter
+        self.stagnation_limit = stagnation_limit
 
         self.rng = np.random.default_rng(seed)
 
@@ -55,12 +39,15 @@ class MMAS_TSP:
         with np.errstate(divide="ignore", invalid="ignore"):
             self.eta = np.where(self.D > 0, 1.0 / self.D, 0.0)
 
+        # Precompute eta^beta (constant throughout the run)
+        self.eta_beta = self.eta ** self.beta
+
         # Initialize pheromone bounds using NN tour
         nn_dist = self._nearest_neighbor_distance()
         self.tau_max = 1.0 / (self.rho * nn_dist)
         self.tau_min = self.tau_max / (2 * self.n)
 
-        # Pheromone matrix — start at tau_max
+        # Pheromone matrix - start at tau_max
         self.tau = np.full((self.n, self.n), self.tau_max)
 
         # Result tracking
@@ -70,68 +57,68 @@ class MMAS_TSP:
 
     def _nearest_neighbor_distance(self):
         """Compute nearest-neighbor tour distance for initialization."""
-        visited = {0}
+        visited = np.zeros(self.n, dtype=bool)
         current = 0
+        visited[0] = True
         total = 0.0
         for _ in range(self.n - 1):
             dists = self.D[current].copy()
-            dists[list(visited)] = np.inf
+            dists[visited] = np.inf
             nxt = int(np.argmin(dists))
             total += dists[nxt]
-            visited.add(nxt)
+            visited[nxt] = True
             current = nxt
-        total += self.D[current][0]
+        total += self.D[current, 0]
         return total
 
+    def _tour_distance(self, tour):
+        """Compute total Hamiltonian cycle distance (vectorized)."""
+        idx = np.asarray(tour)
+        return self.D[idx[:-1], idx[1:]].sum() + self.D[idx[-1], idx[0]]
+
     def _construct_tour(self):
-        """Build a single ant's tour using probabilistic transition rule."""
-        start = self.rng.integers(0, self.n)
-        tour = [start]
-        visited = set(tour)
+        """Build a single ant's tour using probabilistic transition rule (vectorized)."""
+        n = self.n
+        visited = np.zeros(n, dtype=bool)
+        start = self.rng.integers(0, n)
+        tour = np.empty(n, dtype=np.intp)
+        tour[0] = start
+        visited[start] = True
+        current = start
 
-        for _ in range(self.n - 1):
-            current = tour[-1]
-            unvisited = [j for j in range(self.n) if j not in visited]
-
-            # Compute transition probabilities
-            tau_vals = np.array([self.tau[current][j] for j in unvisited])
-            eta_vals = np.array([self.eta[current][j] for j in unvisited])
-            probs = (tau_vals ** self.alpha) * (eta_vals ** self.beta)
+        for step in range(1, n):
+            # Vectorized probability: tau^alpha * eta^beta for unvisited only
+            tau_row = self.tau[current]
+            probs = (tau_row ** self.alpha) * self.eta_beta[current]
+            probs[visited] = 0.0
 
             prob_sum = probs.sum()
             if prob_sum == 0:
-                # Fallback: uniform random
-                probs = np.ones(len(unvisited)) / len(unvisited)
+                # Fallback: uniform over unvisited
+                candidates = np.flatnonzero(~visited)
+                next_node = self.rng.choice(candidates)
             else:
                 probs /= prob_sum
+                next_node = self.rng.choice(n, p=probs)
 
-            next_node = self.rng.choice(unvisited, p=probs)
-            tour.append(next_node)
-            visited.add(next_node)
+            tour[step] = next_node
+            visited[next_node] = True
+            current = next_node
 
         return tour
-
-    def _tour_distance(self, tour):
-        """Compute total Hamiltonian cycle distance."""
-        total = sum(self.D[tour[i]][tour[i + 1]] for i in range(len(tour) - 1))
-        total += self.D[tour[-1]][tour[0]]
-        return total
 
     def _update_pheromones(self, iter_best_tour, iter_best_dist):
         """MMAS pheromone update: evaporate + deposit by best ant + clip."""
         # Evaporation
-        self.tau *= 1 - self.rho
+        self.tau *= (1.0 - self.rho)
 
-        # Deposit — only iteration-best (or global-best) ant
+        # Deposit - only iteration-best ant
         deposit = 1.0 / iter_best_dist
-        for i in range(len(iter_best_tour) - 1):
-            a, b = iter_best_tour[i], iter_best_tour[i + 1]
-            self.tau[a][b] += deposit
-            self.tau[b][a] += deposit
-        # Close the cycle
-        a, b = iter_best_tour[-1], iter_best_tour[0]
-        self.tau[a][b] += deposit
-        self.tau[b][a] += deposit
+        idx = np.asarray(iter_best_tour)
+        from_nodes = idx
+        to_nodes = np.roll(idx, -1)
+        self.tau[from_nodes, to_nodes] += deposit
+        self.tau[to_nodes, from_nodes] += deposit
 
         # Update bounds based on current global best
         self.tau_max = 1.0 / (self.rho * self.best_distance)
@@ -153,15 +140,12 @@ class MMAS_TSP:
         Returns
         -------
         best_tour : list of int
-            Node indices of the best tour found.
         best_distance : float
-            Total distance of the best tour.
         elapsed : float
-            Wall-clock time in seconds.
         convergence : list of float
-            Best distance found at each iteration.
         """
         start_time = time.time()
+        no_improve_count = 0
 
         for iteration in range(self.max_iter):
             iter_best_tour = None
@@ -178,7 +162,10 @@ class MMAS_TSP:
             # Update global best
             if iter_best_dist < self.best_distance:
                 self.best_distance = iter_best_dist
-                self.best_tour = list(iter_best_tour)
+                self.best_tour = iter_best_tour.tolist()
+                no_improve_count = 0
+            else:
+                no_improve_count += 1
 
             # Pheromone update
             self._update_pheromones(iter_best_tour, iter_best_dist)
@@ -188,6 +175,13 @@ class MMAS_TSP:
                 self._check_stagnation()
 
             self.convergence.append(self.best_distance)
+
+            # Early stopping if no improvement
+            if no_improve_count >= self.stagnation_limit:
+                # Pad convergence to expected length
+                remaining = self.max_iter - iteration - 1
+                self.convergence.extend([self.best_distance] * remaining)
+                break
 
         elapsed = time.time() - start_time
         return self.best_tour, self.best_distance, elapsed, self.convergence

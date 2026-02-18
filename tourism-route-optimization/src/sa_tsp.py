@@ -1,7 +1,7 @@
 """
 Simulated Annealing for TSP
 
-Uses 2-opt neighborhood and geometric cooling schedule.
+Uses 2-opt neighborhood with O(1) delta evaluation and geometric cooling schedule.
 """
 
 import numpy as np
@@ -21,19 +21,7 @@ class SA_TSP:
         iters_per_temp=50,
         seed=None,
     ):
-        """
-        Parameters
-        ----------
-        T0 : float
-            Initial temperature.
-        cooling_rate : float
-            Geometric cooling factor (T *= cooling_rate each step).
-        T_end : float
-            Stop when temperature drops below this.
-        iters_per_temp : int
-            Number of neighbor evaluations per temperature level.
-        """
-        self.D = np.array(dist_matrix, dtype=float)
+        self.D = np.array(dist_matrix, dtype=np.float64)
         self.n = len(self.D)
         self.T0 = T0
         self.cooling_rate = cooling_rate
@@ -47,18 +35,34 @@ class SA_TSP:
         self.convergence = []
 
     def _tour_distance(self, tour):
-        total = sum(self.D[tour[i]][tour[i + 1]] for i in range(len(tour) - 1))
-        total += self.D[tour[-1]][tour[0]]
-        return total
+        """Compute total Hamiltonian cycle distance (vectorized)."""
+        return self.D[tour[:-1], tour[1:]].sum() + self.D[tour[-1], tour[0]]
 
-    def _two_opt_swap(self, tour, i, j):
-        """Reverse the segment between indices i and j (2-opt move)."""
-        new_tour = tour[:i] + tour[i : j + 1][::-1] + tour[j + 1 :]
-        return new_tour
+    def _two_opt_delta(self, tour, i, j):
+        """
+        Compute the change in distance from a 2-opt reversal of segment [i..j].
+        O(1) instead of O(n) - only the 2 changed edges matter.
+
+        Before: ... tour[i-1] - tour[i] ... tour[j] - tour[j+1] ...
+        After:  ... tour[i-1] - tour[j] ... tour[i] - tour[j+1] ...
+        """
+        n = self.n
+        a = tour[i - 1] if i > 0 else tour[n - 1]
+        b = tour[i]
+        c = tour[j]
+        d = tour[(j + 1) % n]
+
+        old_cost = self.D[a, b] + self.D[c, d]
+        new_cost = self.D[a, c] + self.D[b, d]
+        return new_cost - old_cost
+
+    def _two_opt_apply(self, tour, i, j):
+        """Apply 2-opt reversal in-place."""
+        tour[i:j + 1] = tour[i:j + 1][::-1]
 
     def _initial_solution(self):
-        """Random initial tour."""
-        tour = list(range(self.n))
+        """Random initial tour as numpy array."""
+        tour = np.arange(self.n, dtype=np.intp)
         self.rng.shuffle(tour)
         return tour
 
@@ -68,14 +72,13 @@ class SA_TSP:
         # Initial solution
         current_tour = self._initial_solution()
         current_dist = self._tour_distance(current_tour)
-        self.best_tour = list(current_tour)
+        self.best_tour = current_tour.copy()
         self.best_distance = current_dist
 
         T = self.T0
         iteration = 0
 
         # Pre-compute total iterations for convergence tracking
-        # Log convergence every ~equivalent to MMAS iteration count
         total_temp_steps = int(
             math.log(self.T_end / self.T0) / math.log(self.cooling_rate)
         )
@@ -83,24 +86,23 @@ class SA_TSP:
 
         while T > self.T_end:
             for _ in range(self.iters_per_temp):
-                # Generate 2-opt neighbor
-                i, j = sorted(self.rng.choice(self.n, size=2, replace=False))
+                # Generate 2-opt neighbor indices
+                pts = self.rng.choice(self.n, size=2, replace=False)
+                i, j = int(pts.min()), int(pts.max())
                 if i == 0 and j == self.n - 1:
                     continue  # Skip trivial reversal
 
-                neighbor = self._two_opt_swap(current_tour, i, j)
-                neighbor_dist = self._tour_distance(neighbor)
-
-                delta = neighbor_dist - current_dist
+                # O(1) delta evaluation instead of O(n) full recalculation
+                delta = self._two_opt_delta(current_tour, i, j)
 
                 # Accept or reject
                 if delta < 0 or self.rng.random() < math.exp(-delta / T):
-                    current_tour = neighbor
-                    current_dist = neighbor_dist
+                    self._two_opt_apply(current_tour, i, j)
+                    current_dist += delta
 
                     if current_dist < self.best_distance:
                         self.best_distance = current_dist
-                        self.best_tour = list(current_tour)
+                        self.best_tour = current_tour.copy()
 
             # Cool down
             T *= self.cooling_rate
@@ -114,7 +116,7 @@ class SA_TSP:
             self.convergence.append(self.best_distance)
 
         elapsed = time.time() - start_time
-        return self.best_tour, self.best_distance, elapsed, self.convergence[:500]
+        return self.best_tour.tolist(), self.best_distance, elapsed, self.convergence[:500]
 
 
 def solve_sa(dist_matrix, seed=None, **kwargs):
