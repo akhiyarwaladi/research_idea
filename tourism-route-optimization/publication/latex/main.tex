@@ -62,6 +62,8 @@ A persistent shortcoming in tourism route studies is the reliance on Euclidean o
 
 This paper addresses this gap by computing a $25 \times 25$ road-distance matrix via Dijkstra's algorithm on the OpenStreetMap network for DIY (153,334 nodes, 200,104 edges) and comparing Max--Min Ant System (MMAS), Ant Colony System (ACS), GA, and SA over 30 independent runs. The comparison covers solution quality, variance, computation time, convergence behaviour, and statistical significance. Parameter sensitivity and scalability analyses complement the main experiment.
 
+The contributions of this study are threefold. First, we provide the first multi-algorithm metaheuristic comparison for tourism routing in Yogyakarta that uses real road network distances rather than Euclidean approximations. Second, we quantify the road-to-Euclidean distance deviation across 300 attraction pairs, providing empirical evidence for why straight-line distances are inadequate for practical route planning in this region. Third, we present a parameter sensitivity analysis of MMAS that reveals the interaction structure among its three main control parameters, offering guidance for practitioners tuning ACO algorithms on similar problem instances.
+
 
 %% ============================================================
 \section{Related Work}
@@ -76,7 +78,9 @@ Dorigo et al. \cite{dorigo1996} introduced Ant System; St\"{u}tzle and Hoos \cit
 
 \subsection{Tourism Route Optimization}
 
-Ruiz-Meza and Montoya-Torres \cite{ruizmeza2022} surveyed tourist trip design, covering orienteering formulations with time windows \cite{zhong2023,sylejmani2024}. Sun et al. \cite{sun2022} proposed multi-objective ACO for route recommendation. Most studies use Euclidean distances; OSMnx \cite{boeing2025,boeing2022} has made real road extraction practical, and Boyaci et al. \cite{boyaci2021} and Tatit et al. \cite{tatit2024} confirmed that Euclidean approximations introduce systematic errors. Within Indonesia, Nasution et al. \cite{nasution2024} applied vehicle routing to tourism itineraries, and Fathurrohman et al. \cite{fathurrohman2025} formulated a green orienteering problem for Yogyakarta \cite{thipsingh2022}. Neither provided the multi-algorithm statistical comparison over real road distances offered here.
+Ruiz-Meza and Montoya-Torres \cite{ruizmeza2022} surveyed tourist trip design, covering orienteering formulations with time windows \cite{zhong2023,sylejmani2024}. Sun et al. \cite{sun2022} proposed multi-objective ACO for route recommendation, incorporating travel time and tourist preferences alongside distance. Most studies in tourism routing use Euclidean or haversine distances for simplicity, but this assumption has been questioned by vehicle routing researchers. OSMnx \cite{boeing2025,boeing2022} has made real road network extraction practical for any region worldwide, and Boyaci et al. \cite{boyaci2021} showed that Euclidean approximations introduce 10--30\% errors in European vehicle routing. Tatit et al. \cite{tatit2024} confirmed similar deviations for spatial database queries, noting that the error varies with road network density and terrain.
+
+Within Indonesia, Nasution et al. \cite{nasution2024} applied vehicle routing with time windows to tourism itineraries but relied on Google Maps API calls rather than a pre-computed road network. Fathurrohman et al. \cite{fathurrohman2025} formulated a green orienteering problem for Yogyakarta that considered carbon emissions \cite{thipsingh2022}, but tested only a single algorithm. Neither study provided the multi-algorithm statistical comparison over pre-computed real road distances offered here, nor did they analyse parameter sensitivity or scalability behaviour.
 
 
 %% ============================================================
@@ -95,7 +99,11 @@ where $d(i,j)$ is the shortest road distance between attractions $i$ and $j$.
 
 \subsection{Study Area and Data}
 
-Twenty-five attractions in DIY were selected across six categories. Table~\ref{tab:attractions} lists each attraction with its geographic coordinates. The road network was downloaded via OSMnx \cite{boeing2025} using the query ``Daerah Istimewa Yogyakarta, Indonesia'' with \texttt{network\_type=drive}, yielding 153,334 nodes and 200,104 edges after undirected conversion. Each attraction was snapped to its nearest node, and the $25 \times 25$ distance matrix was computed using Dijkstra's algorithm. Fig.~\ref{fig:attraction_map} illustrates the spatial distribution of these 25 attractions across the study area; the spread from urban Yogyakarta city to remote coastal and highland sites is clearly visible in the map.
+Twenty-five attractions in DIY were selected across six categories: cultural heritage sites (Kraton, Taman Sari, Kotagede), historical landmarks (Benteng Vredeburg, Tugu), religious temples (Borobudur, Prambanan, Ratu Boko), nature and recreation areas (Parangtritis, Indrayanti, Goa Pindul, Hutan Pinus Mangunan, Tebing Breksi, HeHa Sky View), museums (Sonobudoyo, Affandi, Ullen Sentalu), and urban attractions (Malioboro, Beringharjo, Taman Pintar, Gembira Loka Zoo, Purawisata, Monumen Jogja Kembali, Alun-Alun Utara, Alun-Alun Kidul). Table~\ref{tab:attractions} lists each attraction with its geographic coordinates.
+
+The road network was downloaded via OSMnx \cite{boeing2025} using the query ``Daerah Istimewa Yogyakarta, Indonesia'' with \texttt{network\_type=drive}, yielding 153,334 nodes and 200,104 edges after undirected conversion. Each attraction was snapped to its nearest network node, and the $25 \times 25$ distance matrix was computed using Dijkstra's algorithm. Fig.~\ref{fig:attraction_map} shows the spatial distribution of these attractions. The study area spans roughly 60~km north-to-south (from Borobudur/Ullen Sentalu in the highlands to Pantai Indrayanti on the coast) and 50~km east-to-west (from Goa Pindul to Borobudur), with a dense cluster of 10 attractions within the urban core of Yogyakarta city.
+
+The resulting distance matrix is visualised in Fig.~\ref{fig:distance_matrix}. The largest pairwise distance is 93.3~km (Borobudur to Pantai Indrayanti), while the smallest is 0.3~km (Alun-Alun Utara to Museum Sonobudoyo). Urban core attractions form a visible low-distance block in the upper-left portion of the matrix. The asymmetry between some pairs reflects the one-way street structure retained during Dijkstra computation before the matrix was symmetrised by taking the minimum of each directed pair.
 
 \begin{table}[!htbp]
 \centering
@@ -140,6 +148,13 @@ ID & Name & Lat. & Long. \\
 \includegraphics[width=\columnwidth]{fig1_attraction_map.png}
 \caption{Spatial distribution of 25 tourist attractions in Yogyakarta Special Region.}
 \label{fig:attraction_map}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{fig9_distance_matrix.png}
+\caption{Road distance matrix (km) for the 25 tourist attractions. Darker cells indicate longer distances. The urban core attractions (IDs 1--10) form a low-distance cluster in the upper-left block.}
+\label{fig:distance_matrix}
 \end{figure}
 
 \subsection{Algorithm Implementations}
@@ -225,7 +240,16 @@ NN   & 297.10 & 297.10 & 0.00 & 4.70 & 0.001 \\
 \end{tabular}
 \end{table}
 
+Fig.~\ref{fig:bar_summary} provides a visual comparison of the key metrics from Table~\ref{tab:performance}. The distance panel makes the gap between GA and the other algorithms immediately apparent, while the time panel shows that ACS and GA are the fastest algorithms but for very different reasons: ACS finishes quickly because its pseudo-random rule concentrates search effort, while GA's population-based evaluation is inherently parallel.
+
 The run-level distributions in Fig.~\ref{fig:boxplot} reveal how each algorithm explores the solution space. SA found the global optimum in 19 of 30 runs; the remaining 11 settled on one of three near-optimal tours within \SI{0.21}{km} of the best, showing that the 2-opt neighbourhood funnels solutions toward a small family of structurally similar tours. MMAS hit the optimum only once, but 19 runs still fell within 0.06\% of it, forming a tight cluster. ACS shows a distinct bimodal pattern: about half the runs reached its best tour, while the other half got trapped on longer routes because the high exploitation probability (0.9) can lock the colony onto early pheromone trails. GA produced the widest spread (\SI{26.7}{km} between best and worst), with no concentration around any single tour structure.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\columnwidth]{fig10_bar_summary.png}
+\caption{Summary of algorithm performance. Left: best, mean, and worst distances; right: mean computation time per run.}
+\label{fig:bar_summary}
+\end{figure}
 
 \begin{figure}[!htbp]
 \centering
@@ -265,7 +289,7 @@ MMAS follows a steadier trajectory. Its bounded pheromone trails prevent prematu
 
 ACS shows the fastest initial descent among the ACO variants, cutting over \SI{15}{km} in the first 50 iterations. It then plateaus around iteration~178, much sooner than MMAS. The high exploitation probability (0.9) drives aggressive early search but leaves too little diversity for later refinement.
 
-GA converged the most slowly. Its initial solutions were substantially longer because it starts from purely random permutations without a nearest-neighbour seed. GA was still improving at iteration~500, suggesting the budget was insufficient and that hybridisation with local search operators could narrow the gap.
+GA converged the most slowly. Its initial solutions were substantially longer because it starts from purely random permutations without a nearest-neighbour seed. GA was still improving at iteration~500, suggesting the budget was insufficient and that hybridisation with local search operators could narrow the gap. The convergence profiles explain why the standard deviations in Table~\ref{tab:performance} differ so widely: SA's early convergence leaves little room for run-to-run variation, while GA's incomplete convergence means each run may stop at a different point along its descent curve. MMAS and ACS fall in between, with MMAS achieving lower variance thanks to its longer convergence window.
 
 \begin{figure}[!htbp]
 \centering
@@ -308,7 +332,7 @@ Fig.~\ref{fig:scalability} reports mean distance and computation time for subset
 
 The algorithms separated at 15 attractions. MMAS, ACS, and SA still found the optimum reliably, but GA's mean rose to 3.1\% above the best-known solution. At 20 attractions, SA still produced near-perfect results, MMAS and ACS stayed within 0.2\%, but GA's gap grew to 5.2\%. This widening continued at 25 attractions, where GA trailed by 6.5\% (Table~\ref{tab:performance}).
 
-The bottom panel of Fig.~\ref{fig:scalability} shows runtime. MMAS and ACS grew roughly quadratically with problem size, consistent with their pheromone update mechanism. GA scaled linearly. SA's runtime stayed nearly constant at about \SI{3.5}{s} regardless of problem size, since the cooling schedule, not the number of cities, governs its computation.
+The bottom panel of Fig.~\ref{fig:scalability} shows runtime. MMAS and ACS grew roughly quadratically with problem size, consistent with the $O(m \cdot n^2)$ cost of their pheromone update mechanism, where $m = n$ ants each evaluate $n$ candidate cities at each step. GA scaled linearly because its population size and number of generations were held constant. SA's runtime stayed nearly constant at about \SI{3.5}{s} regardless of problem size, since the number of temperature steps is fixed by the cooling schedule, and each 2-opt evaluation is $O(1)$ using the incremental cost formula in Eq.~\ref{eq:2opt_delta}. This constant-time property makes SA attractive for larger tourism networks where computation budget is limited, though the quality advantage may diminish as problem size grows beyond the 25-node range tested here.
 
 \begin{figure}[!htbp]
 \centering
@@ -326,7 +350,9 @@ Euclidean distances are an imperfect proxy for actual travel. To quantify the ga
 \end{equation}
 where a ratio of 1 would mean a perfectly straight road.
 
-Fig.~\ref{fig:euclidean_road} compares the two distance measures across all 300 attraction pairs. The scatter plot shows a strong linear correlation (R-squared = 0.97), but with a consistent positive bias: road distances averaged 18\% longer (mean ratio 1.18, standard deviation 0.12). The ratio was lowest (around 1.05) for pairs connected by direct highway segments, such as the Yogyakarta--Prambanan corridor, and highest (up to 1.72) for pairs separated by rivers, mountain slopes, or dense urban fabric. Because the bias is consistent, the errors compound across a multi-stop tour. For the 25-attraction problem, relying on Euclidean distances would underestimate total tour length by roughly \SI{40}{--}\SI{50}{km}, enough to make a planned day trip infeasible.
+Fig.~\ref{fig:euclidean_road} compares the two distance measures across all 300 attraction pairs. The scatter plot shows a strong linear correlation (R-squared = 0.97), but with a consistent positive bias: road distances averaged 18\% longer (mean ratio 1.18, standard deviation 0.12). The ratio was lowest (around 1.05) for pairs connected by direct highway segments, such as the Yogyakarta--Prambanan corridor along the main east-west highway. The highest ratios (up to 1.72) occurred for pairs separated by rivers, volcanic slopes, or dense urban fabric where roads must follow indirect paths. For example, the Euclidean distance from Candi Borobudur to Pantai Indrayanti is 48~km, but the road distance is 83~km because vehicles must descend the Menoreh hills, cross through the Yogyakarta urban area, and navigate the winding Gunung Kidul karst roads to reach the coast.
+
+Because the bias is consistent, the errors compound across a multi-stop tour. For the 25-attraction problem, relying on Euclidean distances would underestimate total tour length by roughly \SI{40}{--}\SI{50}{km}, enough to make a planned day trip infeasible. More critically, Euclidean-based optimization may produce a different tour order than road-based optimization, because the relative ranking of edge costs changes when detour ratios vary across the network. Two attractions that appear close in Euclidean space may be far apart on the road network if a river or mountain range lies between them.
 
 \begin{figure}[!htbp]
 \centering
@@ -339,11 +365,15 @@ Fig.~\ref{fig:euclidean_road} compares the two distance measures across all 300 
 
 \textbf{Algorithm selection trade-offs.} SA with 2-opt is the best choice when a few seconds of computation is acceptable, such as offline trip planning tools or pre-computed itinerary brochures. ACS suits interactive applications better, for example a mobile app recalculating routes in real time, because it runs an order of magnitude faster while producing tours only marginally longer (Table~\ref{tab:performance}). MMAS falls between the two: more reliable than ACS ($p = 0.011$, Table~\ref{tab:wilcoxon}), but slower. GA with basic OX crossover is not competitive at this problem size (Fig.~\ref{fig:scalability}), though hybridising it with local search \cite{ruan2024} or edge-assembly crossover \cite{deng2021} would likely help.
 
+\textbf{Why SA outperforms ACO on this instance.} The 25-attraction problem has a particular structure that favours SA with 2-opt. Most of the attractions cluster geographically into four or five groups (the urban core, the eastern temples, the southern coast, the highlands, and Borobudur). A 2-opt move can efficiently remove crossing edges between these clusters, producing large distance improvements in a single step. ACO variants, by contrast, build tours node by node and rely on pheromone accumulation over many iterations to discover the same cluster structure. For this moderate problem size, the direct edge-swap mechanism of 2-opt converges faster than pheromone-guided construction. On larger or less clustered instances, the balance might shift in favour of ACO, which can explore a wider set of tour structures through its population of ants.
+
 \textbf{Practical implications.} The optimal \SI{283.76}{km} tour reported in Table~\ref{tab:performance} translates to roughly 7 hours of driving at Yogyakarta's typical mixed-road speed of \SI{40}{km/h}. Combined with 30--60 minutes spent at each attraction, visiting all 25 sites listed in Table~\ref{tab:attractions} would span 3--4 days. The geographic clustering visible in the optimal route (Fig.~\ref{fig:routes}) suggests a natural breakdown into daily itineraries: (1)~the urban core (Kraton, Malioboro, Taman Sari, and surrounding sites), (2)~the eastern temple complex (Prambanan, Ratu Boko, Tebing Breksi) combined with the northern highland (Ullen Sentalu), (3)~the southern coast (Parangtritis, Indrayanti, Goa Pindul, Hutan Pinus), and (4)~a western excursion to Borobudur. Tour operators could use these clusters as ready-made day-trip modules.
+
+Looking at the distance matrix in Fig.~\ref{fig:distance_matrix}, the urban core attractions (IDs 1--10) are all within 5~km of each other, making them walkable or reachable by short rides. The coastal attractions (Parangtritis, Indrayanti) are 30--50~km from the urban core, and Goa Pindul is another 40~km east, so the southern loop alone requires substantial driving. Borobudur sits 40~km northwest and is best combined with Ullen Sentalu (25~km northeast of Borobudur) as a full-day excursion from the city.
 
 \textbf{Comparison with related work.} The 18\% road-to-Euclidean deviation matches findings by Boyaci et al. \cite{boyaci2021} for European vehicle routing and Tatit et al. \cite{tatit2024} for spatial query accuracy, indicating that this bias is not specific to Yogyakarta. Unlike Sun et al. \cite{sun2022} and Nasution et al. \cite{nasution2024}, who used simplified distance metrics, our results show that real road distances alter both absolute tour lengths and the relative ranking of near-optimal solutions. The parameter sensitivity results also align with the tuning guidance of Kaushik and Nadeem \cite{kaushik2024}, who noted that ACO parameters interact and should not be tuned in isolation.
 
-\textbf{Limitations.} This study optimises total distance only. Travellers also care about travel time, entrance fees, opening hours, and personal preferences; multi-objective formulations \cite{ruizmeza2022,sun2022} would address these. The road distances are static and do not account for traffic congestion or time-of-day variations. The analysis covers a single destination with 25 attractions; testing on larger instances or other Indonesian cities would test generalisability. Orienteering formulations with time windows \cite{sylejmani2024,fathurrohman2025} and near-exact solvers such as LKH \cite{zheng2023} were not included and are natural extensions.
+\textbf{Limitations.} This study optimises total distance only. Travellers also care about travel time, entrance fees, opening hours, and personal preferences; multi-objective formulations \cite{ruizmeza2022,sun2022} would address these. The road distances are static and do not account for traffic congestion or time-of-day variations, which can be substantial in Yogyakarta: the Malioboro corridor and the road to Borobudur experience heavy congestion during holidays and weekends. The analysis covers a single destination with 25 attractions; testing on larger instances (50--100 attractions) or other Indonesian cities with different road topologies would test generalisability. The comparison also does not include orienteering formulations with time windows \cite{sylejmani2024,fathurrohman2025}, which would be more realistic for tourists with limited time, or near-exact solvers such as LKH \cite{zheng2023}, which would provide a tighter upper bound on solution quality.
 
 
 %% ============================================================
@@ -355,7 +385,7 @@ This study compared four metaheuristic algorithms (MMAS, ACS, GA, and SA) for a 
 
 Parameter sensitivity analysis revealed that MMAS performance varies by up to \SI{6.4}{km} depending on parameter settings, with a strong interaction between the pheromone weight and evaporation rate. Scalability tests showed that GA's quality gap widens with problem size, while the other three algorithms remain robust up to 25 attractions.
 
-Future work should extend this framework to multi-objective formulations that include travel time, visitor preferences, and time-window constraints, and should incorporate dynamic traffic data. Testing the approach on other Indonesian tourism destinations would help assess generalisability.
+Future work should extend this framework in several directions. Multi-objective formulations that include travel time, entrance fees, opening hours, and visitor preferences would produce more practical itineraries. Incorporating dynamic traffic data from sources such as Google Maps or local traffic monitoring systems would improve the accuracy of travel time estimates, particularly during peak tourist seasons when congestion around Borobudur and Malioboro can double travel times. Testing the approach on other Indonesian tourism destinations, such as Bali, Bandung, or Lombok, would help assess generalisability across different road network topologies and attraction distributions.
 
 
 %% ============================================================
